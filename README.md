@@ -1,24 +1,8 @@
-# array-sorting
+# Sorting Array Visualizer
 
-## Project setup
-```
-npm install
-```
+This is a visualizer of different types of array sorts
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Link - [Sorting Visualizer](https://sava-sorting-visualizer.web.app)
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
