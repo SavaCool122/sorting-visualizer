@@ -33,9 +33,9 @@ function quickSort(items, low = 0, hi = items.length - 1) {
   return items
 }
 
-export function qSortHelper(items) {
-  if (items.length <= 1) return items
-  pivots = []
-  quickSort(items)
-  return pivots
+export function getQuickSortAnimations(items) {
+  if (items.length <= 1) return items;
+  pivots = [];
+  quickSort(items);
+  return pivots;
 }
