@@ -1,16 +1,24 @@
 <template>
-  <div class="grid grid-cols-2 grid-rows-auto">
-    <button class="col-span-2" @click="emitReset">Reset Array</button>
+  <div class="grid grid-cols-2 grid-rows-auto gap-1 p-1">
+    <button
+      class="col-span-2 p-2 border-black border-2 bg-gray-100"
+      @click="emitReset"
+    >
+      Reset Array
+    </button>
     <button
       v-for="sortConfig in sortingList"
       :key="sortConfig.id"
-      :class="{ 'cursor-not-allowed': sortConfig.disabled }"
-      :disabled="sortConfig.disabled"
+      :class="{
+        'cursor-not-allowed': sortConfig.disable,
+        'bg-gray-400': sortConfig.disable,
+      }"
+      class="p-2 border-black border-2 bg-gray-100"
+      :disabled="sortConfig.disable"
       @click="emitSortType(sortConfig.handler)"
     >
       {{ sortConfig.name }}
     </button>
-    <button class="col-span-2" @click="emitTestArray">Test Array</button>
   </div>
 </template>
 
@@ -42,7 +50,7 @@ export default {
     },
     emitTestArray() {
       this.$emit("testArray");
-    }
+    },
   },
 };
 </script>

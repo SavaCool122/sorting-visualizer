@@ -15,7 +15,7 @@ export const sortingList = [
     id: 2,
     name: "Merge Sort",
     handler: "mergeSortHandler",
-    disable: false,
+    disable: true,
   },
   {
     id: 3,
