@@ -1,17 +1,14 @@
 <template>
-  <div id="app">
-    <SortingVizualizer />
-  </div>
+  <SortVisualizer />
 </template>
 
 <script>
-import SortingVizualizer from './components/SortingVizualizer.vue'
+import SortVisualizer from "./components/SortVisualizer.vue";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    SortingVizualizer,
+    SortVisualizer,
   },
-}
+};
 </script>
