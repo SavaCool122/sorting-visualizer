@@ -3,7 +3,7 @@
 
 ### New project url 
 
-https://focused-fermat-d43e0c.netlify.app/
+https://sava-sorting-visualizer.netlify.app
 
 ### Old project url 
 
