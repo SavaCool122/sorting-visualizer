@@ -14,18 +14,12 @@
     >
       {{ sortConfig.name }}
     </SButton>
-    <SButton
-      class="col-span-2"
-      @click="allSorts"
-    >
-      All sorts
-    </SButton>
   </div>
 </template>
 
 <script>
 import SButton from "../../../components/SButton.vue"; // TODO alias
-import {sortingList} from "../../constants";
+import {sortingList} from "../../sortConfig";
 
 export default {
   name: "SortButtons",
@@ -41,9 +35,6 @@ export default {
     },
     emitReset() {
       this.$emit("resetArray");
-    },
-    allSorts() {
-      this.$emit("all-sorts");
     },
   },
 };

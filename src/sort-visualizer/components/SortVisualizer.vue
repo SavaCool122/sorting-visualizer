@@ -19,20 +19,18 @@ import SortButtons from "../sidebar/components/SortButtons.vue";
 import Slider from "../sidebar/components/Slider.vue";
 import MainView from "./MainView.vue";
 import ColumnList from "../sort-columns/components/ColumnList.vue"
-import {Colors, ANIMATION_SPEED, sortingList} from "../constants";
-import {randomIntFromInterval} from "../utils";
+import {randomIntFromInterval, playSortAnimation, getSortMethods} from "../utils";
 
 export default {
   components: {
+    MainView,
     Slider,
     Sidebar,
     SortButtons,
-    MainView,
     ColumnList,
   },
   data() {
     return {
-      Colors,
       arrayInt: [],
       barsArrayElm: [],
       barsArrayLength: 15,
@@ -42,35 +40,18 @@ export default {
     barsArrayLength: "resetArray",
   },
   methods: {
-    delay(time = 0) {
-      return new Promise((resolve) => setTimeout(resolve, time));
-    },
     resetArray() {
-      this.arrayInt = Array.from({length: this.barsArrayLength}, () =>
-        randomIntFromInterval(5, 450)
-      );
+      this.arrayInt = Array.from({length: this.barsArrayLength}, () => randomIntFromInterval(5, 450))
     },
     async handleSort(type) {
       this.barsArrayElm = document.getElementsByClassName('column');
       const arrCopy = this.arrayInt.slice();
-      const sortType = sortingList.find(sort => sort.id === type)
-      if (!sortType) throw new Error("Sort don't found")
-      const animationToSortArray = sortType.handler(arrCopy);
-      await this.playSortAnimation(animationToSortArray);
-      console.log('SORT END')
-    },
-    async playSortAnimation(animations) {
-      for (const animation of animations) {
-        const idx = animations.indexOf(animation);
-        const [position, value] = animation;
-        const barStyle = this.barsArrayElm[position].style;
-        await this.delay(ANIMATION_SPEED)
-        barStyle.backgroundColor = Colors.SECONDARY_COLOR
-        await this.delay(ANIMATION_SPEED)
-        barStyle.height = `${value}px`
-        await this.delay(ANIMATION_SPEED)
-        barStyle.backgroundColor = Colors.PRIMARY_COLOR;
-      }
+
+      const sortMethod = getSortMethods(type)
+      const animationToSortArray = sortMethod(arrCopy);
+
+      await playSortAnimation(animationToSortArray, this.barsArrayElm);
+      console.log('SORT END') // TODO Проверка что массив отсортирован
     },
   },
   created() {
