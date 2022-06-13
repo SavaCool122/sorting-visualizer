@@ -5,7 +5,7 @@
       v-for="(number, xid) in list"
       :key="xid"
       :style="{ height: number + 'px', backgroundColor: Colors.PRIMARY_COLOR }"
-      :class="`${id}column`"
+      class="column"
     ></div>
   </div>
 </template>

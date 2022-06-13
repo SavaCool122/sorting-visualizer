@@ -4,21 +4,12 @@
       <SortButtons
         @sortType="handleSort"
         @resetArray="resetArray"
-        @all-sorts="allSorts"
       />
       <Slider :max="360" label="Items Count" v-model="barsArrayLength"/>
     </Sidebar>
     <MainView>
-      <div v-if="currentView === 'SingleView'">
+      <div>
         <ColumnList :list="arrayInt"/>
-      </div>
-      <div class="grid grid-cols-4 grid-rows-3" v-if="currentView === 'MultiView'">
-        <ColumnList
-          v-for="sort in filteredSortingList"
-          :id="sort.id"
-          :list="arrayInt"
-          :title="sort.name"
-        />
       </div>
     </MainView>
   </div>
@@ -47,16 +38,10 @@ export default {
       arrayInt: [],
       barsArrayElm: [],
       barsArrayLength: 15,
-      currentView: 'SingleView'
     };
   },
   watch: {
     barsArrayLength: "resetArray",
-  },
-  computed: {
-    filteredSortingList() {
-      return sortingList.filter(s => s.id && s.handler)
-    }
   },
   methods: {
     delay(time = 0) {
@@ -67,18 +52,10 @@ export default {
         randomIntFromInterval(5, 450)
       );
     },
-    async allSorts() {
-      this.currentView = 'MultiView'
-      await this.delay(1000)
-      this.filteredSortingList.forEach(sort => {
-        this.handleSort(sort.id, sort.id, true)
-      })
-    },
-    handleSort(type, id = '', isMulti) {
-      if (!isMulti) this.currentView = 'SingleView'
-      this.barsArrayElm = document.getElementsByClassName(`${id}column`);
+    handleSort(type) {
+      this.barsArrayElm = document.getElementsByClassName('column');
       const arrCopy = this.arrayInt.slice();
-      const sortType = this.filteredSortingList.find(sort => sort.id === type)
+      const sortType = sortingList.find(sort => sort.id === type)
       if (!sortType) throw new Error("Sort don't found")
       const animationToSortArray = sortType.handler(arrCopy);
       this.playSortAnimation(animationToSortArray);
@@ -96,7 +73,6 @@ export default {
       })
     },
   },
-
   created() {
     this.resetArray();
   },
