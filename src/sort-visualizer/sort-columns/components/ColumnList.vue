@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {Colors} from "../../constants";
+import {Colors} from "../constants";
 
 export default {
   name: "ColumnList",

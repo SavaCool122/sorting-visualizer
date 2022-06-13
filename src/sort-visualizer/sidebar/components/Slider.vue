@@ -5,11 +5,11 @@
     </div>
     <div class="flex justify-center">
       <input
-        :value="modelValue"
+        :value="value"
         type="range"
-        min="0"
+        :min="min"
         :max="max"
-        @input="updateValue"
+        @input.stop="updateValue"
       />
     </div>
   </div>
@@ -23,7 +23,7 @@ export default {
       type: String,
       required: true,
     },
-    modelValue: {
+    value: {
       type: Number,
       required: true,
     },
@@ -31,14 +31,17 @@ export default {
       type: Number,
       required: false,
       default: 100,
+    },
+    min: {
+      type: Number,
+      required: false,
+      default: 5,
     }
   },
   methods: {
     updateValue(event) {
-      this.$emit("update:model-value", Number(event.target.value) || 0);
+      this.$emit("input", Number(event.target.value) || 0);
     },
   },
 };
 </script>
-
-<style scoped></style>

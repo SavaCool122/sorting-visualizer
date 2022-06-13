@@ -1,12 +1,10 @@
 <template>
   <div class="grid grid-cols-5 min-h-full">
-    <Sidebar>
-      <SortButtons
-        @sortType="handleSort"
-        @resetArray="resetArray"
-      />
-      <Slider :max="360" label="Items Count" v-model="barsArrayLength"/>
-    </Sidebar>
+    <Sidebar
+      @change-status="handleChangeStatus"
+      :selected-sort="appConfig.sort"
+      v-model:bars-array-length="barsArrayLength"
+    />
     <MainView>
       <ColumnList :list="arrayInt"/>
     </MainView>
@@ -15,47 +13,39 @@
 
 <script>
 import Sidebar from "../sidebar/components/Sidebar.vue";
-import SortButtons from "../sidebar/components/SortButtons.vue";
-import Slider from "../sidebar/components/Slider.vue";
-import MainView from "./MainView.vue";
 import ColumnList from "../sort-columns/components/ColumnList.vue"
-import {randomIntFromInterval, playSortAnimation, getSortMethods} from "../utils";
+import MainView from "./MainView.vue";
+import {getRandomArray, getInitialAppConfig} from "../utils";
+import {handleSort} from '../sortAnimation'
+import {STATUSES} from '../constants'
 
 export default {
   components: {
     MainView,
-    Slider,
     Sidebar,
-    SortButtons,
     ColumnList,
   },
   data() {
     return {
-      arrayInt: [],
-      barsArrayElm: [],
       barsArrayLength: 15,
+      appConfig: getInitialAppConfig()
     };
   },
-  watch: {
-    barsArrayLength: "resetArray",
+  computed: {
+    arrayInt() {
+      return getRandomArray(this.barsArrayLength)
+    }
   },
   methods: {
-    resetArray() {
-      this.arrayInt = Array.from({length: this.barsArrayLength}, () => randomIntFromInterval(5, 450))
-    },
-    async handleSort(type) {
-      this.barsArrayElm = document.getElementsByClassName('column');
-      const arrCopy = this.arrayInt.slice();
+    async handleChangeStatus(appConfig) {
+      this.appConfig = appConfig
 
-      const sortMethod = getSortMethods(type)
-      const animationToSortArray = sortMethod(arrCopy);
-
-      await playSortAnimation(animationToSortArray, this.barsArrayElm);
-      console.log('SORT END') // TODO Проверка что массив отсортирован
+      if (STATUSES.SORT === appConfig.status) {
+        await handleSort(appConfig.sort, this.arrayInt)
+        console.log('SORT END') // TODO Проверка что массив отсортирован правильно
+        this.appConfig = getInitialAppConfig()
+      }
     },
-  },
-  created() {
-    this.resetArray();
   },
 };
 </script>
