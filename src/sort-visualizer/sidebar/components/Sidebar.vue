@@ -2,10 +2,17 @@
   <div class="col-start-1 min-h-screen col-end-1 bg-gray-300">
     <SortButtons
       :selected-sort="selectedSort"
+      :is-available-change-sort-type="isAvailableChangeSortType"
       @sortType="handleSort"
       @resetArray="resetArray"
     />
-    <Slider :max="360" label="Items Count" @input="emitBarArrayLength" :value="barsArrayLength"/>
+    <Slider
+      v-if="isAvailableChangeSortType"
+      label="Items Count"
+      :max="360"
+      :value="barsArrayLength"
+      @input="emitBarArrayLength"
+    />
   </div>
 </template>
 
@@ -31,6 +38,11 @@ export default {
       required: true,
     }
   },
+  computed: {
+    isAvailableChangeSortType() {
+      return this.selectedSort === null
+    }
+  },
   methods: {
     resetArray() {
       this.emitBarArrayLength(randomIntFromInterval())
@@ -39,6 +51,7 @@ export default {
       this.$emit('change-status', {status: STATUSES.SORT, sort: type})
     },
     emitBarArrayLength(v) {
+      if (!this.isAvailableChangeSortType) return
       this.$emit('update:barsArrayLength', v)
     }
   }

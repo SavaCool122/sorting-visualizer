@@ -29,6 +29,10 @@ export default {
     selectedSort: {
       type: [String, null],
       required: true,
+    },
+    isAvailableChangeSortType: {
+      type: Boolean,
+      required: true,
     }
   },
   data() {
@@ -38,9 +42,11 @@ export default {
   },
   methods: {
     emitSortType(sortType) {
+      if (!this.isAvailableChangeSortType) return
       this.$emit("sortType", sortType);
     },
     emitReset() {
+      if (!this.isAvailableChangeSortType) return
       this.$emit("resetArray");
     },
   },
