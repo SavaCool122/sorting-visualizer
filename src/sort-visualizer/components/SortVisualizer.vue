@@ -25,14 +25,13 @@
 </template>
 
 <script>
-import SortButtons from "./SortButtons.vue";
-import Sidebar from "./Sidebar.vue";
+import Sidebar from "../sidebar/components/Sidebar.vue";
+import SortButtons from "../sidebar/components/SortButtons.vue";
+import Slider from "../sidebar/components/Slider.vue";
 import MainView from "./MainView.vue";
-import Slider from "./Slider.vue";
-import ColumnList from "./ColumnList.vue"
-import {Colors} from "../utils/enums/enums";
-import {ANIMATION_SPEED, sortingList} from "../utils/constant/constant"
-import randomIntFromInterval from "../utils/randomIntFromInterval";
+import ColumnList from "../sort-columns/components/ColumnList.vue"
+import {Colors, ANIMATION_SPEED, sortingList} from "../constants";
+import {randomIntFromInterval} from "../utils";
 
 export default {
   components: {

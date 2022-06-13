@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {Colors} from "../utils/enums/enums";
+import {Colors} from "../../constants";
 
 export default {
   name: "ColumnList",

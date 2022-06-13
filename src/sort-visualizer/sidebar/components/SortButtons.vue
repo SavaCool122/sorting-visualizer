@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import {sortingList} from "../utils/constant/constant";
-import SButton from "./common/SButton.vue";
+import SButton from "../../../components/SButton.vue"; // TODO alias
+import {sortingList} from "../../constants";
 
 export default {
   name: "SortButtons",
