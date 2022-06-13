@@ -26,7 +26,7 @@ export const SortTypes = {
   BITONIC: 'BITONIC'
 }
 
-export const ANIMATION_SPEED = 15
+export const ANIMATION_SPEED = 1
 
 export const sortingList = [
   {

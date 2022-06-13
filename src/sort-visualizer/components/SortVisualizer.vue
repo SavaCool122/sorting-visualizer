@@ -8,9 +8,7 @@
       <Slider :max="360" label="Items Count" v-model="barsArrayLength"/>
     </Sidebar>
     <MainView>
-      <div>
-        <ColumnList :list="arrayInt"/>
-      </div>
+      <ColumnList :list="arrayInt"/>
     </MainView>
   </div>
 </template>
@@ -52,25 +50,27 @@ export default {
         randomIntFromInterval(5, 450)
       );
     },
-    handleSort(type) {
+    async handleSort(type) {
       this.barsArrayElm = document.getElementsByClassName('column');
       const arrCopy = this.arrayInt.slice();
       const sortType = sortingList.find(sort => sort.id === type)
       if (!sortType) throw new Error("Sort don't found")
       const animationToSortArray = sortType.handler(arrCopy);
-      this.playSortAnimation(animationToSortArray);
+      await this.playSortAnimation(animationToSortArray);
+      console.log('SORT END')
     },
-    playSortAnimation(animations) {
-      animations.forEach(async (animation, idx) => {
+    async playSortAnimation(animations) {
+      for (const animation of animations) {
+        const idx = animations.indexOf(animation);
         const [position, value] = animation;
         const barStyle = this.barsArrayElm[position].style;
-        await this.delay(idx * ANIMATION_SPEED)
+        await this.delay(ANIMATION_SPEED)
         barStyle.backgroundColor = Colors.SECONDARY_COLOR
-        await this.delay(ANIMATION_SPEED / 2)
+        await this.delay(ANIMATION_SPEED)
         barStyle.height = `${value}px`
-        await this.delay(ANIMATION_SPEED / 4)
+        await this.delay(ANIMATION_SPEED)
         barStyle.backgroundColor = Colors.PRIMARY_COLOR;
-      })
+      }
     },
   },
   created() {
