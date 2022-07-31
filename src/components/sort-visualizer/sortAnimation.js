@@ -1,5 +1,4 @@
-import { ANIMATION_SPEED } from './constants';
-import { Colors } from './sort-columns/constants';
+import { ANIMATION_SPEED, Colors } from './constants';
 import { getSortMethods } from './utils';
 
 export const delay = (time = 0) => new Promise(resolve => setTimeout(resolve, time));

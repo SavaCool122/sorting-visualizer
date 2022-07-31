@@ -1,12 +1,12 @@
 <template>
-	<div class="grid grid-cols-2 grid-rows-auto gap-1 p-1">
-		<SButton class="col-span-2" @click="emitReset"> Reset Array </SButton>
+	<div class='grid grid-cols-2 grid-rows-auto gap-1 p-1'>
+		<SButton class='col-span-2' @click='emitReset'> Reset Array</SButton>
 		<SButton
-			v-for="sortConfig in sortingList"
-			:key="sortConfig.id"
-			:active="selectedSort === sortConfig.id"
-			:disabled="sortConfig.disabled"
-			@click="emitSortType(sortConfig.id)"
+			v-for='sortConfig in sortingList'
+			:key='sortConfig.id'
+			:active='selectedSort === sortConfig.id'
+			:disabled='sortConfig.disabled'
+			@click='emitSortType(sortConfig.id)'
 		>
 			{{ sortConfig.name }}
 		</SButton>
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import SButton from '../../../components/SButton.vue'; // TODO alias
-import { sortingList } from '../../sortConfig';
+import SButton from '../../../../../components/common/SButton.vue'; // TODO alias
+import { sortingList } from '../../../sortConfig';
 
 export default {
 	name: 'SortButtons',
@@ -23,16 +23,16 @@ export default {
 	props: {
 		selectedSort: {
 			type: [String, null],
-			required: true,
+			required: true
 		},
 		isAvailableChangeSortType: {
 			type: Boolean,
-			required: true,
-		},
+			required: true
+		}
 	},
 	data() {
 		return {
-			sortingList,
+			sortingList
 		};
 	},
 	methods: {
@@ -43,7 +43,7 @@ export default {
 		emitReset() {
 			if (!this.isAvailableChangeSortType) return;
 			this.$emit('resetArray');
-		},
-	},
+		}
+	}
 };
 </script>

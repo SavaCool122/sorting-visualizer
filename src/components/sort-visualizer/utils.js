@@ -1,4 +1,4 @@
-import sortMethodsMap from './sort-methods/sortMethodsMap';
+import sortMethodsMap from './sort-methods';
 
 export function randomIntFromInterval(min = 5, max = 100) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;

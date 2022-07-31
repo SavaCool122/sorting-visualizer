@@ -1,24 +1,24 @@
 <template>
-	<div class="col-start-1 min-h-screen col-end-1 bg-gray-300">
+	<div class='col-start-1 min-h-screen col-end-1 bg-gray-300'>
 		<SortButtons
-			:selected-sort="selectedSort"
-			:is-available-change-sort-type="isAvailableChangeSortType"
-			@sortType="handleSort"
-			@resetArray="resetArray"
+			:selected-sort='selectedSort'
+			:is-available-change-sort-type='isAvailableChangeSortType'
+			@sortType='handleSort'
+			@resetArray='resetArray'
 		/>
 		<Slider
-			v-if="isAvailableChangeSortType"
-			label="Items Count"
-			:max="360"
-			:value="barsArrayLength"
-			@input="emitBarArrayLength"
+			v-if='isAvailableChangeSortType'
+			label='Items Count'
+			:max='360'
+			:value='barsArrayLength'
+			@input='emitBarArrayLength'
 		/>
 	</div>
 </template>
 
 <script>
-import SortButtons from './SortButtons.vue';
-import Slider from './Slider.vue';
+import Slider from './components/Slider.vue';
+import SortButtons from './components/SortButtons.vue';
 import { randomIntFromInterval } from '../../utils';
 import { STATUSES } from '../../constants';
 
@@ -26,22 +26,22 @@ export default {
 	name: 'Sidebar',
 	components: {
 		Slider,
-		SortButtons,
+		SortButtons
 	},
 	props: {
 		barsArrayLength: {
 			type: Number,
-			required: true,
+			required: true
 		},
 		selectedSort: {
 			type: [String, null],
-			required: true,
-		},
+			required: true
+		}
 	},
 	computed: {
 		isAvailableChangeSortType() {
 			return this.selectedSort === null;
-		},
+		}
 	},
 	methods: {
 		resetArray() {
@@ -53,7 +53,7 @@ export default {
 		emitBarArrayLength(v) {
 			if (!this.isAvailableChangeSortType) return;
 			this.$emit('update:barsArrayLength', v);
-		},
-	},
+		}
+	}
 };
 </script>
