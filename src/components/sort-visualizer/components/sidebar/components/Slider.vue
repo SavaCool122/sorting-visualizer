@@ -1,11 +1,17 @@
-@@ -1,41 +0,0 @@
 <template>
 	<div>
-		<div class='text-center'>
+		<div class="text-center">
 			<label>{{ label }}</label>
 		</div>
-		<div class='flex justify-center'>
-			<input :value='value' type='range' :min='min' :max='max' @input.stop='updateValue' />
+		<div class="flex justify-center">
+			<input
+				ref="slider"
+				type="range"
+				:min="min"
+				:max="max"
+				:value="value"
+				@input.stop="updateValue"
+			/>
 		</div>
 	</div>
 </template>
@@ -16,27 +22,31 @@ export default {
 	props: {
 		label: {
 			type: String,
-			required: true
+			required: true,
 		},
 		value: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		max: {
 			type: Number,
 			required: false,
-			default: 100
+			default: 100,
 		},
 		min: {
 			type: Number,
 			required: false,
-			default: 5
-		}
+			default: 5,
+		},
 	},
 	methods: {
-		updateValue(event) {
-			this.$emit('input', Number(event.target.value) || 0);
-		}
-	}
+		updateValue({ target: { value } }) {
+			this.$emit('input', Number(value) || 0);
+			this.changeColor(value);
+		},
+		changeColor(value) {
+			this.$refs.slider.style.filter = `hue-rotate(-${value}deg)`;
+		},
+	},
 };
 </script>
