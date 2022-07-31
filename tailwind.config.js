@@ -1,15 +1,15 @@
 module.exports = {
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-      scale: {
-        "-1": "-1",
-      },
-    },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+	purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+	darkMode: false, // or 'media' or 'class'
+	theme: {
+		extend: {
+			scale: {
+				'-1': '-1',
+			},
+		},
+	},
+	variants: {
+		extend: {},
+	},
+	plugins: [],
 };
