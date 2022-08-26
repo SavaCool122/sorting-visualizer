@@ -1,4 +1,4 @@
-import { SortTypes } from './constants';
+import { SortTypes } from './constants'
 
 export const sortingList = [
 	{
@@ -17,6 +17,11 @@ export const sortingList = [
 		disabled: false,
 	},
 	{
+		id: SortTypes.SHELL,
+		name: 'Shell Sort',
+		disabled: false,
+	},
+	{
 		id: SortTypes.SELECTION,
 		name: 'Selection Sort',
 		disabled: false,
@@ -24,11 +29,6 @@ export const sortingList = [
 	{
 		id: SortTypes.INSERTION,
 		name: 'Insertion Sort',
-		disabled: false,
-	},
-	{
-		id: SortTypes.SHELL,
-		name: 'Shell Sort',
 		disabled: false,
 	},
 	{
@@ -51,4 +51,4 @@ export const sortingList = [
 		name: 'Another Sort',
 		disabled: true,
 	},
-];
+]

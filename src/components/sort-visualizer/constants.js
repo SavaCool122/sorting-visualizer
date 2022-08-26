@@ -8,17 +8,17 @@ export const SortTypes = {
 	SHELL: 'SHELL',
 	COCKTAIL_SHAKER: 'COCKTAIL_SHAKER',
 	BITONIC: 'BITONIC',
-};
+}
 
 export const STATUSES = {
 	SORT: 'SORT',
-};
+}
 
-export const ANIMATION_SPEED = 1;
+export const ANIMATION_SPEED = 1
 
 export const Colors = {
-	PRIMARY_COLOR: '#E0DFD5',
-	SECONDARY_COLOR: '#e43f5a',
+	PRIMARY_COLOR: '#fff',
+	SECONDARY_COLOR: '#111',
 	SELECT_COLOR: 'yellowgreen',
 	PIVOT_COLOR: '#35d0ba',
-};
+}

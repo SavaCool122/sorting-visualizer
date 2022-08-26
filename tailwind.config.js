@@ -3,8 +3,10 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
-			scale: {
-				'-1': '-1',
+			colors: {
+				primary: 'var(--primary)',
+				'primary-dark': 'var(--primary-dark)',
+				'primary-light': 'var(--primary-light)',
 			},
 		},
 	},
@@ -12,4 +14,4 @@ module.exports = {
 		extend: {},
 	},
 	plugins: [],
-};
+}

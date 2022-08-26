@@ -3,15 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: "multicolore";
+	font-family: 'multicolore';
 	src: url('multicolore-webfont.woff2');
 }
 
-:root {
-	--primary: #c34736;
-	--primary-dark: #af4030
+:root,
+.root,
+#root,
+#docs-root {
+	--primary: #d33a2c;
+	--primary-dark: #bc3428;
+	--primary-light: #ffe7e7;
+	--chart: #eaf7fe;
 }
-
 
 html {
 	font-family: 'multicolore', sans-serif;
