@@ -1,6 +1,6 @@
 import sortMethodsMap from './sort-methods'
 
-export function randomIntFromInterval(min = 5, max = 100) {
+export function randomIntFromInterval(min = 50, max = 100) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
