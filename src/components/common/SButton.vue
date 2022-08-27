@@ -32,10 +32,15 @@ export default {
 
 <style>
 .s-button {
-	border: 3px dotted transparent;
+	border: 1px dotted transparent;
+	outline: 4px dotted transparent;
 }
 
 .s-button:focus-visible {
 	outline: 4px dotted var(--primary);
+}
+
+.s-button:not(:disabled):hover {
+	border: 1px solid var(--primary);
 }
 </style>
