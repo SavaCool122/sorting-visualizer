@@ -11,7 +11,7 @@ https://sava-sorting-visualizer.netlify.app
 https://sava-sorting-visualizer.web.app/
 
 ```
-npm run install
+yarn			
 
-npm run dev
+yarn dev
 ```
