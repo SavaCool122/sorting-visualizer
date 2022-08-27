@@ -1,23 +1,27 @@
 <template>
-	<div class="col-start-1 min-h-screen col-end-1 bg-white">
-		<SortButtons
-			:selected-sort="selectedSort"
-			:is-available-change-sort-type="isAvailableChangeSortType"
-			@sortType="handleSort"
-			@resetArray="resetArray"
-		/>
-		<Slider
-			:label="barsArrayLength"
-			:disabled="!isAvailableChangeSortType"
-			:max="200"
-			:value="barsArrayLength"
-			class="px-5"
-			@input="emitBarArrayLength"
-		/>
+	<div class="flex flex-col justify-between bg-white">
+		<div>
+			<SortButtons
+				:selected-sort="selectedSort"
+				:is-available-change-sort-type="isAvailableChangeSortType"
+				@sortType="handleSort"
+				@resetArray="resetArray"
+			/>
+			<Slider
+				:label="barsArrayLength"
+				:disabled="!isAvailableChangeSortType"
+				:max="200"
+				:value="barsArrayLength"
+				class="px-5"
+				@input="emitBarArrayLength"
+			/>
+		</div>
+		<Contacts />
 	</div>
 </template>
 
 <script>
+import Contacts from './components/Contacts.vue'
 import Slider from './components/Slider.vue'
 import SortButtons from './components/SortButtons.vue'
 import { randomIntFromInterval } from '../../utils'
@@ -27,6 +31,7 @@ export default {
 	name: 'Sidebar',
 	components: {
 		Slider,
+		Contacts,
 		SortButtons,
 	},
 	props: {

@@ -24,7 +24,7 @@ export default {
 	name: 'Slider',
 	props: {
 		label: {
-			type: String,
+			type: Number,
 			required: true,
 		},
 		value: {

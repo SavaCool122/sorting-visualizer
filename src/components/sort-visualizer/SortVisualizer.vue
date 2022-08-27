@@ -1,6 +1,7 @@
 <template>
 	<div class="grid grid-cols-5 min-h-full">
 		<Sidebar
+			class="col-start-1 min-h-screen col-end-1"
 			@change-status="handleChangeStatus"
 			:selected-sort="appConfig.sort"
 			v-model:bars-array-length="barsArrayLength"
