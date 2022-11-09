@@ -40,3 +40,4 @@ yarn.lock
 
 # Configs
 .env.*.local
+/old/
