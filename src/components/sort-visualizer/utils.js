@@ -10,8 +10,9 @@ export function getSortMethods(type) {
 	return sortMethod
 }
 
-export function getRandomArray(length) {
-	return Array.from({ length }, () => randomIntFromInterval(5, 450))
+export function getRandomArray(length, options = {}) {
+	const { min = 25, max = 200 } = options
+	return Array.from({ length }, () => randomIntFromInterval(min, max))
 }
 
 export function getInitialAppConfig() {

@@ -1,8 +1,7 @@
 import { ANIMATION_SPEED, Colors } from './constants'
 import { getSortMethods } from './utils'
 
-export const delay = (time = 0) =>
-	new Promise(resolve => setTimeout(resolve, time))
+export const delay = (time = 0) => new Promise(resolve => setTimeout(resolve, time))
 
 async function animationStep(animation, bars) {
 	const [position, value] = animation
@@ -25,7 +24,6 @@ export async function playSortAnimation(animations, bars) {
 export async function handleSort(sort, array) {
 	const barsArrayElm = document.getElementsByClassName('column')
 	const arrCopy = array.slice()
-
 	const sortMethod = getSortMethods(sort)
 	const animationToSortArray = sortMethod(arrCopy)
 

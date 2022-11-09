@@ -41,14 +41,14 @@ export const sortingList = [
 		name: 'Shaker Sort',
 		disabled: false,
 	},
-	{
-		id: 10,
-		name: 'Another Sort',
-		disabled: true,
-	},
-	{
-		id: 11,
-		name: 'Another Sort',
-		disabled: true,
-	},
+	// {
+	// 	id: 10,
+	// 	name: 'Another Sort',
+	// 	disabled: true,
+	// },
+	// {
+	// 	id: 11,
+	// 	name: 'Another Sort',
+	// 	disabled: true,
+	// },
 ]

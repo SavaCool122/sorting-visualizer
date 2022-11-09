@@ -22,3 +22,7 @@ html {
 	font-weight: lighter;
 	color: #333;
 }
+
+body {
+	background: rgba(248, 113, 113, 0.8);
+}
