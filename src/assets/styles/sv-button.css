@@ -1,0 +1,12 @@
+.sv-button {
+	border: 1px dotted transparent;
+	outline: 4px dotted transparent;
+}
+
+.sv-button:focus-visible {
+	outline: 4px dotted var(--primary);
+}
+
+.sv-button:not(:disabled):hover {
+	outline: 4px dotted var(--primary);
+}

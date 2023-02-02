@@ -1,9 +1,5 @@
 {
-	"name": "sorting-visualizer",
-	"version": "1.0.0",
-	"main": "index.js",
-	"repository": "git@github.com:SavaCool122/sorting-visualizer.git",
-	"author": "Daniil Savitsky <d.savitsky@itigris.ru>",
+	"author": "Daniil Savitsky <danildaniel121@gmail.com>",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",
@@ -11,17 +7,14 @@
 		"serve": "vite preview"
 	},
 	"dependencies": {
-		"solid-js": "^1.5.7",
-		"vite-plugin-solid": "^2.3.9",
-		"vue": "^3.2.33"
+		"solid-js": "^1.5.7"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^1.1.5",
-		"@vue/compiler-sfc": "^3.0.5",
 		"autoprefixer": "^10.4.12",
 		"postcss": "^8.4.17",
 		"prettier": "2.7.1",
 		"tailwindcss": "^3.1.8",
-		"vite": "3.0.2"
+		"vite": "^3.2.4",
+		"vite-plugin-solid": "^2.4.0"
 	}
 }

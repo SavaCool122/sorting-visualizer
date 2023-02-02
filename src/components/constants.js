@@ -1,0 +1,24 @@
+export const ANIMATION_SPEED = 20
+
+export const MAX_ARRAY_LENGTH = 25
+
+export const MIN_ARRAY_LENGTH = 200
+
+export const SORT_TYPES = {
+	QUICK: 'QUICK',
+	MERGE: 'MERGE',
+	BUBBLE: 'BUBBLE',
+	SELECTION: 'SELECTION',
+	INSERTION: 'INSERTION',
+	HEAP: 'HEAP',
+	SHELL: 'SHELL',
+	COCKTAIL_SHAKER: 'COCKTAIL_SHAKER',
+	BITONIC: 'BITONIC',
+}
+
+export const Colors = {
+	PRIMARY_COLOR: '#fff',
+	SECONDARY_COLOR: '#111',
+	SELECT_COLOR: 'yellowgreen',
+	PIVOT_COLOR: '#35d0ba',
+}

@@ -1,3 +1,7 @@
+@import 'sv-button.css';
+@import 'sv-radio.css';
+@import 'sv-slider.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,12 +21,17 @@
 	--chart: #eaf7fe;
 }
 
+*:focus {
+	outline: 4px dotted var(--primary);
+}
+
 html {
 	font-family: 'multicolore', sans-serif;
 	font-weight: lighter;
+	font-size: 14px;
 	color: #333;
 }
 
 body {
-	background: rgba(248, 113, 113, 0.8);
+	background: #d33a2c;
 }
