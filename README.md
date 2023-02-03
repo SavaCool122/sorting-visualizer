@@ -1,17 +1,27 @@
-# sorting-visualizer
+# Visualization Of Sorting Algorithms
 
-📊📈 Visualizer of Sorting Array with animations
+Illustration How Array Is Sorted With Animations
 
-### New project url
+[See it in action](https://sava-sorting-visualizer.netlify.app)
 
-https://sava-sorting-visualizer.netlify.app
+[Or you can check old version](https://sava-sorting-visualizer.web.app/)
 
-### Old project url
+## Quick Start
 
-https://sava-sorting-visualizer.web.app/
+First of all you need install dependencies.
 
-```
-yarn			
+    yarn
 
-yarn dev
-```
+Then you can start aplication.
+
+    yarn dev
+
+
+1. Built on Solid.js, Vite.js and TailwindCSS.
+2. Works in all modern browsers.
+3. Fully keyboard accessible.
+4. Themes in future releases.
+
+
+
+
