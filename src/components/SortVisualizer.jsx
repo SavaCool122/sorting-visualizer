@@ -3,43 +3,72 @@ import { createStore } from 'solid-js/store'
 import { getRandomArray, getSortMethods } from './utils'
 import Sidebar from './sidebar/Sidebar'
 import SortVisualizerChart from './chart/SortVisualizerChart'
+import sortingList from './sorts-helpers/sortConfig'
 
 export default function SortVisualizer() {
-	const [sortType, setSort] = createSignal(null)
 	const [arrayLength, setArrayLength] = createSignal(25)
-	const [animationSteps, setAnimationSteps] = createStore([])
 	const [list, setList] = createStore(getRandomArray(arrayLength()))
-	const isDisabled = () => sortType() !== null
+	const isDisabled = () => sortsList.some(sort => !sort.isDone)
+	const arrCopy = () => list.slice()
 
-	const resetSortType = () => setSort(null)
+	const createSortObj = sortType => ({ sortType, animations: [], isDone: true })
 
-	const getCopy = list => list.slice()
+	const prepareAllSorts = () => {
+		return sortingList.filter(s => !s.disabled).map(s => createSortObj(s.id))
+	}
+
+	const [sortsList, setSortList] = createStore(prepareAllSorts())
+
+	const startSort = () => {
+		sortsList.forEach(sort => {
+			const sortMethod = getSortMethods(sort.sortType)
+			setSortList(s => s.sortType === sort.sortType, 'animations', sortMethod(arrCopy()))
+			setSortList(s => s.sortType === sort.sortType, 'isDone', false)
+		})
+	}
 
 	createEffect(() => {
-		if (sortType()) {
-			const sortMethod = getSortMethods(sortType())
-			setAnimationSteps(sortMethod(list.slice()))
-		}
+		setList(getRandomArray(arrayLength()))
 	})
+
+	const prepareOneSort = sortType => {
+		return [createSortObj(sortType)]
+	}
+
+	const startSelectedSort = sortType => {
+		if (!sortType) return
+
+		let sortsList
+		if (sortType === 'ALL') sortsList = prepareAllSorts()
+		else sortsList = prepareOneSort(sortType)
+
+		setSortList(sortsList)
+		startSort()
+	}
 
 	return (
 		<div class="grid grid-cols-6 min-h-screen">
 			<Sidebar
 				arrayLength={arrayLength()}
 				disabled={isDisabled()}
-				onSelectSort={setSort}
-				onResetArray={() => setArrayLength(25)}
+				onSelectSort={startSelectedSort}
+				onResetArray={() => setList(getRandomArray(arrayLength()))}
 				onChangeArrayLength={v => {
 					setArrayLength(Number(v))
-					setList(getRandomArray(arrayLength()))
 				}}
 			/>
-			<SortVisualizerChart
-				list={getCopy(list)}
-				animationSteps={animationSteps}
-				sort={sortType()}
-				onDone={resetSortType}
-			/>
+			<div class="grid grid-cols-2 col-span-5">
+				<For each={sortsList}>
+					{sort => (
+						<SortVisualizerChart
+							list={arrCopy()}
+							animationSteps={sort.animations}
+							sort={sort.sortType}
+							onDone={() => setSortList(s => s.sortType === sort.sortType, 'isDone', true)}
+						/>
+					)}
+				</For>
+			</div>
 		</div>
 	)
 }

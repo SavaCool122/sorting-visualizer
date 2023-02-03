@@ -35,7 +35,7 @@ export default function SortVisualizerChart(props) {
 	}
 
 	return (
-		<div class="relative" style="height: 230px">
+		<div style="height: 230px">
 			<SortInfo isDone={isDone()} sort={props.sort} stepsLength={stepsLength()} />
 			<div class="p-3 h-full grid grid-flow-col items-end gap-1">
 				<Index each={list}>{number => <Column number={number()} />}</Index>

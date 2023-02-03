@@ -1,10 +1,8 @@
-import { Colors } from '../constants'
-
 export default function Column(props) {
 	return (
 		<div
 			style={{
-				'background-color': Colors.PRIMARY_COLOR,
+				'background-color': '#fff',
 				height: `${props.number}px`,
 			}}
 			class="text-xs max-w-min rounded-t-lg text-primary-dark"

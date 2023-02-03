@@ -8,7 +8,7 @@ import getShellSortAnimations from './methods/ShellSort'
 import getHeapSortAnimations from './methods/HeapSort'
 import getCocktailShakerSortAnimations from './methods/CocktailShaker'
 
-const sortMethodMap = {
+export default {
 	[SORT_TYPES.QUICK]: getQuickSortAnimations,
 	[SORT_TYPES.MERGE]: getMergeSortAnimations,
 	[SORT_TYPES.BUBBLE]: getBubbleSortAnimations,
@@ -18,5 +18,3 @@ const sortMethodMap = {
 	[SORT_TYPES.HEAP]: getHeapSortAnimations,
 	[SORT_TYPES.COCKTAIL_SHAKER]: getCocktailShakerSortAnimations,
 }
-
-export default sortMethodMap

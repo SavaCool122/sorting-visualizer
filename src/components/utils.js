@@ -3,7 +3,7 @@ import { MIN_ARRAY_LENGTH, MAX_ARRAY_LENGTH } from './constants'
 
 export const delay = (time = 0) => new Promise(resolve => setTimeout(resolve, time))
 
-export function randomIntFromInterval(min = 50, max = 100) {
+export function randomIntFromInterval(min = 0, max = 1) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
