@@ -1,4 +1,5 @@
 {
+	"private": "true",
 	"author": "Daniil Savitsky <danildaniel121@gmail.com>",
 	"license": "MIT",
 	"scripts": {
