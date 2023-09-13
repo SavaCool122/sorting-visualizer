@@ -1,12 +1,13 @@
 import { createEffect, createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import { getRandomArray, getSortMethods } from './utils'
-import Sidebar from './sidebar/Sidebar'
-import SortVisualizerChart from './chart/SortVisualizerChart'
-import sortingList from './sorts-helpers/sortConfig'
+import { Sidebar } from './sidebar/Sidebar'
+import { SortVisualizerChart } from './chart/SortVisualizerChart'
+import { sortConfig } from './sorts-helpers/sortConfig'
 
-export default function SortVisualizer() {
+export function App() {
 	const [arrayLength, setArrayLength] = createSignal(25)
+
 	const [list, setList] = createStore(getRandomArray(arrayLength()))
 	const isDisabled = () => sortsList.some(sort => !sort.isDone)
 	const arrCopy = () => list.slice()
@@ -14,7 +15,7 @@ export default function SortVisualizer() {
 	const createSortObj = sortType => ({ sortType, animations: [], isDone: true })
 
 	const prepareAllSorts = () => {
-		return sortingList.filter(s => !s.disabled).map(s => createSortObj(s.id))
+		return sortConfig.filter(s => !s.disabled).map(s => createSortObj(s.id))
 	}
 
 	const [sortsList, setSortList] = createStore(prepareAllSorts())

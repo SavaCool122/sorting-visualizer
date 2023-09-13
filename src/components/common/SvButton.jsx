@@ -1,4 +1,4 @@
-export default function SvButton(props) {
+export function SvButton(props) {
 	return (
 		<button
 			disabled={props.disabled}

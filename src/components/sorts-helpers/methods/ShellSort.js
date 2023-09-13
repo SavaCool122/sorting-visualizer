@@ -30,7 +30,7 @@ function shellSort(arr) {
 
 let pivots = []
 
-export default function getShellSortAnimations(items) {
+export function getShellSortAnimations(items) {
 	pivots = []
 	items = proxyWrapper(items, pivots)
 	if (items.length <= 1) return items

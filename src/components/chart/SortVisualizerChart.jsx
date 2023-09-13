@@ -2,10 +2,10 @@ import { createEffect, createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import { delay } from '../utils'
 import { ANIMATION_SPEED } from '../constants'
-import SortInfo from './SortInfo'
-import Column from './Column'
+import { SortInfo } from './SortInfo'
+import { Column } from './Column'
 
-export default function SortVisualizerChart(props) {
+export function SortVisualizerChart(props) {
 	const [isDone, setIsDone] = createSignal(false)
 	const [stepsLength, setStepsLength] = createSignal(0)
 	const [list, setList] = createStore(props.list)

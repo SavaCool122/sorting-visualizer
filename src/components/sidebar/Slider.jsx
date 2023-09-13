@@ -1,6 +1,6 @@
 import { MIN_SLIDER_VALUE, MAX_SLIDER_VALUE } from '../constants'
 
-export default function Slider(props) {
+export function Slider(props) {
 	return (
 		<div class={props.class}>
 			<div class="range-value text-center">

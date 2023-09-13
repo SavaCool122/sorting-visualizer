@@ -1,4 +1,4 @@
-export default function SortInfo(props) {
+export function SortInfo(props) {
 	return (
 		<span class="absolute p-3 text-white">
 			Sort type: {props.sort || 'None'}

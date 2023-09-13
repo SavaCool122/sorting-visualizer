@@ -1,14 +1,14 @@
 import { SORT_TYPES } from '../constants'
-import getQuickSortAnimations from './methods/QuickSort'
-import getMergeSortAnimations from './methods/MergeSort'
-import getBubbleSortAnimations from './methods/BubbleSort'
-import getSelectionSortAnimations from './methods/SelectionSort'
-import getInsertionSortAnimations from './methods/InsertionSort'
-import getShellSortAnimations from './methods/ShellSort'
-import getHeapSortAnimations from './methods/HeapSort'
-import getCocktailShakerSortAnimations from './methods/CocktailShaker'
+import { getQuickSortAnimations } from './methods/QuickSort'
+import { getMergeSortAnimations } from './methods/MergeSort'
+import { getBubbleSortAnimations } from './methods/BubbleSort'
+import { getSelectionSortAnimations } from './methods/SelectionSort'
+import { getInsertionSortAnimations } from './methods/InsertionSort'
+import { getShellSortAnimations } from './methods/ShellSort'
+import { getHeapSortAnimations } from './methods/HeapSort'
+import { getCocktailShakerSortAnimations } from './methods/CocktailShaker'
 
-export default {
+export const sortMethodsConfig = {
 	[SORT_TYPES.QUICK]: getQuickSortAnimations,
 	[SORT_TYPES.MERGE]: getMergeSortAnimations,
 	[SORT_TYPES.BUBBLE]: getBubbleSortAnimations,

@@ -1,4 +1,4 @@
-export default function Column(props) {
+export function Column(props) {
 	return (
 		<div
 			style={{

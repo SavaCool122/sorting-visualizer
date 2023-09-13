@@ -1,4 +1,4 @@
-export default function SvRadioButton(props) {
+export function SvRadioButton(props) {
 	const handleChange = e => {
 		const value = e.target.value === 'true'
 		props.onChange(value)

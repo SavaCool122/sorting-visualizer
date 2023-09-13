@@ -29,7 +29,7 @@ function cocktailShakerSort(arr) {
 
 let pivots = []
 
-export default function getCocktailShakerSortAnimations(items) {
+export function getCocktailShakerSortAnimations(items) {
 	pivots = []
 	items = proxyWrapper(items, pivots)
 	if (items.length <= 1) return items

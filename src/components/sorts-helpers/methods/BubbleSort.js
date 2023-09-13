@@ -17,7 +17,7 @@ function bubbleSort(arr) {
 let swapped
 let pivots = []
 
-function getBubbleSortAnimations(arr) {
+export function getBubbleSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
 	do {
@@ -25,5 +25,3 @@ function getBubbleSortAnimations(arr) {
 	} while (swapped)
 	return pivots
 }
-
-export default getBubbleSortAnimations

@@ -1,6 +1,6 @@
 import { SORT_TYPES } from '../constants'
 
-export default [
+export const sortConfig = [
 	{
 		id: SORT_TYPES.QUICK,
 		name: 'Quick Sort',

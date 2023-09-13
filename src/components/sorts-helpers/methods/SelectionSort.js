@@ -17,11 +17,9 @@ function selectionSort(arr) {
 
 let pivots
 
-function getSelectionSortAnimations(arr) {
+export function getSelectionSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
 	selectionSort(arr)
 	return pivots
 }
-
-export default getSelectionSortAnimations

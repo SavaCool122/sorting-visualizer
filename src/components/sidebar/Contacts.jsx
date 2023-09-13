@@ -1,6 +1,6 @@
-import Github from '../common/icons/Github'
+import { Github } from '../common/icons/Github'
 
-export default function Contacts() {
+export function Contacts() {
 	return (
 		<div class="flex gap-x-4 p-2 self-center">
 			<a

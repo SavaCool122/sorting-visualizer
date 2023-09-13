@@ -1,11 +1,11 @@
-import SvRadioButton from '../common/SvRadioButton'
-import SvButton from '../common/SvButton'
-import sortingList from '../sorts-helpers/sortConfig'
-import Contacts from './Contacts'
-import Slider from './Slider'
+import { SvRadioButton } from '../common/SvRadioButton'
+import { SvButton } from '../common/SvButton'
+import { sortConfig } from '../sorts-helpers/sortConfig'
+import { Contacts } from './Contacts'
+import { Slider } from './Slider'
 import { createSignal } from 'solid-js'
 
-export default function Sidebar(props) {
+export function Sidebar(props) {
 	const [viewType, setViewType] = createSignal(true)
 
 	return (
@@ -30,7 +30,7 @@ export default function Sidebar(props) {
 						</SvButton>
 					}
 				>
-					<For each={sortingList}>
+					<For each={sortConfig}>
 						{sort => (
 							<SvButton
 								disabled={props.disabled}

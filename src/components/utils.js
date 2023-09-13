@@ -1,4 +1,4 @@
-import sortMethodsMap from './sorts-helpers/sortMethodsConfig'
+import { sortMethodsConfig } from './sorts-helpers/sortMethodsConfig'
 import { MIN_ARRAY_LENGTH, MAX_ARRAY_LENGTH } from './constants'
 
 export const delay = (time = 0) => new Promise(resolve => setTimeout(resolve, time))
@@ -8,7 +8,7 @@ export function randomIntFromInterval(min = 0, max = 1) {
 }
 
 export function getSortMethods(type) {
-	const sortMethod = sortMethodsMap[type]
+	const sortMethod = sortMethodsConfig[type]
 	if (!sortMethod) throw new Error("Sort don't found")
 	return sortMethod
 }
