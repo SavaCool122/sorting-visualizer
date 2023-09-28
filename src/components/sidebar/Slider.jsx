@@ -1,4 +1,4 @@
-import { MIN_SLIDER_VALUE, MAX_SLIDER_VALUE } from '../constants'
+import config from '../../config'
 
 export function Slider(props) {
 	return (
@@ -12,8 +12,8 @@ export function Slider(props) {
 					type="range"
 					value={props.value}
 					disabled={props.disabled || false}
-					min={MIN_SLIDER_VALUE}
-					max={MAX_SLIDER_VALUE}
+					min={config.slider.min}
+					max={config.slider.max}
 					onInput={e => props.onChange(e.target.value)}
 				/>
 			</div>

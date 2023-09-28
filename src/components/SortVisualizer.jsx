@@ -1,14 +1,15 @@
 import { createEffect, createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
-import { getRandomArray, getSortMethods } from './utils'
+import { getSortMethods } from './utils'
 import { Sidebar } from './sidebar/Sidebar'
 import { SortVisualizerChart } from './chart/SortVisualizerChart'
 import { sortConfig } from './sorts-helpers/sortConfig'
+import { randomArray } from '../utils/randomArray'
 
 export function App() {
 	const [arrayLength, setArrayLength] = createSignal(25)
 
-	const [list, setList] = createStore(getRandomArray(arrayLength()))
+	const [list, setList] = createStore(randomArray(arrayLength()))
 	const isDisabled = () => sortsList.some(sort => !sort.isDone)
 	const arrCopy = () => list.slice()
 
@@ -29,7 +30,7 @@ export function App() {
 	}
 
 	createEffect(() => {
-		setList(getRandomArray(arrayLength()))
+		setList(randomArray(arrayLength()))
 	})
 
 	const prepareOneSort = sortType => {
@@ -53,7 +54,7 @@ export function App() {
 				arrayLength={arrayLength()}
 				disabled={isDisabled()}
 				onSelectSort={startSelectedSort}
-				onResetArray={() => setList(getRandomArray(arrayLength()))}
+				onResetArray={() => setList(randomArray(arrayLength()))}
 				onChangeArrayLength={v => {
 					setArrayLength(Number(v))
 				}}
