@@ -14,7 +14,7 @@ import { noop } from '../noop'
  * @param {AnimationHandlers} handlers
  * @returns {Promise<void>}
  */
-export async function startAnimation(animations, handlers) {
+export async function startAnimation(animations = [], handlers) {
 	const { onStart = noop, onStep = noop, onEnd = noop } = handlers
 	onStart()
 	for (let i = 0; i < animations.length; i++) {

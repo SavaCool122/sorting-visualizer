@@ -3,10 +3,20 @@ import { SvButton } from '../common/SvButton'
 import { sortConfig } from '../sorts-helpers/sortConfig'
 import { Contacts } from './Contacts'
 import { Slider } from './Slider'
-import { createSignal } from 'solid-js'
+import { createEffect, createSignal } from 'solid-js'
+import { randomArray } from '../../utils/randomArray'
 
 export function Sidebar(props) {
 	const [viewType, setViewType] = createSignal(true)
+	const [arrayLength, setArrayLength] = createSignal(25)
+
+	createEffect(() => {
+		setRandomArray()
+	})
+
+	const setRandomArray = () => {
+		props.onListUpdate(randomArray(arrayLength()))
+	}
 
 	return (
 		<div class="flex flex-col justify-between bg-white col-start-1 h-full col-span-1 p-3">
@@ -14,18 +24,14 @@ export function Sidebar(props) {
 				<SvRadioButton label="All" value={true} onChange={setViewType} />
 				<SvRadioButton label="Single" value={false} onChange={setViewType} />
 
-				<SvButton disabled={props.disabled} class="col-span-2" onClick={props.onResetArray}>
+				<SvButton disabled={false} class="col-span-2" onClick={setRandomArray}>
 					Reset Array
 				</SvButton>
 
 				<Show
 					when={!viewType()}
 					fallback={
-						<SvButton
-							disabled={props.disabled}
-							class="col-span-2"
-							onClick={() => props.onSelectSort('ALL')}
-						>
+						<SvButton disabled={false} class="col-span-2" onClick={() => props.onSelectSort('ALL')}>
 							All
 						</SvButton>
 					}
@@ -33,7 +39,7 @@ export function Sidebar(props) {
 					<For each={sortConfig}>
 						{sort => (
 							<SvButton
-								disabled={props.disabled}
+								disabled={false}
 								class="col-span-1"
 								onClick={() => props.onSelectSort(sort.id)}
 							>
@@ -44,11 +50,13 @@ export function Sidebar(props) {
 				</Show>
 
 				<Slider
-					label={props.arrayLength}
-					value={props.arrayLength}
-					disabled={props.disabled}
+					label={arrayLength()}
+					value={arrayLength()}
+					disabled={false}
 					class="col-span-2"
-					onChange={props.onChangeArrayLength}
+					onChange={v => {
+						setArrayLength(Number(v))
+					}}
 				/>
 			</div>
 
