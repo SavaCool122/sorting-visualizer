@@ -1,4 +1,4 @@
-import { Github } from '../common/icons/Github'
+import { Icon } from '../common/icons/Github'
 
 export function Contacts() {
 	return (
@@ -9,7 +9,7 @@ export function Contacts() {
 				href="https://github.com/SavaCool122/sorting-visualizer"
 			>
 				Github
-				<Github width={48} heigth={48} />
+				<Icon name="github" width={48} heigth={48} />
 			</a>
 		</div>
 	)
