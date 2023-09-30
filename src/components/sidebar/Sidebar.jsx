@@ -1,10 +1,10 @@
+import { createEffect, createSignal, For, Show } from 'solid-js'
+import { randomArray } from '../../utils/randomArray'
+import { SORT_TYPE_LABEL } from '../../sorts-helpers/constants'
 import { SvRadioButton } from '../common/SvRadioButton'
 import { SvButton } from '../common/SvButton'
-import { sortConfig } from '../sorts-helpers/sortConfig'
 import { Contacts } from './Contacts'
 import { Slider } from './Slider'
-import { createEffect, createSignal } from 'solid-js'
-import { randomArray } from '../../utils/randomArray'
 
 export function Sidebar(props) {
 	const [viewType, setViewType] = createSignal(true)
@@ -36,14 +36,14 @@ export function Sidebar(props) {
 						</SvButton>
 					}
 				>
-					<For each={sortConfig}>
-						{sort => (
+					<For each={props.sortList}>
+						{sortType => (
 							<SvButton
 								disabled={false}
 								class="col-span-1"
-								onClick={() => props.onSelectSort(sort.id)}
+								onClick={() => props.onSelectSort(sortType)}
 							>
-								{sort.name}
+								{SORT_TYPE_LABEL[sortType]}
 							</SvButton>
 						)}
 					</For>

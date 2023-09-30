@@ -1,13 +1,16 @@
 import { Sidebar } from './sidebar/Sidebar'
-import { SortVisualizerChart } from './chart/SortVisualizerChart'
-import { SORT_TYPES } from './constants'
+import { BarGraph } from './graph/BarGraph'
 import { createSortRegistrator } from '../utils/sortRegistrator'
-import { createSignal } from 'solid-js'
+import { createSignal, For } from 'solid-js'
+import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from '../sorts-helpers/constants'
 
 export function App() {
 	const { register, runAllSorts } = createSortRegistrator()
 	const [list, setList] = createSignal([])
 
+	function handlerListUpdate(list) {
+		setList(list)
+	}
 	const startSelectedSort = sortType => {
 		runAllSorts()
 	}
@@ -15,14 +18,21 @@ export function App() {
 	return (
 		<div class="grid grid-cols-6 min-h-screen">
 			<Sidebar
-				onListUpdate={newList => {
-					setList(newList)
-				}}
+				sortList={SORT_TYPE_LIST}
+				onListUpdate={handlerListUpdate}
 				onSelectSort={startSelectedSort}
 			/>
 			<div class="grid grid-cols-2 col-span-5">
-				<SortVisualizerChart register={register} list={list().slice()} sort={SORT_TYPES.QUICK} />
-				<SortVisualizerChart register={register} list={list().slice()} sort={SORT_TYPES.MERGE} />
+				<For each={SORT_TYPE_LIST}>
+					{sortingAlgorithm => (
+						<BarGraph
+							register={register}
+							list={list()}
+							sortLabel={SORT_TYPE_LABEL[sortingAlgorithm]}
+							sortType={sortingAlgorithm}
+						/>
+					)}
+				</For>
 			</div>
 		</div>
 	)

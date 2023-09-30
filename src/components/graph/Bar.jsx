@@ -1,4 +1,4 @@
-export function Column(props) {
+export function Bar(props) {
 	return (
 		<div
 			style={{

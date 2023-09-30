@@ -12,7 +12,7 @@ export function createSortRegistrator() {
 	}
 
 	const runAllSorts = () => {
-		formMethods().forEach(m => m.method())
+		formMethods().forEach(m => m.method(m.type))
 	}
 
 	return { register, runAllSorts, unregister }

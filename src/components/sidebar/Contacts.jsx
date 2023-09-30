@@ -1,4 +1,4 @@
-import { Icon } from '../common/icons/Github'
+import { Icon } from '../common/Icon'
 
 export function Contacts() {
 	return (
