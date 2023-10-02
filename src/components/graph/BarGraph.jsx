@@ -7,7 +7,7 @@ import { createSortRegistrator } from '../../utils/sortRegistrator'
 import { sortingAlgorithmsFabric } from '../../sorts-helpers/sortingAlgorithms'
 
 export function BarGraph(props) {
-	const { unregister } = createSortRegistrator()
+	const { unregister, register } = createSortRegistrator()
 	const [isDone, setIsDone] = createSignal(false)
 	const [listForAnimation, setList] = createStore([])
 
@@ -15,11 +15,11 @@ export function BarGraph(props) {
 		setList(props.list)
 	})
 
-	props.register(props.sortType, sort)
+	register(props.sortType, sort)
 	onCleanup(() => unregister(props.sortType))
 
-	async function sort(type) {
-		const animations = sortingAlgorithmsFabric.createAnimation(type, props.list)
+	async function sort() {
+		const animations = sortingAlgorithmsFabric.createAnimation(props.sortType, props.list)
 
 		setIsDone(false)
 		await startCharAnimation(animations)

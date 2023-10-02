@@ -12,8 +12,15 @@ export function createSortRegistrator() {
 	}
 
 	const runAllSorts = () => {
-		formMethods().forEach(m => m.method(m.type))
+		formMethods().forEach(m => m.method())
 	}
 
-	return { register, runAllSorts, unregister }
+	const runSortByType = type => {
+		const maybeSort = formMethods().find(method => method.type === type)
+		if (maybeSort) {
+			maybeSort.method()
+		}
+	}
+
+	return { register, runSortByType, runAllSorts, unregister }
 }
