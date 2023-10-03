@@ -11,8 +11,8 @@ export function App() {
 	function handlerListUpdate(list) {
 		setList(list)
 	}
+
 	const startSelectedSort = type => {
-		console.log(type)
 		if (type === 'ALL') sortRegistrator.runAllSorts()
 		else sortRegistrator.runSortByType(type)
 	}
