@@ -5,14 +5,16 @@ import { createSignal, For } from 'solid-js'
 import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from '../sorts-helpers/constants'
 
 export function App() {
-	const { runAllSorts } = createSortRegistrator()
+	const sortRegistrator = createSortRegistrator()
 	const [list, setList] = createSignal([])
 
 	function handlerListUpdate(list) {
 		setList(list)
 	}
-	const startSelectedSort = () => {
-		runAllSorts()
+	const startSelectedSort = type => {
+		console.log(type)
+		if (type === 'ALL') sortRegistrator.runAllSorts()
+		else sortRegistrator.runSortByType(type)
 	}
 
 	return (
@@ -26,6 +28,7 @@ export function App() {
 				<For each={SORT_TYPE_LIST}>
 					{sortingAlgorithm => (
 						<BarGraph
+							registrator={sortRegistrator}
 							list={list()}
 							sortLabel={SORT_TYPE_LABEL[sortingAlgorithm]}
 							sortType={sortingAlgorithm}

@@ -19,8 +19,10 @@ export function createSortRegistrator() {
 		const maybeSort = formMethods().find(method => method.type === type)
 		if (maybeSort) {
 			maybeSort.method()
+		} else {
+			throw new Error('no sort found')
 		}
 	}
 
-	return { register, runSortByType, runAllSorts, unregister }
+	return { formMethods, register, runSortByType, runAllSorts, unregister }
 }

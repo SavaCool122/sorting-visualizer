@@ -9,7 +9,7 @@ import { classNames } from '../../utils/classNames'
 
 export function Sidebar(props) {
 	const [arrayLength, setArrayLength] = createSignal(25)
-	const [viewType, setType] = createSignal('ALL')
+	const [viewType, setType] = createSignal('SINGLE')
 	const isSingle = () => viewType() === 'SINGLE'
 	const isAll = () => viewType() === 'ALL'
 
@@ -33,9 +33,9 @@ export function Sidebar(props) {
 		<div class="flex flex-col justify-between bg-white h-full p-3">
 			<div>
 				<div class="mb-3 items-center gap-5 flex justify-center">
-					<span class={classNames('uppercase', isAll() && 'text-primary')}>All</span>
-					<SvSwitch class="flex items-center gap-2" onChange={handleChange} />
 					<span class={classNames('uppercase', isSingle() && 'text-primary')}>Single</span>
+					<SvSwitch class="flex items-center gap-2" onChange={handleChange} />
+					<span class={classNames('uppercase', isAll() && 'text-primary')}>All</span>
 				</div>
 
 				<div class="grid grid-cols-2 grid-rows-auto gap-4">
@@ -44,7 +44,7 @@ export function Sidebar(props) {
 					</SvButton>
 
 					<Show
-						when={!viewType()}
+						when={isSingle()}
 						fallback={
 							<SvButton
 								disabled={false}

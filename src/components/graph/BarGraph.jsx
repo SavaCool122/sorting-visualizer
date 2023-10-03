@@ -3,11 +3,11 @@ import { createEffect, createSignal, Index, onCleanup } from 'solid-js'
 import { SortInfo } from './SortInfo'
 import { Bar } from './Bar'
 import { startAnimation } from '../../utils/animations/startAnimation'
-import { createSortRegistrator } from '../../utils/sortRegistrator'
 import { sortingAlgorithmsFabric } from '../../sorts-helpers/sortingAlgorithms'
 
 export function BarGraph(props) {
-	const { unregister, register } = createSortRegistrator()
+	const { unregister, register } = props.registrator
+	console.log(props.registrator.formMethods())
 	const [isDone, setIsDone] = createSignal(false)
 	const [listForAnimation, setList] = createStore([])
 
