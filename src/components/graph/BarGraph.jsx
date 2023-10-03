@@ -6,8 +6,6 @@ import { startAnimation } from '../../utils/animations/startAnimation'
 import { sortingAlgorithmsFabric } from '../../sorts-helpers/sortingAlgorithms'
 
 export function BarGraph(props) {
-	const { unregister, register } = props.registrator
-	console.log(props.registrator.formMethods())
 	const [isDone, setIsDone] = createSignal(false)
 	const [listForAnimation, setList] = createStore([])
 
@@ -15,8 +13,8 @@ export function BarGraph(props) {
 		setList(props.list)
 	})
 
-	register(props.sortType, sort)
-	onCleanup(() => unregister(props.sortType))
+	props.registrator.register(props.sortType, sort)
+	onCleanup(() => props.registrator.unregister(props.sortType))
 
 	async function sort() {
 		const animations = sortingAlgorithmsFabric.createAnimation(props.sortType, props.list)
@@ -36,7 +34,7 @@ export function BarGraph(props) {
 
 	return (
 		<div style="height: 230px">
-			<SortInfo isDone={isDone()} sort={props.sortLabel} stepsLength={0} />
+			<SortInfo isDone={isDone()} sortLabel={props.sortLabel} stepsLength={0} />
 			<div class="p-3 h-full grid grid-flow-col items-end gap-1">
 				<Index each={listForAnimation}>{number => <Bar number={number()} />}</Index>
 			</div>

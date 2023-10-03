@@ -17,12 +17,15 @@ export function App() {
 		else sortRegistrator.runSortByType(type)
 	}
 
+	function handleChangeViewType() {}
+
 	return (
 		<div class="grid grid-cols-6 min-h-screen">
 			<Sidebar
 				sortList={SORT_TYPE_LIST}
 				onListUpdate={handlerListUpdate}
 				onSelectSort={startSelectedSort}
+				onChageViewType={handleChangeViewType}
 			/>
 			<div class="grid grid-cols-2 col-span-5">
 				<For each={SORT_TYPE_LIST}>

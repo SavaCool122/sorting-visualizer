@@ -5,7 +5,7 @@ const classNames = (...args) => {
 }
 
 export function SvSwitch(props) {
-	const [enable, setEnable] = createSignal()
+	const [enable, setEnable] = createSignal(true)
 	const height = props.height || 30
 	const width = props.width || 60
 	const paddings = props.paddings || 4
