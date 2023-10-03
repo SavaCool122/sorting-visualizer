@@ -1,6 +1,7 @@
 @import 'sv-button.css';
 @import 'sv-radio.css';
 @import 'sv-slider.css';
+@import 'sv-switch.css';
 
 @tailwind base;
 @tailwind components;
