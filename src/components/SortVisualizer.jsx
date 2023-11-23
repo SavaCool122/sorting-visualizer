@@ -7,14 +7,26 @@ import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from '../sorts-helpers/constants'
 export function App() {
 	const sortRegistrator = createSortRegistrator()
 	const [list, setList] = createSignal([])
+	const [graphList, setGraphList] = createSignal(SORT_TYPE_LIST)
 
 	function handlerListUpdate(list) {
 		setList(list)
 	}
 
 	const startSelectedSort = type => {
-		if (type === 'ALL') sortRegistrator.runAllSorts()
-		else sortRegistrator.runSortByType(type)
+		if (type === 'ALL') {
+			sortRegistrator.runAllSorts()
+		} else {
+			setGraphList(prev => {
+				const index = prev.findIndex(sortType => sortType === type)
+				if (index > -1) {
+					return [prev[index]]
+				} else {
+					throw new Error('cant find')
+				}
+			})
+			sortRegistrator.runSortByType(type)
+		}
 	}
 
 	function handleChangeViewType() {}
@@ -28,7 +40,7 @@ export function App() {
 				onChageViewType={handleChangeViewType}
 			/>
 			<div class="grid grid-cols-2 col-span-5">
-				<For each={SORT_TYPE_LIST}>
+				<For each={graphList()}>
 					{sortingAlgorithm => (
 						<BarGraph
 							registrator={sortRegistrator}
