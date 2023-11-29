@@ -22,8 +22,10 @@
 	--chart: #eaf7fe;
 }
 
-*:focus {
+:focus-visible {
 	outline: 4px dotted var(--primary);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
 html {
