@@ -13,8 +13,8 @@ export function BarGraph(props) {
 		setList(props.list)
 	})
 
-	props.registrator.register(props.sortType, sort)
-	onCleanup(() => props.registrator.unregister(props.sortType))
+	props.sortRegistrator.register(props.sortType, sort)
+	onCleanup(() => props.sortRegistrator.unregister(props.sortType))
 
 	async function sort() {
 		const animations = sortingAlgorithmsFabric.createAnimation(props.sortType, props.list)

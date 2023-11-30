@@ -9,10 +9,6 @@ export function App() {
 	const [list, setList] = createSignal([])
 	const [graphList, setGraphList] = createSignal(SORT_TYPE_LIST)
 
-	function handlerListUpdate(list) {
-		setList(list)
-	}
-
 	const startSelectedSort = type => {
 		if (type === 'ALL') {
 			sortRegistrator.runAllSorts()
@@ -35,7 +31,7 @@ export function App() {
 		<div class="grid grid-cols-6 min-h-screen">
 			<Sidebar
 				sortList={SORT_TYPE_LIST}
-				onListUpdate={handlerListUpdate}
+				onListUpdate={list => setList(list)}
 				onSelectSort={startSelectedSort}
 				onChageViewType={handleChangeViewType}
 			/>
@@ -43,7 +39,7 @@ export function App() {
 				<For each={graphList()}>
 					{sortingAlgorithm => (
 						<BarGraph
-							registrator={sortRegistrator}
+							sortRegistrator={sortRegistrator}
 							list={list()}
 							sortLabel={SORT_TYPE_LABEL[sortingAlgorithm]}
 							sortType={sortingAlgorithm}
