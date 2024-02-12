@@ -44,11 +44,9 @@ function heapSort(arr) {
 
 let pivots = []
 
-function getHeapSortAnimations(list) {
+export function getHeapSortAnimations(list) {
 	pivots = []
 	list = proxyWrapper(list, pivots)
 	heapSort(list)
 	return pivots
 }
-
-export default getHeapSortAnimations

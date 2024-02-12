@@ -36,7 +36,7 @@ function quickSort(items, low = 0, hi = items.length - 1) {
 let pivots = []
 let counter = 0
 
-export default function getQuickSortAnimations(items) {
+export function getQuickSortAnimations(items) {
 	pivots = []
 	items = proxyWrapper(items, pivots)
 	if (items.length <= 1) return items

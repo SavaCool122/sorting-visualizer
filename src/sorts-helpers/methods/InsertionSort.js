@@ -16,11 +16,9 @@ function insertionSort(arr) {
 
 let pivots
 
-function getInsertionSortAnimations(arr) {
+export function getInsertionSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
 	insertionSort(arr)
 	return pivots
 }
-
-export default getInsertionSortAnimations

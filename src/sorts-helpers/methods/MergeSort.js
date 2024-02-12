@@ -29,7 +29,7 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray) {
 
 let animations = []
 
-export default function getMergeSortAnimations(array) {
+export function getMergeSortAnimations(array) {
 	animations = []
 	array = proxyWrapper(array, animations)
 	if (array.length <= 1) return array

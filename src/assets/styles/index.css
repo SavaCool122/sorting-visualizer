@@ -1,6 +1,7 @@
 @import 'sv-button.css';
 @import 'sv-radio.css';
 @import 'sv-slider.css';
+@import 'sv-switch.css';
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +9,7 @@
 
 @font-face {
 	font-family: 'multicolore';
-	src: url('../fonts/multicolore-webfont.woff2');
+	src: url('/multicolore.woff2');
 }
 
 :root,
@@ -21,8 +22,10 @@
 	--chart: #eaf7fe;
 }
 
-*:focus {
+:focus-visible {
 	outline: 4px dotted var(--primary);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
 html {
