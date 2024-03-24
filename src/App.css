@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'multicolore';
+	src: url('/multicolore.woff2');
+}
+
+:root,
+.root,
+#root,
+#docs-root {
+	--primary: #d33a2c;
+	--primary-dark: #bc3428;
+	--primary-light: #ffe7e7;
+	--chart: #eaf7fe;
+}
+
+:focus-visible {
+	outline: 4px dotted var(--primary);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+html {
+	font-family: 'multicolore', sans-serif;
+	font-weight: lighter;
+	font-size: 14px;
+	color: #333;
+}
+
+body {
+	background: #d33a2c;
+}
