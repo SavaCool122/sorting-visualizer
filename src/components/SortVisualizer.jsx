@@ -3,10 +3,8 @@ import { BarGraph } from './graph/BarGraph'
 import { createSortRegistrator } from '../utils/sortRegistrator'
 import { createSignal, For } from 'solid-js'
 import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from '../sorts-helpers/constants'
-import { ImageCards } from '../image_view/components/image_cards'
 
 export function App() {
-	return <ImageCards />
 	const sortRegistrator = createSortRegistrator()
 	const [list, setList] = createSignal([])
 	const [graphList, setGraphList] = createSignal(SORT_TYPE_LIST)
