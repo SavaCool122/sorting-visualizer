@@ -2,7 +2,7 @@
 
 Illustration How Array Is Sorted With Animations
 
-[See it in action](https://sava-sorting-visualizer.netlify.app)
+[See it in action](https://sortlab.pages.dev/)
 
 [Or you can check old version](https://sava-sorting-visualizer.web.app/)
 
