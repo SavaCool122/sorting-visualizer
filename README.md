@@ -10,12 +10,11 @@ Illustration How Array Is Sorted With Animations
 
 First of all you need install dependencies.
 
-    yarn
+	pnpm i
 
 Then you can start aplication.
 
-    yarn dev
-
+	pnpm dev
 
 1. Built on Solid.js, Vite.js and TailwindCSS.
 2. Works in all modern browsers.
