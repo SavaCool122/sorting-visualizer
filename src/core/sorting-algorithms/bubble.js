@@ -1,6 +1,6 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
-function bubbleSort(arr) {
+function bubble(arr) {
 	swapped = false
 	let end = arr.length - 1
 	for (let i = 0; i < arr.length; i++) {
@@ -21,7 +21,7 @@ export function getBubbleSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
 	do {
-		bubbleSort(arr)
+		bubble(arr)
 	} while (swapped)
 	return pivots
 }

@@ -1,6 +1,6 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
-function insertionSort(arr) {
+function insertion(arr) {
 	for (let i = 1; i < arr.length; i++) {
 		let j = i
 		let currentElement = arr[i]
@@ -19,6 +19,6 @@ let pivots
 export function getInsertionSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
-	insertionSort(arr)
+	insertion(arr)
 	return pivots
 }

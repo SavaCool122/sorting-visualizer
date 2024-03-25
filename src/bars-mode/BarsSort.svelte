@@ -2,8 +2,8 @@
 	import SortInfo from './SortInfo.svelte'
 	import Bar from './Bars.svelte'
 	import { onDestroy } from 'svelte'
-	import { startAnimation } from '../../lib/animations/startAnimation.js'
-	import { sortingAlgorithmsFabric } from '../../core/sortingAlgorithmsFabric.js'
+	import { startAnimation } from '../lib/animations/start-animation.js'
+	import { sortingAlgorithmsFabric } from '../core/sorting-algorithms-fabric.js'
 	import Bars from './Bars.svelte'
 
 	export let sortLabel

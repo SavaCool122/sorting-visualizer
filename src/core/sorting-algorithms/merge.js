@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
 function mergeSortHelper(mainArray, startIdx, endIdx, auxiliaryArray) {
 	if (startIdx === endIdx) return

@@ -1,5 +1,5 @@
 import config from '../config.js'
-import { randomIntFromInterval } from './randomIntFromInterval.js'
+import { randomIntFromInterval } from './random-int-from-interval.js'
 
 export function randomArray(length, options = {}) {
 	const { min = config.arrayLength.min, max = config.arrayLength.max } = options

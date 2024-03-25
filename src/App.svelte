@@ -1,9 +1,9 @@
 <script>
 	import Toolbar from './toolbar/Toolbar.svelte'
-	import Bars from './view-modes/bars/Bars.svelte'
-	import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from './core/sortType.js'
-	import { sortRegistrator } from './core/sortRegistrator.js'
-	import { randomArray } from './lib/randomArray.js'
+	import Bars from './bars-mode/Bars.svelte'
+	import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from './core/sort-type.js'
+	import { sortRegistrator } from './core/sort-registrator.js'
+	import { randomArray } from './lib/random-array.js'
 	import Contacts from './toolbar/Contacts.svelte'
 
 	const registrator = sortRegistrator()

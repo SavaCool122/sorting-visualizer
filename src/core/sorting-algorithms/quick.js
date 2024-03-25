@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
 function partition(items, low, hi) {
 	let pivotIdx = Math.floor((hi + low) / 2)
@@ -24,11 +24,11 @@ function partition(items, low, hi) {
 	return low
 }
 
-function quickSort(items, low = 0, hi = items.length - 1) {
+function quick(items, low = 0, hi = items.length - 1) {
 	if (low < hi) {
 		const index = partition(items, low, hi)
-		quickSort(items, low, index - 1)
-		quickSort(items, index, hi)
+		quick(items, low, index - 1)
+		quick(items, index, hi)
 	}
 	return items
 }
@@ -40,6 +40,6 @@ export function getQuickSortAnimations(items) {
 	pivots = []
 	items = proxyWrapper(items, pivots)
 	if (items.length <= 1) return items
-	quickSort(items)
+	quick(items)
 	return pivots
 }

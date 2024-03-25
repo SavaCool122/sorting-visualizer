@@ -1,6 +1,6 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
-function selectionSort(arr) {
+function selection(arr) {
 	let swap = 0
 
 	for (let i = 0; i < arr.length - 1; i++) {
@@ -20,6 +20,6 @@ let pivots
 export function getSelectionSortAnimations(arr) {
 	pivots = []
 	arr = proxyWrapper(arr, pivots)
-	selectionSort(arr)
+	selection(arr)
 	return pivots
 }

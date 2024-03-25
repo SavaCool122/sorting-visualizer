@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
 function heapify(arr, length, parentIdx) {
 	let largest = parentIdx
@@ -23,7 +23,7 @@ function heapify(arr, length, parentIdx) {
 	return arr
 }
 
-function heapSort(arr) {
+function heap(arr) {
 	let length = arr.length
 	let lastParentNode = Math.floor(length / 2 - 1)
 	let lastChild = length - 1
@@ -47,6 +47,6 @@ let pivots = []
 export function getHeapSortAnimations(list) {
 	pivots = []
 	list = proxyWrapper(list, pivots)
-	heapSort(list)
+	heap(list)
 	return pivots
 }

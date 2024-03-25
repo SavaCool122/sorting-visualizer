@@ -1,12 +1,12 @@
-import { SORT_TYPE } from './sortType.js'
-import { getQuickSortAnimations } from './sorting-algorithms/QuickSort.js'
-import { getMergeSortAnimations } from './sorting-algorithms/MergeSort.js'
-import { getBubbleSortAnimations } from './sorting-algorithms/BubbleSort.js'
-import { getShellSortAnimations } from './sorting-algorithms/ShellSort.js'
-import { getSelectionSortAnimations } from './sorting-algorithms/SelectionSort.js'
-import { getInsertionSortAnimations } from './sorting-algorithms/InsertionSort.js'
-import { getHeapSortAnimations } from './sorting-algorithms/HeapSort.js'
-import { getCocktailShakerSortAnimations } from './sorting-algorithms/CocktailShaker.js'
+import { SORT_TYPE } from './sort-type.js'
+import { getQuickSortAnimations } from './sorting-algorithms/quick.js'
+import { getMergeSortAnimations } from './sorting-algorithms/merge.js'
+import { getBubbleSortAnimations } from './sorting-algorithms/bubble.js'
+import { getShellSortAnimations } from './sorting-algorithms/shell-sort.js'
+import { getSelectionSortAnimations } from './sorting-algorithms/selection.js'
+import { getInsertionSortAnimations } from './sorting-algorithms/insertion.js'
+import { getHeapSortAnimations } from './sorting-algorithms/heap.js'
+import { getCocktailShakerSortAnimations } from './sorting-algorithms/cocktail-shaker.js'
 
 function sortingAlgorithmsAnimationFabric() {
 	const sortingAlgorithms = {}

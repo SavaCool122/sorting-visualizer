@@ -1,6 +1,6 @@
 <script>
 	import { generateCards } from '../image_cards_generator'
-	import { shuffle } from '../../lib/shuffle'
+	import { shuffle } from '../lib/shuffle.js'
 
 	const [list, setList] = createSignal(generateCards({}))
 	const [listForAnimation, setAnimationList] = createStore([])
@@ -23,7 +23,7 @@
 <div>
 	<button onClick={handleShuffle}>Shuffle</button>
 	<button onClick={handleSort}>Sort</button>
-	<div class="flex flex-wrap w-[250px]">
+	<div class="flex w-[250px] flex-wrap">
 		{#each listForAnimation as number}
 			<div
 				class="card"

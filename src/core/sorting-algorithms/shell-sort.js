@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxyWrapper.js'
+import { proxyWrapper } from '../proxy-wrapper.js'
 
 function shellSort(arr) {
 	let iterations = 0,

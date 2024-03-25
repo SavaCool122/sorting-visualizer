@@ -1,6 +1,6 @@
 <script>
 	import Bar from './Bar.svelte'
-	import { cn } from '../../lib/cn.js'
+	import { cn } from '../lib/cn.js'
 
 	export let list
 	export let sortType

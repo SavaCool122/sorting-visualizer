@@ -1,5 +1,5 @@
 <script>
-	import Icon from '../lib/components/Icon.svelte'
+	import Icon from '../lib/ui/Icon.svelte'
 </script>
 
 <a
