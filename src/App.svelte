@@ -4,6 +4,7 @@
 	import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from './core/sortType.js'
 	import { sortRegistrator } from './core/sortRegistrator.js'
 	import { randomArray } from './lib/randomArray.js'
+	import Contacts from './toolbar/Contacts.svelte'
 
 	const registrator = sortRegistrator()
 
@@ -28,3 +29,5 @@
 		<Bars {list} {sortType} />
 	{/each}
 </div>
+
+<Contacts />
