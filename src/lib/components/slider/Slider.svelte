@@ -1,5 +1,6 @@
 <script>
-	import config from '../config.js'
+	import './slider.css'
+	import config from '../../../config.js'
 
 	export let label
 	export let disabled = false

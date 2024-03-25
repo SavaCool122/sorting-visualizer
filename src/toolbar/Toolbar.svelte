@@ -1,11 +1,10 @@
 <script>
-	import './slider.css'
 	import { createEventDispatcher } from 'svelte'
-	import { randomArray } from '../../randomArray.js'
-	import { SORT_TYPE_LABEL } from '../../../core/sortType.js'
-	import Button from '../button/Button.svelte'
-	import Contacts from '../../../sidebar/Contacts.svelte'
-	import Slider from '../../../sidebar/Slider.svelte'
+	import { randomArray } from '../lib/randomArray.js'
+	import { SORT_TYPE_LABEL } from '../core/sortType.js'
+	import Button from '../lib/components/button/Button.svelte'
+	import Contacts from './Contacts.svelte'
+	import Slider from '../lib/components/slider/Slider.svelte'
 
 	const dispatch = createEventDispatcher()
 
