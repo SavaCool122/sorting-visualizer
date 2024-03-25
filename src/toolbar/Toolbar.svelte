@@ -10,20 +10,18 @@
 
 	export let list
 	export let sortList
-
-	let disabled = false
 	let arrayLength = 25
 
-	$: list = randomArray(arrayLength)
+	let disabled = false
 
 	function onSelectSort(type) {
 		dispatch('select-sort', type)
 	}
 </script>
 
-<div class="flex flex-col justify-between bg-white h-full p-3">
+<div class="flex h-full flex-col justify-between bg-white p-3">
 	<div>
-		<div class="grid grid-cols-2 grid-rows-auto gap-4">
+		<div class="grid-rows-auto grid grid-cols-2 gap-4">
 			<Button {disabled} class="col-span-2" on:click={() => (list = randomArray(arrayLength))}>
 				Reset Array
 			</Button>
@@ -39,7 +37,7 @@
 			<Slider {disabled} label={arrayLength} class="col-span-2" bind:value={arrayLength} />
 		</div>
 	</div>
-	<div class="flex mb-5 justify-center items-center">
+	<div class="mb-5 flex items-center justify-center">
 		<Contacts />
 	</div>
 </div>

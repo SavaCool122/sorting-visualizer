@@ -1,47 +1,30 @@
 <script>
-	import SortInfo from './SortInfo.svelte'
-	import Bar from './Bar.svelte'
-	import { onDestroy } from 'svelte'
-	import { startAnimation } from '../../lib/animations/startAnimation.js'
-	import { sortingAlgorithmsFabric } from '../../core/sortingAlgorithmsFabric.js'
-
-	export let sortLabel
 	export let list
-	export let registrator
 	export let sortType
-
-	let isDone = false
-	let listForAnimation
-
-	$: listForAnimation = list.slice()
-
-	registrator.register(sortType, sort)
-	onDestroy(() => {
-		registrator.unregister(sortType)
-	})
-
-	async function sort() {
-		const animations = sortingAlgorithmsFabric.createAnimation(sortType, listForAnimation)
-
-		isDone = false
-		await startCharAnimation(animations)
-		isDone = true
-	}
-
-	async function startCharAnimation(animations) {
-		await startAnimation(animations, {
-			onStep(position, value) {
-				listForAnimation[position] = value
-			},
-		})
-	}
+	let status = 'active' // active | progress | done | selected
 </script>
 
-<div style="height: 230px">
-	<SortInfo {isDone} {sortLabel} stepsLength={0} />
-	<div class="p-3 h-full grid grid-flow-col items-end gap-1">
-		{#each listForAnimation as number}
-			<Bar {number} />
+<div class="relative grid h-full w-full place-content-center rounded-3xl border-2 border-black p-4">
+	<div class="inline-flex max-w-min items-end justify-center gap-1">
+		{#each list as number}
+			<div
+				style={`height: ${number}px`}
+				class="w-4 flex-grow-0 rounded-t-lg border border-black bg-primary"
+			></div>
+			{#if status === 'active'}
+				<button
+					on:click={() => (status = 'progress')}
+					class="absolute inset-0 rounded-3xl bg-primary opacity-[0.11]"
+				>
+					{sortType} sort
+				</button>
+			{:else if status === 'done'}
+				<div
+					class="bg-success absolute inset-0 grid h-full w-full place-content-center rounded-3xl opacity-[0.11]"
+				>
+					DONE 🎉
+				</div>
+			{/if}
 		{/each}
 	</div>
 </div>
