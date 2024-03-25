@@ -8,9 +8,8 @@
 
 	const dispatch = createEventDispatcher()
 
-	export let list
-	export let sortList
 	let arrayLength = 25
+	let list = []
 
 	let disabled = false
 
@@ -19,25 +18,20 @@
 	}
 </script>
 
-<div class="flex h-full flex-col justify-between bg-white p-3">
-	<div>
-		<div class="grid-rows-auto grid grid-cols-2 gap-4">
-			<Button {disabled} class="col-span-2" on:click={() => (list = randomArray(arrayLength))}>
-				Reset Array
-			</Button>
-
-			{#each sortList as sortType}
-				<Button {disabled} class="col-span-1" on:click={() => onSelectSort(sortType)}>
-					{SORT_TYPE_LABEL[sortType]}
-				</Button>
-			{/each}
-
-			<Button {disabled} class="col-span-2" on:click={() => onSelectSort('ALL')}>All</Button>
-
-			<Slider {disabled} label={arrayLength} class="col-span-2" bind:value={arrayLength} />
+<div class="peer absolute top-0 h-8 w-1/2"></div>
+<div
+	class="absolute top-[-160px] z-10 h-[120px] w-1/2 rounded-3xl border-2 border-black bg-primary transition-[top] hover:top-4 peer-hover:top-4"
+>
+	<div class="grid grid-cols-3 place-items-center">
+		<div>slider</div>
+		<div>
+			<div class="flex">
+				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">bars</button>
+				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">image</button>
+				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">circle</button>
+			</div>
+			<button class="w-full rounded-lg border-2 border-black bg-secondary px-4 py-2"> Sort </button>
 		</div>
-	</div>
-	<div class="mb-5 flex items-center justify-center">
-		<Contacts />
+		<div>slider</div>
 	</div>
 </div>

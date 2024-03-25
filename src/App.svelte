@@ -20,8 +20,10 @@
 	}
 </script>
 
-<!--<Toolbar sortList={SORT_TYPE_LIST} bind:list on:select-sort={startSelectedSort} />-->
-<div class="grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3">
+<div
+	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
+>
+	<Toolbar on:select-sort={startSelectedSort} />
 	{#each graph as sortType}
 		<Bars {list} {sortType} />
 	{/each}
