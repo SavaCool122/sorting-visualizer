@@ -11,28 +11,26 @@
 
 <div class={cn(defaultClass, status === 'selected' && 'text-success ')}>
 	<div class="inline-flex max-w-min items-end justify-center gap-1">
+		{#if status === 'active'}
+			<button
+				on:click={() => (status = 'progress')}
+				class="absolute inset-0 rounded-3xl bg-primary opacity-[0.89]"
+			>
+				{sortType} sort
+			</button>
+		{:else if status === 'done'}
+			<div class="absolute inset-0 grid h-full w-full place-content-center rounded-3xl bg-success">
+				DONE 🎉
+			</div>
+		{:else if status === 'selected'}
+			<div
+				class="absolute inset-0 grid h-full w-full place-content-center rounded-3xl bg-primary opacity-[0.11]"
+			>
+				{sortType} sort
+			</div>
+		{/if}
 		{#each list as number}
 			<Bar {number} />
-			{#if status === 'active'}
-				<button
-					on:click={() => (status = 'progress')}
-					class="absolute inset-0 rounded-3xl bg-primary opacity-[0.11]"
-				>
-					{sortType} sort
-				</button>
-			{:else if status === 'done'}
-				<div
-					class="bg-success absolute inset-0 grid h-full w-full place-content-center rounded-3xl"
-				>
-					DONE 🎉
-				</div>
-			{:else if status === 'selected'}
-				<div
-					class="absolute inset-0 grid h-full w-full place-content-center rounded-3xl bg-primary opacity-[0.11]"
-				>
-					{sortType} sort
-				</div>
-			{/if}
 		{/each}
 	</div>
 </div>

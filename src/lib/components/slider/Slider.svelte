@@ -13,7 +13,7 @@
 	<div class="range-value text-center">
 		<label for="range" style={disabled ? 'color: gray' : ''}>{label}</label>
 	</div>
-	<div class="flex justify-center mt-1">
+	<div class="mt-1 flex justify-center">
 		<input id="range" type="range" {disabled} bind:value {min} {max} />
 	</div>
 </div>

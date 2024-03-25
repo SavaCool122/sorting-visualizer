@@ -5,6 +5,7 @@
 	import Button from '../lib/components/button/Button.svelte'
 	import Contacts from './Contacts.svelte'
 	import Slider from '../lib/components/slider/Slider.svelte'
+	import { cn } from '../lib/cn.js'
 
 	const dispatch = createEventDispatcher()
 
@@ -12,26 +13,33 @@
 	let list = []
 
 	let disabled = false
+	let show = false
+	let sliderValue = 25
 
 	function onSelectSort(type) {
 		dispatch('select-sort', type)
 	}
+
+	const defaultClass =
+		'absolute top-[-105px] z-10 h-[120px] w-1/2 rounded-3xl border-2 border-black bg-primary transition-[top] hover:top-4 peer-hover:top-4'
+	const showClass = 'top-4'
 </script>
 
 <div class="peer absolute top-0 h-8 w-1/2"></div>
-<div
-	class="absolute top-[-160px] z-10 h-[120px] w-1/2 rounded-3xl border-2 border-black bg-primary transition-[top] hover:top-4 peer-hover:top-4"
->
-	<div class="grid grid-cols-3 place-items-center">
-		<div>slider</div>
+<div class={cn(defaultClass, show && showClass)}>
+	<div class="grid h-full grid-cols-3 place-content-center">
 		<div>
-			<div class="flex">
-				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">bars</button>
-				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">image</button>
-				<button class="rounded-lg border-2 border-black bg-secondary px-2 py-1">circle</button>
-			</div>
-			<button class="w-full rounded-lg border-2 border-black bg-secondary px-4 py-2"> Sort </button>
+			<Slider class="m-auto w-2/3" bind:value={sliderValue} label={sliderValue} />
 		</div>
-		<div>slider</div>
+		<div class="space-y-2">
+			<div class="flex justify-center gap-2">
+				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">bars</button>
+				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">image</button>
+				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">circle</button>
+			</div>
+			<button class="w-full rounded-lg border-2 border-black bg-secondary px-4 py-2 text-2xl">
+				SORT ALL
+			</button>
+		</div>
 	</div>
 </div>
