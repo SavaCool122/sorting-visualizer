@@ -15,6 +15,7 @@
 	let disabled = false
 	let show = false
 	let sliderValue = 25
+	let selected = 'bars'
 
 	function onSelectSort(type) {
 		dispatch('select-sort', type)
@@ -33,9 +34,24 @@
 		</div>
 		<div class="space-y-2">
 			<div class="flex justify-center gap-2">
-				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">bars</button>
-				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">image</button>
-				<button class="rounded-lg border-2 border-black bg-secondary px-4 py-1">circle</button>
+				<button
+					disabled={selected !== 'bars'}
+					class="rounded-lg border-2 border-black bg-secondary px-4 py-1 disabled:opacity-70"
+				>
+					bars
+				</button>
+				<button
+					disabled={selected !== 'image'}
+					class="rounded-lg border-2 border-black bg-secondary px-4 py-1 disabled:opacity-70"
+				>
+					image
+				</button>
+				<button
+					disabled={selected !== 'circle'}
+					class="rounded-lg border-2 border-black bg-secondary px-4 py-1 disabled:opacity-70"
+				>
+					circle
+				</button>
 			</div>
 			<button class="w-full rounded-lg border-2 border-black bg-secondary px-4 py-2 text-2xl">
 				SORT ALL

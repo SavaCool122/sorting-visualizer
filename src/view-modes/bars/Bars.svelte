@@ -33,4 +33,7 @@
 			<Bar {number} />
 		{/each}
 	</div>
+	<span class={cn('invisible mt-2 text-center', status === 'progress' && 'visible')}>
+		{sortType} sort
+	</span>
 </div>
