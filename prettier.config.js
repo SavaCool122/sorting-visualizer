@@ -3,5 +3,5 @@ export default {
 	semi: false,
 	singleQuote: true,
 	arrowParens: 'avoid',
-	plugins: ['prettier-plugin-svelte']
+	plugins: ['prettier-plugin-svelte', 'prettier-plugin-tailwindcss'],
 }

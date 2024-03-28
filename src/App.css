@@ -7,13 +7,10 @@
 	src: url('/multicolore.woff2');
 }
 
-:root,
-.root,
-#root,
-#docs-root {
-	--primary: #d33a2c;
-	--primary-dark: #bc3428;
-	--primary-light: #ffe7e7;
+:root {
+	--primary: oklch(93% 0.121 97);
+	--secondary: oklch(83% 0.1 244);
+	--success: oklch(89.5% 0.1 146);
 	--chart: #eaf7fe;
 }
 
@@ -31,5 +28,5 @@ html {
 }
 
 body {
-	background: #d33a2c;
+	background: var(--secondary);
 }

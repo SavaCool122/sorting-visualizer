@@ -1,33 +1,61 @@
 <script>
-	import Sidebar from './lib/components/slider/Sidebar.svelte'
-	import Bars from './view-modes/bars/Bars.svelte'
-	import { SORT_TYPE_LIST, SORT_TYPE_LABEL } from './core/sortType.js'
-	import { sortRegistrator } from './core/sortRegistrator.js'
+	import { sortRegistrator } from './core/sort-registrator.js'
+	import Toolbar from './toolbar/Toolbar.svelte'
+	import Bars from './bars-mode/Bars.svelte'
+	import { SORT_TYPE_LIST } from './core/sort-type.js'
+	import { randomArray } from './lib/random-array.js'
+	import Contacts from './toolbar/Contacts.svelte'
+	import Card from './cards/Card.svelte'
 
 	const registrator = sortRegistrator()
 
-	let list = []
-	let graph = SORT_TYPE_LIST
+	let sortsState = SORT_TYPE_LIST.map(sort => ({
+		id: sort,
+		status: 'active',
+	}))
 
-	const startSelectedSort = ({ detail: type }) => {
-		if (type === 'ALL') {
-			registrator.runAllSorts()
-		} else {
-			registrator.runSortByType(type)
+	let mode
+	let size = 18
+	$: list = randomArray(size)
+
+	$: show = sortsState.some(sort => sort.status === 'selected')
+	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
+
+	function resetDefaultState() {
+		setTimeout(() => {
+			sortsState = sortsState.map(sort => ({ ...sort, status: 'active' }))
+		}, 1000)
+	}
+
+	const startSort = async () => {
+		const isAllSort = !sortsState.some(sort => sort.status === 'selected')
+		if (isAllSort) {
+			sortsState = sortsState.map(sort => ({ ...sort, status: 'progress' }))
+			await registrator.runAllSorts()
+			resetDefaultState()
+			return
 		}
+		const types = sortsState.filter(sort => sort.status === 'selected').map(sort => sort.id)
+		sortsState = sortsState.map(sort => {
+			if (sort.status === 'selected') return { ...sort, status: 'progress' }
+			return sort
+		})
+		const allSorts = types.map(type => registrator.runSortByType(type))
+		await Promise.all(allSorts)
+		resetDefaultState()
 	}
 </script>
 
-<div class="grid grid-cols-6 min-h-screen">
-	<Sidebar sortList={SORT_TYPE_LIST} bind:list on:select-sort={startSelectedSort} />
-	<div class="grid grid-cols-2 col-span-5">
-		{#each graph as sortingAlgorithm}
-			<Bars
-				{registrator}
-				{list}
-				sortLabel={SORT_TYPE_LABEL[sortingAlgorithm]}
-				sortType={sortingAlgorithm}
-			/>
-		{/each}
-	</div>
+<div
+	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
+>
+	<Toolbar {show} {block} on:sort={startSort} bind:size bind:mode />
+
+	{#each sortsState as sort}
+		<Card sortType={sort.id} bind:status={sort.status}>
+			<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
+		</Card>
+	{/each}
 </div>
+
+<Contacts />
