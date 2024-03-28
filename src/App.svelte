@@ -24,7 +24,7 @@
 	function resetDefaultState() {
 		setTimeout(() => {
 			sortsState = sortsState.map(sort => ({ ...sort, status: 'active' }))
-		}, 500)
+		}, 1000)
 	}
 
 	const startSort = async () => {

@@ -9,6 +9,7 @@
 		},
 		{
 			name: 'image',
+			disabled: true,
 		},
 		{
 			name: 'circle',
