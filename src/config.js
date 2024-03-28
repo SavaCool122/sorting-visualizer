@@ -1,11 +1,11 @@
 export default {
-	animationSpeed: 20,
+	animationSpeed: 100,
 	arrayLength: {
 		min: 200,
 		max: 25,
 	},
 	slider: {
 		min: 5,
-		max: 40,
+		max: 18,
 	},
 }

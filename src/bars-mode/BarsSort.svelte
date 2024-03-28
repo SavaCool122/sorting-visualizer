@@ -2,7 +2,7 @@
 	import SortInfo from './SortInfo.svelte'
 	import Bar from './Bars.svelte'
 	import { onDestroy } from 'svelte'
-	import { startAnimation } from '../lib/animations/start-animation.js'
+	import { startAnimation } from '../core/animations/start-animation.js'
 	import { sortingAlgorithmsFabric } from '../core/sorting-algorithms-fabric.js'
 	import Bars from './Bars.svelte'
 
@@ -21,21 +21,21 @@
 		registrator.unregister(sortType)
 	})
 
-	async function sort() {
-		const animations = sortingAlgorithmsFabric.createAnimation(sortType, listForAnimation)
-
-		isDone = false
-		await startCharAnimation(animations)
-		isDone = true
-	}
-
-	async function startCharAnimation(animations) {
-		await startAnimation(animations, {
-			onStep(position, value) {
-				listForAnimation[position] = value
-			},
-		})
-	}
+	// async function sort() {
+	// 	const animations = sortingAlgorithmsFabric.createAnimation(sortType, listForAnimation)
+	//
+	// 	isDone = false
+	// 	await startCharAnimation(animations)
+	// 	isDone = true
+	// }
+	//
+	// async function startCharAnimation(animations) {
+	// 	await startAnimation(animations, {
+	// 		onStep(position, value) {
+	// 			listForAnimation[position] = value
+	// 		},
+	// 	})
+	// }
 </script>
 
 <Bars list={listForAnimation} />

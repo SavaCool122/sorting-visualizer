@@ -11,18 +11,13 @@ import { getCocktailShakerSortAnimations } from './sorting-algorithms/cocktail-s
 function sortingAlgorithmsAnimationFabric() {
 	const sortingAlgorithms = {}
 
-	function register(sortType, sortingAlgorithm) {
-		sortingAlgorithms[sortType] = sortingAlgorithm
-	}
-
-	function createAnimation(sortType, list) {
-		return sortingAlgorithms[sortType](list.slice())
-	}
-
 	return {
-		sortingAlgorithms,
-		register,
-		createAnimation,
+		register(sortType, sortingAlgorithm) {
+			sortingAlgorithms[sortType] = sortingAlgorithm
+		},
+		recordAnimation(sortType, list) {
+			return sortingAlgorithms[sortType](list.slice())
+		},
 	}
 }
 

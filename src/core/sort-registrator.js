@@ -19,6 +19,7 @@ export function sortRegistrator() {
 			entities = entities.filter(x => x.type !== type)
 		},
 		runAllSorts() {
+			console.log(entities)
 			entities.forEach(m => m.cb())
 		},
 	}
