@@ -2,37 +2,24 @@
 	import Button from '../lib/ui/button/Button.svelte'
 	import { createRadioGroup, melt } from '@melt-ui/svelte'
 	import { cn } from '../lib/cn.js'
+	import ToggleGroup from '../lib/ui/toggle-group/ToggleGroup.svelte'
 
 	export let mode
 
-	$: mode = $value
-
-	const button = {
-		default: 'rounded-lg border-2 border-black bg-secondary px-4 py-1 opacity-70',
-		disabled: 'disabled:bg-gray-400',
-		pressed: 'aria-checked:opacity-100',
-	}
-
-	const {
-		elements: { root, item },
-		states: { value },
-	} = createRadioGroup({
-		defaultValue: 'bars',
-	})
+	const options = [
+		{
+			name: 'bars',
+			disabled: false,
+		},
+		{
+			name: 'image',
+			disabled: false,
+		},
+		{
+			name: 'circle',
+			disabled: true,
+		},
+	]
 </script>
 
-<div use:melt={$root} class="flex justify-center gap-2">
-	<button use:melt={$item('bars')} class={cn(button.default, button.disabled, button.pressed)}>
-		bars
-	</button>
-	<button use:melt={$item('image')} class={cn(button.default, button.disabled, button.pressed)}>
-		image
-	</button>
-	<button
-		use:melt={$item('circle')}
-		disabled
-		class={cn(button.default, button.disabled, button.pressed)}
-	>
-		circle
-	</button>
-</div>
+<ToggleGroup bind:value={mode} {options} />
