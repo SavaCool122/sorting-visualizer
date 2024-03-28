@@ -10,17 +10,17 @@ export function sortRegistrator() {
 			entities.push({ type, cb })
 		},
 		/** @param {string} type */
-		runSortByType(type) {
+		async runSortByType(type) {
 			const maybeSort = entities.find(method => method.type === type)
-			maybeSort.cb()
+			return maybeSort.cb()
 		},
 		/** @param {string} type */
 		unregister(type) {
 			entities = entities.filter(x => x.type !== type)
 		},
-		runAllSorts() {
-			console.log(entities)
-			entities.forEach(m => m.cb())
+		async runAllSorts() {
+			const allSorts = entities.map(m => m.cb())
+			return await Promise.all(allSorts)
 		},
 	}
 }

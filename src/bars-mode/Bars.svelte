@@ -4,6 +4,7 @@
 	import { sortingAlgorithmsFabric } from '../core/sorting-algorithms-fabric.js'
 	import { startAnimation } from '../core/animations/start-animation.js'
 
+	export let status
 	export let list
 	export let sortType
 	export let registrator
@@ -26,6 +27,7 @@
 				listForAnimation[position] = value
 			},
 		})
+		status = 'done'
 	}
 
 	onDestroy(() => {

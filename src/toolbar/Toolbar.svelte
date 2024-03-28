@@ -1,16 +1,13 @@
 <script>
-	import { randomArray } from '../lib/random-array.js'
-	import { SORT_TYPE_LABEL } from '../core/sort-type.js'
 	import Button from '../lib/ui/button/Button.svelte'
-	import Contacts from './Contacts.svelte'
 	import { cn } from '../lib/cn.js'
-	import Slider from '../lib/ui/slider/Slider.svelte'
 	import ModeSelect from './ModeSelect.svelte'
 	import { createEventDispatcher } from 'svelte'
 	import BarSettings from './bars/Settings.svelte'
 	import ImageSettings from './image/Settings.svelte'
 	const dispatch = createEventDispatcher()
 
+	export let block
 	export let mode
 	export let size
 	export let show
@@ -29,14 +26,14 @@
 <div class={cn(defaultClass, show && showClass)}>
 	<div class="grid h-full grid-cols-3 place-content-center">
 		{#if mode === 'bars'}
-			<BarSettings bind:size />
+			<BarSettings {block} bind:size />
 		{:else}
-			<ImageSettings />
+			<ImageSettings {block} />
 		{/if}
 		<div class="space-y-2">
 			<ModeSelect bind:mode />
 
-			<Button on:click={startSort}>
+			<Button disabled={block} on:click={startSort}>
 				SORT {show ? 'SELECTED' : 'ALL'}
 			</Button>
 		</div>

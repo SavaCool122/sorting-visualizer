@@ -5,6 +5,7 @@
 	export let defaultValue = undefined
 	export let options = []
 	export let value
+	export let disabled = false
 
 	$: value = $state
 
@@ -26,7 +27,7 @@
 	{#each options as option}
 		<button
 			use:melt={$item(option.name)}
-			disabled={option.disabled || false}
+			disabled={option.disabled || disabled || false}
 			class={cn(button.default, button.disabled, button.pressed)}
 		>
 			{option.name}

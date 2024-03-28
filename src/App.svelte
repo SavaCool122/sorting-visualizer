@@ -19,12 +19,20 @@
 	$: list = randomArray(size)
 
 	$: show = sortsState.some(sort => sort.status === 'selected')
+	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
 
-	const startSort = () => {
+	function resetDefaultState() {
+		setTimeout(() => {
+			sortsState = sortsState.map(sort => ({ ...sort, status: 'active' }))
+		}, 500)
+	}
+
+	const startSort = async () => {
 		const isAllSort = !sortsState.some(sort => sort.status === 'selected')
 		if (isAllSort) {
 			sortsState = sortsState.map(sort => ({ ...sort, status: 'progress' }))
-			registrator.runAllSorts()
+			await registrator.runAllSorts()
+			resetDefaultState()
 			return
 		}
 		const types = sortsState.filter(sort => sort.status === 'selected').map(sort => sort.id)
@@ -32,20 +40,20 @@
 			if (sort.status === 'selected') return { ...sort, status: 'progress' }
 			return sort
 		})
-		types.forEach(type => {
-			registrator.runSortByType(type)
-		})
+		const allSorts = types.map(type => registrator.runSortByType(type))
+		await Promise.all(allSorts)
+		resetDefaultState()
 	}
 </script>
 
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar {show} on:sort={startSort} bind:size bind:mode />
+	<Toolbar {show} {block} on:sort={startSort} bind:size bind:mode />
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
-			<Bars {registrator} {list} sortType={sort.id} />
+			<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
 		</Card>
 	{/each}
 </div>
