@@ -14,9 +14,8 @@
 		status: 'active',
 	}))
 
-	let mode = 'bars'
+	let mode
 	let size = 18
-	let show = false
 	$: list = randomArray(size)
 
 	$: show = sortsState.some(sort => sort.status === 'selected')
@@ -42,7 +41,7 @@
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar bind:show on:sort={startSort} bind:size bind:mode />
+	<Toolbar {show} on:sort={startSort} bind:size bind:mode />
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>

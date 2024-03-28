@@ -9,11 +9,9 @@
 	const options = [
 		{
 			name: 'bars',
-			disabled: false,
 		},
 		{
 			name: 'image',
-			disabled: false,
 		},
 		{
 			name: 'circle',
@@ -22,4 +20,4 @@
 	]
 </script>
 
-<ToggleGroup bind:value={mode} {options} />
+<ToggleGroup bind:value={mode} {options} defaultValue="bars" />
