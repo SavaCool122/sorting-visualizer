@@ -7,6 +7,8 @@
 	import Slider from '../lib/ui/slider/Slider.svelte'
 	import ModeSelect from './ModeSelect.svelte'
 	import { createEventDispatcher } from 'svelte'
+	import BarSettings from './bars/Settings.svelte'
+	import ImageSettings from './image/Settings.svelte'
 	const dispatch = createEventDispatcher()
 
 	export let mode
@@ -26,18 +28,17 @@
 
 <div class={cn(defaultClass, show && showClass)}>
 	<div class="grid h-full grid-cols-3 place-content-center">
-		<div>
-			<Slider class="m-auto w-2/3" bind:value={size} label={size} />
-		</div>
+		{#if mode === 'bars'}
+			<BarSettings bind:size />
+		{:else}
+			<ImageSettings />
+		{/if}
 		<div class="space-y-2">
 			<ModeSelect bind:mode />
 
-			<button
-				on:click={startSort}
-				class="w-full rounded-lg border-2 border-black bg-secondary px-4 py-2 text-2xl"
-			>
+			<Button on:click={startSort}>
 				SORT {show ? 'SELECTED' : 'ALL'}
-			</button>
+			</Button>
 		</div>
 	</div>
 </div>
