@@ -16,7 +16,7 @@ Then you can start aplication.
 
 	pnpm dev
 
-1. Built on Solid.js, Vite.js and TailwindCSS.
+1. Built on Svelte, Vite.js and TailwindCSS.
 2. Works in all modern browsers.
 3. Fully keyboard accessible.
 4. Themes in future releases.
