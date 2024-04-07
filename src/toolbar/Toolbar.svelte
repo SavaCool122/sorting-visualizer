@@ -12,9 +12,11 @@
 	export let size
 	export let show
 
-	const defaultClass =
-		'absolute top-[-105px] z-10 h-[120px] w-1/2 rounded-3xl border-2 border-black bg-primary transition-[top] hover:top-4 peer-hover:top-4'
-	const showClass = 'top-4'
+	const defaultClass = 'z-10 rounded-3xl border-2 border-black bg-primary '
+	const desktopClass = 'md:h-[120px] md:w-1/2 md:top-[-105px] md:absolute md:p-0'
+	const showClass = 'md:hover:top-4 md:peer-hover:top-4 transition-[top,bottom]'
+	const showFromJsClass = 'md:top-4'
+	const mobileClass = 'h-[200px] fixed bottom-[10px] w-[300px] p-4'
 
 	function startSort() {
 		dispatch('sort')
@@ -23,8 +25,8 @@
 
 <div class="peer absolute top-0 h-8 w-1/2"></div>
 
-<div class={cn(defaultClass, show && showClass)}>
-	<div class="grid h-full grid-cols-3 place-content-center">
+<div class={cn(defaultClass, desktopClass, mobileClass, showClass, show && showFromJsClass)}>
+	<div class="grid h-full grid-cols-1 place-content-center md:grid-cols-3">
 		{#if mode === 'bars'}
 			<BarSettings {block} bind:size />
 		{:else}
