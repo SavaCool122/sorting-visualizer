@@ -1,6 +1,5 @@
 import config from '../../config.js'
 import { delay } from './delay.js'
-import { noop } from '../../lib/noop.js'
 
 /**
  * @typedef {Object} AnimationHandlers
