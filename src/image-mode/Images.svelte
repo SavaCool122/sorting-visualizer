@@ -1,7 +1,7 @@
 <script>
 	import './card.css'
 	import { generateCards } from './image-cards-generator.js'
-	import { shuffle } from '../lib/shuffle.js'
+	import { shuffle } from '../core/shuffle.js'
 	import { onDestroy } from 'svelte'
 
 	export let registrator

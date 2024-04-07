@@ -3,7 +3,7 @@
 	import Toolbar from './toolbar/Toolbar.svelte'
 	import Bars from './bars-mode/Bars.svelte'
 	import { SORT_TYPE_LIST } from './core/sort-type.js'
-	import { randomArray } from './lib/random-array.js'
+	import { randomArray } from './core/random-array.js'
 	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
 	import Images from './image-mode/Images.svelte'

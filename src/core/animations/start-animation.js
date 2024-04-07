@@ -15,7 +15,7 @@ import { noop } from '../../lib/noop.js'
  * @returns {Promise<void>}
  */
 export async function startAnimation(animations = [], handlers) {
-	const { onStart = noop, onStep = noop, onEnd = noop } = handlers
+	const { onStart = () => {}, onStep = () => {}, onEnd = () => {} } = handlers
 	onStart()
 	for (let i = 0; i < animations.length; i++) {
 		const [position, value] = animations[i]
