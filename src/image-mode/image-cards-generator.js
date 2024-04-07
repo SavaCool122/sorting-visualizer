@@ -1,4 +1,4 @@
-export const generateCards = ({ size = 250 }) => {
+export const generateCards = (size = 250) => {
 	const cardSize = 25
 	const cardsInLine = size / cardSize
 	const fillSizes = (_, index) => -(index * cardSize)

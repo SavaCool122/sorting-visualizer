@@ -6,6 +6,7 @@
 	import { randomArray } from './lib/random-array.js'
 	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
+	import Images from './image-mode/Images.svelte'
 
 	const registrator = sortRegistrator()
 
@@ -53,7 +54,11 @@
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
-			<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
+			{#if mode === 'bars'}
+				<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
+			{:else}
+				<Images {registrator} sortType={sort.id} />
+			{/if}
 		</Card>
 	{/each}
 </div>
