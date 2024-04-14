@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../proxy-wrapper.js'
 
 function heapify(arr, length, parentIdx) {
 	let largest = parentIdx
@@ -14,10 +14,7 @@ function heapify(arr, length, parentIdx) {
 	}
 
 	if (largest !== parentIdx) {
-		const temp = arr[parentIdx]
-		arr[parentIdx] = arr[largest]
-		arr[largest] = temp
-
+		swap(arr, parentIdx, largest) // Using swap function here
 		heapify(arr, length, largest)
 	}
 	return arr
@@ -34,19 +31,24 @@ function heap(arr) {
 	}
 
 	while (lastChild >= 0) {
-		const temp = arr[0]
-		arr[0] = arr[lastChild]
-		arr[lastChild] = temp
+		swap(arr, 0, lastChild) // Using swap function here
 		heapify(arr, lastChild, 0)
 		lastChild--
 	}
 }
 
-let pivots = []
+let animations = []
+const recordSwap = createRecordSwap(animations)
+
+function swap(arr, index1, index2) {
+	recordSwap(index1, index2, (i, j) => {
+		const temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+	})
+}
 
 export function getHeapSortAnimations(list) {
-	pivots = []
-	list = proxyWrapper(list, pivots)
 	heap(list)
-	return pivots
+	return animations
 }

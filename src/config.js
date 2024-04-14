@@ -1,5 +1,5 @@
 export default {
-	animationSpeed: 100,
+	animationSpeed: 350,
 	arrayLength: {
 		min: 200,
 		max: 25,
