@@ -56,7 +56,7 @@
 			{#if mode === 'bars'}
 				<Bars bind:status={sort.status} {registrator} sortType={sort.id} />
 			{:else}
-				<Images {registrator} sortType={sort.id} />
+				<Images bind:status={sort.status} {registrator} sortType={sort.id} />
 			{/if}
 		</Card>
 	{/each}
