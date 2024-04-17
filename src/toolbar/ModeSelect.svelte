@@ -17,4 +17,4 @@
 	]
 </script>
 
-<ToggleGroup bind:value={mode} {options} defaultValue="bars" />
+<ToggleGroup bind:value={mode} {options} />

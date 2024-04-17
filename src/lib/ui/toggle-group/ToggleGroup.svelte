@@ -2,7 +2,6 @@
 	import { cn } from '../../cn.js'
 	import { createRadioGroup, melt } from '@melt-ui/svelte'
 
-	export let defaultValue = undefined
 	export let options = []
 	export let value
 	export let disabled = false
@@ -13,7 +12,7 @@
 		elements: { root, item },
 		states: { value: state },
 	} = createRadioGroup({
-		defaultValue: defaultValue,
+		defaultValue: value,
 	})
 
 	const button = {

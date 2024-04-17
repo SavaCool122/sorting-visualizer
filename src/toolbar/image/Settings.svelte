@@ -19,7 +19,7 @@
 </script>
 
 <div>
-	<ToggleGroup disabled={true} bind:value {options} defaultValue="1" />
+	<ToggleGroup disabled={true} bind:value {options} />
 
 	<div class="mt-2 flex justify-center">
 		<Button disabled={true} class="w-max text-sm">
