@@ -3,7 +3,7 @@
 	import ToggleGroup from '../../lib/ui/toggle-group/ToggleGroup.svelte'
 
 	let value = '1'
-	export let block
+	// export let block
 
 	const options = [
 		{
@@ -19,10 +19,10 @@
 </script>
 
 <div>
-	<ToggleGroup disabled={block} bind:value {options} defaultValue="1" />
+	<ToggleGroup disabled={true} bind:value {options} defaultValue="1" />
 
 	<div class="mt-2 flex justify-center">
-		<Button disabled={block} class="w-max text-sm">
+		<Button disabled={true} class="w-max text-sm">
 			<span>Upload image</span>
 			<br />
 			<span>(400×400)</span>

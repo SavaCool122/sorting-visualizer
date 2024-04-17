@@ -21,11 +21,11 @@
 	const config = {
 		bars: {
 			component: BarSettings,
-			options: { size, block },
+			options: { size },
 		},
 		image: {
 			component: ImageSettings,
-			options: { block },
+			options: {},
 		},
 	}
 
