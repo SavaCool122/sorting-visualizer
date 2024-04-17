@@ -18,6 +18,17 @@
 	const showFromJsClass = 'md:top-4'
 	const mobileClass = 'h-[200px] fixed bottom-[10px] w-[300px] p-4'
 
+	const config = {
+		bars: {
+			component: BarSettings,
+			options: { size, block },
+		},
+		image: {
+			component: ImageSettings,
+			options: { block },
+		},
+	}
+
 	function startSort() {
 		dispatch('sort')
 	}
@@ -27,11 +38,8 @@
 
 <div class={cn(defaultClass, desktopClass, mobileClass, showClass, show && showFromJsClass)}>
 	<div class="grid h-full grid-cols-1 place-content-center md:grid-cols-3">
-		{#if mode === 'bars'}
-			<BarSettings {block} bind:size />
-		{:else}
-			<ImageSettings {block} />
-		{/if}
+		<svelte:component this={config[mode].component} {...config[mode].options} />
+
 		<div class="space-y-2">
 			<ModeSelect bind:mode />
 

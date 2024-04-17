@@ -15,7 +15,7 @@
 		status: 'active',
 	}))
 
-	let mode
+	let mode = 'bars'
 	let size = 18
 	$: list = randomArray(size)
 
