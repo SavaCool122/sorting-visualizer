@@ -17,7 +17,6 @@
 	}))
 
 	let mode = 'bars'
-	$: list = randomArray(config.slider.max)
 
 	$: show = sortsState.some(sort => sort.status === 'selected')
 	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
@@ -55,7 +54,7 @@
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
 			{#if mode === 'bars'}
-				<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
+				<Bars bind:status={sort.status} {registrator} sortType={sort.id} />
 			{:else}
 				<Images {registrator} sortType={sort.id} />
 			{/if}

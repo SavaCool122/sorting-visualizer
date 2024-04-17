@@ -5,11 +5,14 @@
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { flip } from 'svelte/animate'
 	import { sineInOut } from 'svelte/easing'
+	import { randomArray } from '../core/random-array.js'
+	import config from '../config.js'
 
 	export let status
-	export let list
 	export let sortType
 	export let registrator
+
+	let list = randomArray(config.slider.max)
 
 	/** @type {(value: number[]) => {id: number, value: number}[]} */
 	const createList = values =>
