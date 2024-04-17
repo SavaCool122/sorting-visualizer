@@ -2,9 +2,9 @@
 	import './slider.css'
 	import config from '../../../config.js'
 
-	export let label
+	export let label = config.slider.max
 	export let disabled = false
-	export let value
+	export let value = config.slider.max
 
 	const { min, max } = config.slider
 </script>

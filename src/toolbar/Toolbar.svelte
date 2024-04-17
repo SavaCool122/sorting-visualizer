@@ -9,7 +9,6 @@
 
 	export let block
 	export let mode
-	export let size
 	export let show
 
 	const defaultClass = 'z-10 rounded-3xl border-2 border-black bg-primary '
@@ -21,7 +20,7 @@
 	const config = {
 		bars: {
 			component: BarSettings,
-			options: { size },
+			options: {},
 		},
 		image: {
 			component: ImageSettings,

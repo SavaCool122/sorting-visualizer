@@ -7,6 +7,7 @@
 	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
 	import Images from './image-mode/Images.svelte'
+	import config from './config.js'
 
 	const registrator = sortRegistrator()
 
@@ -16,8 +17,7 @@
 	}))
 
 	let mode = 'bars'
-	let size = 18
-	$: list = randomArray(size)
+	$: list = randomArray(config.slider.max)
 
 	$: show = sortsState.some(sort => sort.status === 'selected')
 	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
@@ -50,7 +50,7 @@
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar {show} {block} on:sort={startSort} bind:size bind:mode />
+	<Toolbar {show} {block} on:sort={startSort} bind:mode />
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
