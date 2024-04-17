@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function shell(arr) {
 	for (let d = Math.floor(arr.length / 2); d > 0; d = Math.floor(d / 2)) {

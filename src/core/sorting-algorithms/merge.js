@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function mergeSort(arr, start = 0, end = arr.length - 1) {
 	if (start < end) {

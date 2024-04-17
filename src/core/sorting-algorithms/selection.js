@@ -1,4 +1,4 @@
-import { createRecordSwap, proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function selection(arr) {
 	for (let i = 0; i < arr.length - 1; i++) {

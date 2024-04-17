@@ -1,4 +1,4 @@
-import { createRecordSwap, filterSameValues } from '../proxy-wrapper.js'
+import { createRecordSwap, filterSameValues } from '../record-swap.js'
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
 	if (left < right) {
@@ -36,6 +36,6 @@ function swap(arr, i, j) {
 }
 
 export function getQuickSortAnimations(items) {
-	const r = quickSort(items)
+	quickSort(items)
 	return filterSameValues(animations)
 }

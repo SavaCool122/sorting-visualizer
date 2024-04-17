@@ -6,8 +6,7 @@ import { delay } from './delay.js'
  * @param {{onStep: ([number, number]) => void}} handlers
  * @returns {Promise<void>}
  */
-export async function startAnimation(animations = [], handlers) {
-	const { onStep } = handlers
+export async function startAnimation(animations = [], { onStep }) {
 	for (let i = 0; i < animations.length; i++) {
 		await delay(config.animationSpeed)
 		onStep(animations[i])

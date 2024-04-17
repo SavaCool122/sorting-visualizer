@@ -1,4 +1,4 @@
-import { createRecordSwap, proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function cocktailShakerSort(arr) {
 	let isSorted = true

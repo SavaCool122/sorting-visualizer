@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function heapify(arr, length, parentIdx) {
 	let largest = parentIdx
