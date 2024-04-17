@@ -37,6 +37,5 @@ function swap(arr, i, j) {
 
 export function getQuickSortAnimations(items) {
 	const r = quickSort(items)
-	console.log(r)
 	return filterSameValues(animations)
 }
