@@ -7,6 +7,7 @@
 	import { sineInOut } from 'svelte/easing'
 	import { randomArray } from '../core/random-array.js'
 	import config from '../config.js'
+	import { delay } from '../core/animations/delay.js'
 
 	export let status
 	export let sortType
@@ -36,6 +37,7 @@
 				alist = alist
 			},
 		})
+		await delay(config.animationSpeed * 3) // time to see a result
 		status = 'done'
 	}
 
