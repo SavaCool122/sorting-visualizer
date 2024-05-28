@@ -1,4 +1,4 @@
-import { proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function bubble(arr) {
 	swapped = false
@@ -6,22 +6,28 @@ function bubble(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		if (arr[i] > arr[i + 1]) {
 			swapped = true
-			let temp = arr[i]
-			arr[i] = arr[i + 1]
-			arr[i + 1] = temp
+			swap(arr, i, i + 1)
 		}
 	}
 	end--
 }
 
+let animations = []
+const recordSwap = createRecordSwap(animations)
+
+function swap(arr, index1, index2) {
+	recordSwap(index1, index2, (i, j) => {
+		const temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+	})
+}
+
 let swapped
-let pivots = []
 
 export function getBubbleSortAnimations(arr) {
-	pivots = []
-	arr = proxyWrapper(arr, pivots)
 	do {
 		bubble(arr)
 	} while (swapped)
-	return pivots
+	return animations
 }

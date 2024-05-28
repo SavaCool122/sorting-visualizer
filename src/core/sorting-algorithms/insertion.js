@@ -1,24 +1,28 @@
-import { proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function insertion(arr) {
 	for (let i = 1; i < arr.length; i++) {
 		let j = i
-		let currentElement = arr[i]
-		while (currentElement < arr[j - 1]) {
-			arr[j] = arr[j - 1]
+		while (j > 0 && arr[j] < arr[j - 1]) {
+			swap(arr, j, j - 1)
 			j--
 		}
-		arr[j] = currentElement
 	}
-
 	return arr
 }
 
-let pivots
+let animations = []
+const recordSwap = createRecordSwap(animations)
+
+function swap(arr, index1, index2) {
+	recordSwap(index1, index2, (i, j) => {
+		const temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+	})
+}
 
 export function getInsertionSortAnimations(arr) {
-	pivots = []
-	arr = proxyWrapper(arr, pivots)
 	insertion(arr)
-	return pivots
+	return animations
 }

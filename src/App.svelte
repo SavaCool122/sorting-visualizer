@@ -3,9 +3,9 @@
 	import Toolbar from './toolbar/Toolbar.svelte'
 	import Bars from './bars-mode/Bars.svelte'
 	import { SORT_TYPE_LIST } from './core/sort-type.js'
-	import { randomArray } from './lib/random-array.js'
 	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
+	import Images from './image-mode/Images.svelte'
 
 	const registrator = sortRegistrator()
 
@@ -14,9 +14,7 @@
 		status: 'active',
 	}))
 
-	let mode
-	let size = 18
-	$: list = randomArray(size)
+	let mode = 'bars'
 
 	$: show = sortsState.some(sort => sort.status === 'selected')
 	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
@@ -47,13 +45,17 @@
 </script>
 
 <div
-	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
+	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar {show} {block} on:sort={startSort} bind:size bind:mode />
+	<Toolbar {show} {block} on:sort={startSort} bind:mode />
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
-			<Bars bind:status={sort.status} {registrator} {list} sortType={sort.id} />
+			{#if mode === 'bars'}
+				<Bars bind:status={sort.status} {registrator} sortType={sort.id} />
+			{:else}
+				<Images bind:status={sort.status} {registrator} sortType={sort.id} />
+			{/if}
 		</Card>
 	{/each}
 </div>

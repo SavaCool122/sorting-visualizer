@@ -1,26 +1,15 @@
 import config from '../../config.js'
 import { delay } from './delay.js'
-import { noop } from '../../lib/noop.js'
 
 /**
- * @typedef {Object} AnimationHandlers
- * @property {Function} [onStart]
- * @property {Function} [onStep]
- * @property {Function} [onEnd]
- */
-
-/**
- * @param {Array<[position, value]>} animations
- * @param {AnimationHandlers} handlers
+ * @param {[number, number][]} animations
+ * @param {{onStep: ([number, number]) => void}} handlers
  * @returns {Promise<void>}
  */
-export async function startAnimation(animations = [], handlers) {
-	const { onStart = noop, onStep = noop, onEnd = noop } = handlers
-	onStart()
+export async function startAnimation(animations = [], { onStep }) {
 	for (let i = 0; i < animations.length; i++) {
-		const [position, value] = animations[i]
 		await delay(config.animationSpeed)
-		onStep(position, value)
+		onStep(animations[i])
 	}
-	onEnd()
+	await delay(config.animationSpeed) // wait for the last animation
 }

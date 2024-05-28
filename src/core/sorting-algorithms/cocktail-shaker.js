@@ -1,13 +1,13 @@
-import { proxyWrapper } from '../proxy-wrapper.js'
+import { createRecordSwap } from '../record-swap.js'
 
 function cocktailShakerSort(arr) {
 	let isSorted = true
 	while (isSorted) {
+		isSorted = false
+
 		for (let i = 0; i < arr.length - 1; i++) {
 			if (arr[i] > arr[i + 1]) {
-				let temp = arr[i]
-				arr[i] = arr[i + 1]
-				arr[i + 1] = temp
+				swap(arr, i, i + 1)
 				isSorted = true
 			}
 		}
@@ -18,21 +18,25 @@ function cocktailShakerSort(arr) {
 
 		for (let j = arr.length - 1; j > 0; j--) {
 			if (arr[j - 1] > arr[j]) {
-				let temp = arr[j]
-				arr[j] = arr[j - 1]
-				arr[j - 1] = temp
+				swap(arr, j - 1, j)
 				isSorted = true
 			}
 		}
 	}
 }
 
-let pivots = []
+let animations = []
+const recordSwap = createRecordSwap(animations)
+
+function swap(arr, index1, index2) {
+	recordSwap(index1, index2, (i, j) => {
+		const temp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = temp
+	})
+}
 
 export function getCocktailShakerSortAnimations(items) {
-	pivots = []
-	items = proxyWrapper(items, pivots)
-	if (items.length <= 1) return items
 	cocktailShakerSort(items)
-	return pivots
+	return animations
 }

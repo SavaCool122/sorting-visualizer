@@ -3,19 +3,7 @@
 
 	export let mode
 
-	const options = [
-		{
-			name: 'bars',
-		},
-		{
-			name: 'image',
-			disabled: true,
-		},
-		{
-			name: 'circle',
-			disabled: true,
-		},
-	]
+	const options = [{ name: 'bars' }, { name: 'image' }, { name: 'circle', disabled: true }]
 </script>
 
-<ToggleGroup bind:value={mode} {options} defaultValue="bars" />
+<ToggleGroup bind:value={mode} {options} />
