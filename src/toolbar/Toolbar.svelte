@@ -3,8 +3,6 @@
 	import { cn } from '../lib/cn.js'
 	import ModeSelect from './ModeSelect.svelte'
 	import { createEventDispatcher } from 'svelte'
-	import BarSettings from './bars/Settings.svelte'
-	import ImageSettings from './image/Settings.svelte'
 	const dispatch = createEventDispatcher()
 
 	export let block
@@ -22,16 +20,12 @@
 	}
 </script>
 
-<div class="peer absolute top-0 h-8 w-1/2"></div>
+<div class="peer absolute top-0 grid h-8 w-1/2 place-content-center content-end">
+	<span class="text-xs leading-none">▲ ▲ ▲</span>
+</div>
 
 <div class={cn(defaultClass, desktopClass, mobileClass, showClass, show && showFromJsClass)}>
 	<div class="grid h-full grid-cols-1 place-content-center md:grid-cols-3">
-		{#if mode === 'bars'}
-			<BarSettings />
-		{:else}
-			<ImageSettings />
-		{/if}
-
 		<div class="space-y-2">
 			<ModeSelect bind:mode />
 

@@ -45,7 +45,7 @@
 </script>
 
 <div
-	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-8 lg:h-screen lg:grid-cols-3"
+	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
 	<Toolbar {show} {block} on:sort={startSort} bind:mode />
 
