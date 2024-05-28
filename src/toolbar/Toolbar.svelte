@@ -1,37 +1,18 @@
 <script>
-	import Button from '../lib/ui/button/Button.svelte'
-	import { cn } from '../lib/cn.js'
-	import ModeSelect from './ModeSelect.svelte'
 	import { createEventDispatcher } from 'svelte'
+	import ToolbarWrapper from './ToolbarWrapper.svelte'
+	import ToolbarContent from './ToolbarContent.svelte'
 	const dispatch = createEventDispatcher()
 
 	export let block
 	export let mode
 	export let show
 
-	const defaultClass = 'z-10 rounded-3xl border-2 border-black bg-primary '
-	const desktopClass = 'md:h-[120px] md:w-1/2 md:top-[-105px] md:absolute md:p-0'
-	const showClass = 'md:hover:top-4 md:peer-hover:top-4 transition-[top,bottom]'
-	const showFromJsClass = 'md:top-4'
-	const mobileClass = 'h-[200px] fixed bottom-[10px] w-[300px] p-4'
-
 	function startSort() {
 		dispatch('sort')
 	}
 </script>
 
-<div class="peer absolute top-0 grid h-8 w-1/2 place-content-center content-end">
-	<span class="text-xs leading-none">▲ ▲ ▲</span>
-</div>
-
-<div class={cn(defaultClass, desktopClass, mobileClass, showClass, show && showFromJsClass)}>
-	<div class="grid h-full grid-cols-1 place-content-center md:grid-cols-3">
-		<div class="space-y-2">
-			<ModeSelect bind:mode />
-
-			<Button disabled={block} on:click={startSort}>
-				SORT {show ? 'SELECTED' : 'ALL'}
-			</Button>
-		</div>
-	</div>
-</div>
+<ToolbarWrapper {show}>
+	<ToolbarContent bind:mode {show} {block} on:sort={startSort} />
+</ToolbarWrapper>
