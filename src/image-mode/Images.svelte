@@ -12,18 +12,21 @@
 	export let registrator
 	export let sortType
 
+	const ANIMTAION_SPEED = 60
+
 	const cards = shuffle(generateCards())
 	const list = cards.map(c => c.id)
 	let alist = cards
 
 	async function sort() {
-		console.log(list)
 		const animations = sortingAlgorithmsFabric.recordAnimation(sortType, list.slice())
+		console.log(animations.length)
 		await startBarAnimation(animations)
 	}
 
 	async function startBarAnimation(animations) {
 		await startAnimation(animations, {
+			speed: ANIMTAION_SPEED,
 			onStep([first, second]) {
 				const temp = alist[first]
 				alist[first] = alist[second]
@@ -44,7 +47,7 @@
 	<div class="flex w-[250px] flex-wrap">
 		{#each alist as card (card.id)}
 			<div
-				animate:flip={{ duration: 300, easing: sineInOut }}
+				animate:flip={{ duration: ANIMTAION_SPEED - 50, easing: sineInOut }}
 				class="card"
 				style={`border: 1px solid gray;background: url(/dog.jpg) ${card.x}px ${card.y}px`}
 			></div>
