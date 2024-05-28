@@ -46,7 +46,7 @@
 			<div
 				animate:flip={{ duration: 300, easing: sineInOut }}
 				class="card"
-				style={`border: 1px solid gray;background: url(/dog-small.jpg) ${card.x}px ${card.y}px`}
+				style={`border: 1px solid gray;background: url(/dog.jpg) ${card.x}px ${card.y}px`}
 			></div>
 		{/each}
 	</div>
