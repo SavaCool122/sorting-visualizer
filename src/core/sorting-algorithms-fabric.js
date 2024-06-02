@@ -8,17 +8,17 @@ import { getInsertionSortAnimations } from './sorting-algorithms/insertion.js'
 import { getHeapSortAnimations } from './sorting-algorithms/heap.js'
 import { getCocktailShakerSortAnimations } from './sorting-algorithms/cocktail-shaker.js'
 
-const sortingAlgorithms = {
-	[SORT_TYPE.QUICK]: getQuickSortAnimations,
-	[SORT_TYPE.MERGE]: getMergeSortAnimations,
-	[SORT_TYPE.BUBBLE]: getBubbleSortAnimations,
-	[SORT_TYPE.SHELL]: getShellSortAnimations,
-	[SORT_TYPE.SELECTION]: getSelectionSortAnimations,
-	[SORT_TYPE.INSERTION]: getInsertionSortAnimations,
-	[SORT_TYPE.HEAP]: getHeapSortAnimations,
-	[SORT_TYPE.COCKTAIL_SHAKER]: getCocktailShakerSortAnimations,
-}
+const sortingAlgorithms = new Map([
+	[SORT_TYPE.QUICK, getQuickSortAnimations],
+	[SORT_TYPE.MERGE, getMergeSortAnimations],
+	[SORT_TYPE.BUBBLE, getBubbleSortAnimations],
+	[SORT_TYPE.SHELL, getShellSortAnimations],
+	[SORT_TYPE.SELECTION, getSelectionSortAnimations],
+	[SORT_TYPE.INSERTION, getInsertionSortAnimations],
+	[SORT_TYPE.HEAP, getHeapSortAnimations],
+	[SORT_TYPE.COCKTAIL_SHAKER, getCocktailShakerSortAnimations],
+])
 
 export function recordAnimation(sortType, list) {
-	return sortingAlgorithms[sortType](list.slice())
+	return sortingAlgorithms.get(sortType)(list.slice())
 }
