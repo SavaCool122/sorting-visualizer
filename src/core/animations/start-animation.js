@@ -11,5 +11,5 @@ export async function startAnimation(animations = [], { speed = config.animation
 		await delay(speed)
 		onStep(animations[i])
 	}
-	await delay(config.animationSpeed) // wait for the last animation
+	await delay(speed) // wait for the last animation
 }
