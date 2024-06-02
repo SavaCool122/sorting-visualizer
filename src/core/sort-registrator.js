@@ -18,6 +18,7 @@ export function sortRegistrator() {
 		unregister(type) {
 			entities = entities.filter(x => x.type !== type)
 		},
+		/** @returns {Promise}  */
 		async runAllSorts() {
 			const allSorts = entities.map(m => m.cb())
 			return await Promise.all(allSorts)
