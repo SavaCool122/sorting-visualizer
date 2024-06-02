@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../record-swap.js'
+import { createRecordSwap } from '../animations/record-swap.js'
 
 function bubble(arr) {
 	swapped = false

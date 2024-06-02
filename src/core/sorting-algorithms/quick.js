@@ -1,4 +1,4 @@
-import { createRecordSwap, filterSameValues } from '../record-swap.js'
+import { createRecordSwap, filterSameValues } from '../animations/record-swap.js'
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
 	if (left < right) {

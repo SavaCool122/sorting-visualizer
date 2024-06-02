@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../record-swap.js'
+import { createRecordSwap } from '../animations/record-swap.js'
 
 function mergeSort(arr, start = 0, end = arr.length - 1) {
 	if (start < end) {
