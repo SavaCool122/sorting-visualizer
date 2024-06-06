@@ -1,5 +1,5 @@
 <script>
-	export let number
+	let { number } = $props()
 </script>
 
 <div

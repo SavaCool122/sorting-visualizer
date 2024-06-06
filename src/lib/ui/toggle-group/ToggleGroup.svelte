@@ -2,15 +2,15 @@
 	import { cn } from '../../cn.js'
 	import { createRadioGroup, melt } from '@melt-ui/svelte'
 
-	export let options = []
-	export let value
-	export let disabled = false
+	let { options = [], value = $bindable(), disabled = false } = $props()
 
-	$: value = $state
+	$effect(() => {
+		value = $radioState
+	})
 
 	const {
 		elements: { root, item },
-		states: { value: state },
+		states: { value: radioState },
 	} = createRadioGroup({
 		orientation: 'horizontal',
 		defaultValue: value,

@@ -1,7 +1,3 @@
-<script>
-	import Icon from '../lib/ui/Icon.svelte'
-</script>
-
 <a
 	target="_blank"
 	href="https://github.com/SavaCool122/sorting-visualizer"

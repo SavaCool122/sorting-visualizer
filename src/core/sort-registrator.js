@@ -1,26 +1,22 @@
-export function sortRegistrator() {
-	let entities = []
+/** @param {Set<string>} sortList */
+export function sortRegistrator(sortList) {
+	let entities = new Map([...sortList].map(type => [type, () => {}]))
 
 	return {
 		/**
 		 * @param {string} type
-		 * @param {string} cb
+		 * @param {() => void} cb
 		 */
 		register(type, cb) {
-			entities.push({ type, cb })
+			entities.set(type, cb)
 		},
 		/** @param {string} type */
 		async runSortByType(type) {
-			const maybeSort = entities.find(method => method.type === type)
-			return maybeSort.cb()
+			const maybeSort = entities.get(type)
+			return maybeSort()
 		},
-		/** @param {string} type */
-		unregister(type) {
-			entities = entities.filter(x => x.type !== type)
-		},
-		/** @returns {Promise}  */
 		async runAllSorts() {
-			const allSorts = entities.map(m => m.cb())
+			const allSorts = [...entities].map(([, cb]) => cb())
 			return await Promise.all(allSorts)
 		},
 	}

@@ -1,7 +1,7 @@
 <script>
-	export let name
+	let { name, ...rest } = $props()
 </script>
 
-<svg {...$$props}>
+<svg {...rest}>
 	<use href={`/icons.svg#${name}`} />
 </svg>

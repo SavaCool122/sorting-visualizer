@@ -1,7 +1,7 @@
 <script>
 	import ToggleGroup from '../lib/ui/toggle-group/ToggleGroup.svelte'
 
-	export let mode
+	let { mode = $bindable() } = $props()
 
 	const options = [{ name: 'bars' }, { name: 'image' }, { name: 'circle', disabled: true }]
 </script>

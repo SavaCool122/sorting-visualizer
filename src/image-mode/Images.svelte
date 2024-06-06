@@ -2,25 +2,22 @@
 	import './card.css'
 	import { generateCards } from './image-cards-generator.js'
 	import { shuffle } from '../core/shuffle.js'
-	import { onDestroy } from 'svelte'
 	import { sineInOut } from 'svelte/easing'
 	import { flip } from 'svelte/animate'
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { recordAnimation } from '../core/sorting-algorithms-fabric'
 
-	export let status
-	export let registrator
-	export let sortType
+	let { status = $bindable(), registrator, sortType } = $props()
 
 	const ANIMTAION_SPEED = 60
 
 	const cards = shuffle(generateCards())
 	const list = cards.map(c => c.id)
-	let alist = cards
+
+	let alist = $state(cards)
 
 	async function sort() {
 		const animations = recordAnimation(sortType, list.slice())
-		console.log(animations.length)
 		await startBarAnimation(animations)
 	}
 
@@ -38,9 +35,6 @@
 	}
 
 	registrator.register(sortType, sort)
-	onDestroy(() => {
-		registrator.unregister(sortType)
-	})
 </script>
 
 <div>

@@ -2,22 +2,22 @@
 	import { sortRegistrator } from './core/sort-registrator.js'
 	import Toolbar from './toolbar/Toolbar.svelte'
 	import Bars from './bars-mode/Bars.svelte'
-	import { SORT_TYPE_LIST } from './core/sort-type.js'
+	import { SORT_TYPE } from './core/sort-type.js'
 	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
 	import Images from './image-mode/Images.svelte'
+	import { STATUS } from './core/status.js'
 
-	const registrator = sortRegistrator()
+	const sortTypeList = new Set(Object.keys(SORT_TYPE))
 
-	let sortsState = SORT_TYPE_LIST.map(sort => ({
-		id: sort,
-		status: 'active',
-	}))
+	const registrator = sortRegistrator(sortTypeList)
 
-	let mode = 'bars'
-
-	$: show = sortsState.some(sort => sort.status === 'selected')
-	$: block = sortsState.some(sort => ['progress', 'done'].includes(sort.status))
+	let sortsState = $state(
+		[...sortTypeList].map(sort => ({
+			id: sort,
+			status: STATUS.INITIAL,
+		})),
+	)
 
 	function resetDefaultState() {
 		setTimeout(() => {
@@ -25,15 +25,15 @@
 		}, 1000)
 	}
 
-	const startSort = async () => {
-		const isAllSort = !sortsState.some(sort => sort.status === 'selected')
-		if (isAllSort) {
-			sortsState = sortsState.map(sort => ({ ...sort, status: 'progress' }))
-			await registrator.runAllSorts()
-			resetDefaultState()
-			return
-		}
-		const types = sortsState.filter(sort => sort.status === 'selected').map(sort => sort.id)
+	async function startAllSorts() {
+		sortsState = sortsState.map(sort => ({ ...sort, status: 'progress' }))
+		await registrator.runAllSorts()
+		resetDefaultState()
+		return
+	}
+
+	async function startSeletedSort(selectedSorts) {
+		const types = selectedSorts.map(sort => sort.id)
 		sortsState = sortsState.map(sort => {
 			if (sort.status === 'selected') return { ...sort, status: 'progress' }
 			return sort
@@ -42,12 +42,26 @@
 		await Promise.all(allSorts)
 		resetDefaultState()
 	}
+
+	async function startSort() {
+		const selectedSorts = sortsState.filter(sort => sort.status === 'selected')
+
+		if (selectedSorts.length > 0) startSeletedSort(selectedSorts)
+		else startAllSorts()
+	}
+
+	let mode = $state('bars')
 </script>
 
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar {show} {block} on:sort={startSort} bind:mode />
+	<Toolbar
+		show={sortsState.some(sort => sort.status === 'selected')}
+		block={sortsState.some(sort => ['progress', 'done'].includes(sort.status))}
+		sort={startSort}
+		bind:mode
+	/>
 
 	{#each sortsState as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
