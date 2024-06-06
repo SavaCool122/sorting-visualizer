@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import ToggleGroup from '../lib/ui/toggle-group/ToggleGroup.svelte'
 

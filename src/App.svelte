@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import { sortRegistrator } from './core/sort-registrator.js'
 	import Toolbar from './toolbar/Toolbar.svelte'

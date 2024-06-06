@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	let { name, ...rest } = $props()
 </script>

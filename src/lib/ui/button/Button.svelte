@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import { cn } from '../../cn.js'
 	let { disabled = false, onclick, children, ...rest } = $props()

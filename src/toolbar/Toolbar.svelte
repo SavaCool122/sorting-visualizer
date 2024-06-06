@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import ToolbarWrapper from './ToolbarWrapper.svelte'
 	import ToolbarContent from './ToolbarContent.svelte'

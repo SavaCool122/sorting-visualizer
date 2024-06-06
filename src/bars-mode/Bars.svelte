@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import Bar from './Bar.svelte'
 	import { recordAnimation } from '../core/sorting-algorithms-fabric.js'

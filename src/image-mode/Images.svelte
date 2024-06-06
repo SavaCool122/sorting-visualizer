@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import './card.css'
 	import { generateCards } from './image-cards-generator.js'

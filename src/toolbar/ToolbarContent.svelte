@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import ModeSelect from './ModeSelect.svelte'
 	import Button from '../lib/ui/button/Button.svelte'

@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script>
 	import { STATUS } from '../core/status.js'
 	import { cn } from '../lib/cn.js'
