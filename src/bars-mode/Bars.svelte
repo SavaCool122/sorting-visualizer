@@ -1,6 +1,7 @@
+<svelte:options runes={true} />
+
 <script>
 	import Bar from './Bar.svelte'
-	import { onDestroy } from 'svelte'
 	import { recordAnimation } from '../core/sorting-algorithms-fabric.js'
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { flip } from 'svelte/animate'
@@ -9,11 +10,9 @@
 	import config from '../config.js'
 	import { delay } from '../core/animations/delay.js'
 
-	export let status
-	export let sortType
-	export let registrator
+	let { status = $bindable(), sortType, registrator } = $props()
 
-	let list = randomArray(config.slider.max)
+	let list = $state(randomArray(config.slider.max))
 
 	/** @type {(value: number[]) => {id: number, value: number}[]} */
 	const createList = values =>
@@ -21,7 +20,7 @@
 			return { id: idx, value }
 		})
 
-	let alist = createList(list)
+	let alist = $state(createList(list))
 
 	async function sort() {
 		const animations = recordAnimation(sortType, list.slice())
@@ -42,9 +41,6 @@
 	}
 
 	registrator.register(sortType, sort)
-	onDestroy(() => {
-		registrator.unregister(sortType)
-	})
 </script>
 
 <div class="inline-flex max-w-min items-end justify-center gap-1" style="height: 200px">

@@ -1,7 +1,9 @@
+<svelte:options runes={true} />
+
 <script>
 	import { cn } from '../lib/cn.js'
 
-	export let show
+	let { show, children } = $props()
 
 	const defaultClass = 'z-10 rounded-3xl border-2 border-black bg-primary'
 	const desktopClass = 'md:h-[120px] md:w-1/2 md:top-[-105px] md:absolute md:p-0'
@@ -15,5 +17,5 @@
 </div>
 
 <div class={cn(defaultClass, desktopClass, mobileClass, showClass, show && showFromJsClass)}>
-	<slot />
+	{@render children()}
 </div>

@@ -8,5 +8,3 @@ export const SORT_TYPE = {
 	SHELL: 'SHELL',
 	COCKTAIL_SHAKER: 'COCKTAIL_SHAKER',
 }
-
-export const SORT_TYPE_LIST = Object.keys(SORT_TYPE)
