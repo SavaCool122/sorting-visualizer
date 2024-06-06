@@ -39,7 +39,11 @@
 		status = STATUS.DONE
 	}
 
-	registrator.register(sortType, sort)
+	$effect(() => {
+		registrator.register(sortType, sort)
+
+		return () => registrator.unregister(sortType)
+	})
 </script>
 
 <div class="inline-flex max-w-min items-end justify-center gap-1" style="height: 200px">
