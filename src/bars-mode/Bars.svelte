@@ -1,7 +1,7 @@
 <script>
 	import Bar from './Bar.svelte'
 	import { onDestroy } from 'svelte'
-	import { sortingAlgorithmsFabric } from '../core/sorting-algorithms-fabric.js'
+	import { recordAnimation } from '../core/sorting-algorithms-fabric.js'
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { flip } from 'svelte/animate'
 	import { sineInOut } from 'svelte/easing'
@@ -24,7 +24,7 @@
 	let alist = createList(list)
 
 	async function sort() {
-		const animations = sortingAlgorithmsFabric.recordAnimation(sortType, list.slice())
+		const animations = recordAnimation(sortType, list.slice())
 		await startBarAnimation(animations)
 	}
 

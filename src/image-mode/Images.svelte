@@ -5,8 +5,8 @@
 	import { onDestroy } from 'svelte'
 	import { sineInOut } from 'svelte/easing'
 	import { flip } from 'svelte/animate'
-	import { sortingAlgorithmsFabric } from '../core/sorting-algorithms-fabric.js'
 	import { startAnimation } from '../core/animations/start-animation.js'
+	import { recordAnimation } from '../core/sorting-algorithms-fabric'
 
 	export let status
 	export let registrator
@@ -19,7 +19,7 @@
 	let alist = cards
 
 	async function sort() {
-		const animations = sortingAlgorithmsFabric.recordAnimation(sortType, list.slice())
+		const animations = recordAnimation(sortType, list.slice())
 		console.log(animations.length)
 		await startBarAnimation(animations)
 	}

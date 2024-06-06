@@ -8,26 +8,17 @@ import { getInsertionSortAnimations } from './sorting-algorithms/insertion.js'
 import { getHeapSortAnimations } from './sorting-algorithms/heap.js'
 import { getCocktailShakerSortAnimations } from './sorting-algorithms/cocktail-shaker.js'
 
-function sortingAlgorithmsAnimationFabric() {
-	const sortingAlgorithms = {}
+const sortingAlgorithms = new Map([
+	[SORT_TYPE.QUICK, getQuickSortAnimations],
+	[SORT_TYPE.MERGE, getMergeSortAnimations],
+	[SORT_TYPE.BUBBLE, getBubbleSortAnimations],
+	[SORT_TYPE.SHELL, getShellSortAnimations],
+	[SORT_TYPE.SELECTION, getSelectionSortAnimations],
+	[SORT_TYPE.INSERTION, getInsertionSortAnimations],
+	[SORT_TYPE.HEAP, getHeapSortAnimations],
+	[SORT_TYPE.COCKTAIL_SHAKER, getCocktailShakerSortAnimations],
+])
 
-	return {
-		register(sortType, sortingAlgorithm) {
-			sortingAlgorithms[sortType] = sortingAlgorithm
-		},
-		recordAnimation(sortType, list) {
-			return sortingAlgorithms[sortType](list.slice())
-		},
-	}
+export function recordAnimation(sortType, list) {
+	return sortingAlgorithms.get(sortType)(list.slice())
 }
-
-export const sortingAlgorithmsFabric = sortingAlgorithmsAnimationFabric()
-
-sortingAlgorithmsFabric.register(SORT_TYPE.QUICK, getQuickSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.MERGE, getMergeSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.BUBBLE, getBubbleSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.SHELL, getShellSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.SELECTION, getSelectionSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.INSERTION, getInsertionSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.HEAP, getHeapSortAnimations)
-sortingAlgorithmsFabric.register(SORT_TYPE.COCKTAIL_SHAKER, getCocktailShakerSortAnimations)

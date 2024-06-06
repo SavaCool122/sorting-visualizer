@@ -1,4 +1,4 @@
-import { createRecordSwap } from '../record-swap.js'
+import { createRecordSwap } from '../animations/record-swap.js'
 
 function selection(arr) {
 	for (let i = 0; i < arr.length - 1; i++) {
