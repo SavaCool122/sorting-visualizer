@@ -1,5 +1,5 @@
 <script>
-	import { STATUS } from '../core/status.js'
+	import { STATUS } from '../core/state/status.js'
 	import { cn } from '../lib/cn.js'
 
 	let { sortType, status = $bindable(), children } = $props()
