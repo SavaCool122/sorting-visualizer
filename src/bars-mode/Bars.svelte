@@ -7,6 +7,7 @@
 	import { randomArray } from '../core/random-array.js'
 	import config from '../config.js'
 	import { delay } from '../core/animations/delay.js'
+	import { STATUS } from '../core/state/status'
 
 	let { status = $bindable(), sortType, registrator } = $props()
 
@@ -35,7 +36,7 @@
 			},
 		})
 		await delay(config.animationSpeed * 3) // time to see a result
-		status = 'done'
+		status = STATUS.DONE
 	}
 
 	registrator.register(sortType, sort)

@@ -15,7 +15,7 @@
 	const registrator = sortRegistrator(sortTypeList)
 	const sortState = createState(sortTypeList, registrator)
 
-	async function startSort() {
+	async function sort() {
 		if (sortState.selectedSorts.length > 0) sortState.startSeletedSort(sortState.selectedSorts)
 		else sortState.startAllSorts()
 	}
@@ -24,7 +24,7 @@
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar show={sortState.isShow} block={sortState.isBlock} sort={startSort} bind:mode />
+	<Toolbar show={sortState.isShow} block={sortState.isBlock} {sort} bind:mode />
 
 	{#each sortState.state as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>

@@ -10,12 +10,12 @@ export function createState(sortTypeList, registrator) {
 
 	function resetDefaultState() {
 		setTimeout(() => {
-			sortsState = sortsState.map(sort => ({ ...sort, status: 'active' }))
+			sortsState = sortsState.map(sort => ({ ...sort, status: STATUS.INITIAL }))
 		}, 1000)
 	}
 
 	async function startAllSorts() {
-		sortsState = sortsState.map(sort => ({ ...sort, status: 'progress' }))
+		sortsState = sortsState.map(sort => ({ ...sort, status: STATUS.SORTING }))
 		await registrator.runAllSorts()
 		resetDefaultState()
 		return
@@ -24,7 +24,7 @@ export function createState(sortTypeList, registrator) {
 	async function startSeletedSort(selectedSorts) {
 		const types = selectedSorts.map(sort => sort.id)
 		sortsState = sortsState.map(sort => {
-			if (sort.status === 'selected') return { ...sort, status: 'progress' }
+			if (sort.status === STATUS.SELECTED) return { ...sort, status: STATUS.SORTING }
 			return sort
 		})
 		const allSorts = types.map(type => registrator.runSortByType(type))
@@ -32,10 +32,12 @@ export function createState(sortTypeList, registrator) {
 		resetDefaultState()
 	}
 
-	let selectedSorts = $derived(sortsState.filter(sort => sort.status === 'selected'))
+	let selectedSorts = $derived(sortsState.filter(sort => sort.status === STATUS.SELECTED))
 
-	let isShow = $derived(sortsState.some(sort => sort.status === 'selected'))
-	let isBlock = $derived(sortsState.some(sort => ['progress', 'done'].includes(sort.status)))
+	let isShow = $derived(sortsState.some(sort => sort.status === STATUS.SELECTED))
+	let isBlock = $derived(
+		sortsState.some(sort => [STATUS.SORTING, STATUS.DONE].includes(sort.status)),
+	)
 
 	return {
 		get state() {
