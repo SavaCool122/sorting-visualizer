@@ -34,7 +34,11 @@
 		status = 'done'
 	}
 
-	registrator.register(sortType, sort)
+	$effect(() => {
+		registrator.register(sortType, sort)
+
+		return () => registrator.unregister(sortType)
+	})
 </script>
 
 <div>

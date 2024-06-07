@@ -1,4 +1,4 @@
-import { SORT_TYPE } from './sort-type.js'
+import { SORT_TYPE } from './state/sort-type.js'
 import { getQuickSortAnimations } from './sorting-algorithms/quick.js'
 import { getMergeSortAnimations } from './sorting-algorithms/merge.js'
 import { getBubbleSortAnimations } from './sorting-algorithms/bubble.js'

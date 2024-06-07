@@ -8,12 +8,18 @@ export function sortRegistrator(sortList) {
 		 * @param {() => void} cb
 		 */
 		register(type, cb) {
+			console.log('[reg] ', type)
 			entities.set(type, cb)
 		},
 		/** @param {string} type */
 		async runSortByType(type) {
 			const maybeSort = entities.get(type)
 			return maybeSort()
+		},
+		/** @param {string} type */
+		unregister(type) {
+			console.log('[un-reg] ', type)
+			entities.delete(type)
 		},
 		async runAllSorts() {
 			const allSorts = [...entities].map(([, cb]) => cb())
