@@ -8,7 +8,6 @@ export function sortRegistrator(sortList) {
 		 * @param {() => void} cb
 		 */
 		register(type, cb) {
-			console.log('[reg] ', type)
 			entities.set(type, cb)
 		},
 		/** @param {string} type */
@@ -18,7 +17,6 @@ export function sortRegistrator(sortList) {
 		},
 		/** @param {string} type */
 		unregister(type) {
-			console.log('[un-reg] ', type)
 			entities.delete(type)
 		},
 		async runAllSorts() {

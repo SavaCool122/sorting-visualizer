@@ -3,7 +3,6 @@
 	import Toolbar from './toolbar/Toolbar.svelte'
 	import Bars from './bars-mode/Bars.svelte'
 	import { SORT_TYPE } from './core/state/sort-type.js'
-	import Contacts from './toolbar/Contacts.svelte'
 	import Card from './cards/Card.svelte'
 	import Images from './image-mode/Images.svelte'
 	import { createState } from './core/state/sort-state.svelte.js'
@@ -36,5 +35,3 @@
 		</Card>
 	{/each}
 </div>
-
-<Contacts />

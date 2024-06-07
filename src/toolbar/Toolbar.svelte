@@ -5,6 +5,6 @@
 	let { block, mode = $bindable(), show, sort } = $props()
 </script>
 
-<ToolbarWrapper {show}>
+<ToolbarWrapper show={true}>
 	<ToolbarContent bind:mode {show} {block} {sort} />
 </ToolbarWrapper>

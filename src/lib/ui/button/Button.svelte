@@ -1,6 +1,6 @@
 <script>
 	import { cn } from '../../cn.js'
-	let { disabled = false, onclick, children, ...rest } = $props()
+	let { disabled = false, onclick = () => {}, children, ...rest } = $props()
 
 	const defaultClass = 'w-full rounded-lg border-2 border-black bg-secondary px-4 py-2 text-2xl'
 	const disabledClass = 'disabled:bg-gray-400'
