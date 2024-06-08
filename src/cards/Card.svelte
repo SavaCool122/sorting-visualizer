@@ -6,7 +6,7 @@
 	let { sortType, status = $bindable(), children } = $props()
 
 	const defaultClass =
-		'relative grid h-full w-full place-content-center rounded-3xl border-2 border-black p-4 '
+		'relative grid h-full w-full place-content-center rounded-3xl border-2 border-black p-4 min-h-[300px]'
 </script>
 
 <div class={cn(defaultClass, status === STATUS.SELECTED && 'border-dashed')}>
