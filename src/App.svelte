@@ -8,6 +8,7 @@
 	import { sortRegistrator } from './core/state/sort-registrator.js'
 
 	let mode = $state('bars')
+	let options = $state({ type: 'random' })
 
 	const sortTypeList = new Set(Object.keys(SORT_TYPE))
 
@@ -23,14 +24,14 @@
 <div
 	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
-	<Toolbar show={sortState.isShow} block={sortState.isBlock} {sort} bind:mode />
+	<Toolbar show={sortState.isShow} block={sortState.isBlock} {sort} bind:mode bind:options />
 
 	{#each sortState.state as sort}
 		<Card sortType={sort.id} bind:status={sort.status}>
 			{#if mode === 'bars'}
-				<Bars bind:status={sort.status} {registrator} sortType={sort.id} />
+				<Bars bind:status={sort.status} {registrator} {options} sortType={sort.id} />
 			{:else}
-				<Images bind:status={sort.status} {registrator} sortType={sort.id} />
+				<Images bind:status={sort.status} {registrator} {options} sortType={sort.id} />
 			{/if}
 		</Card>
 	{/each}

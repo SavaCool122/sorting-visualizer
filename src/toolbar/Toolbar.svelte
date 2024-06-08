@@ -2,9 +2,9 @@
 	import ToolbarWrapper from './ToolbarWrapper.svelte'
 	import ToolbarContent from './ToolbarContent.svelte'
 
-	let { block, mode = $bindable(), show, sort } = $props()
+	let { block, mode = $bindable(), show, sort, options = $bindable() } = $props()
 </script>
 
 <ToolbarWrapper {show}>
-	<ToolbarContent bind:mode {show} {block} {sort} />
+	<ToolbarContent bind:options bind:mode {show} {block} {sort} />
 </ToolbarWrapper>

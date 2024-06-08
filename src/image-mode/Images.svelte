@@ -8,7 +8,7 @@
 	import { recordAnimation } from '../core/sorting-algorithms-fabric'
 	import { STATUS } from '../core/state/status'
 
-	let { status = $bindable(), registrator, sortType } = $props()
+	let { status = $bindable(), registrator, sortType, options } = $props()
 
 	const ANIMTAION_SPEED = 60
 

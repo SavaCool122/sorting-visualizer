@@ -6,16 +6,16 @@
 	import ImageOptions from './options/ImageOptions.svelte'
 	import CircleOptions from './options/CircleOptions.svelte'
 
-	let { block, mode = $bindable(), show, sort } = $props()
+	let { block, mode = $bindable(), show, sort, options = $bindable() } = $props()
 </script>
 
 <div class="grid h-full w-full grid-cols-3 gap-4 p-4">
 	{#if mode === 'bars'}
-		<BarsOptions />
+		<BarsOptions bind:options />
 	{:else if mode === 'image'}
-		<ImageOptions />
+		<ImageOptions bind:options />
 	{:else}
-		<CircleOptions />
+		<CircleOptions bind:options />
 	{/if}
 	<div class="grid grid-cols-2 gap-2">
 		<div class="col-span-2 grid">

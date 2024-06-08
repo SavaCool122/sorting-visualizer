@@ -8,10 +8,31 @@
 	import config from '../config.js'
 	import { delay } from '../core/animations/delay.js'
 	import { STATUS } from '../core/state/status'
+	import { shuffle } from '../core/shuffle'
 
-	let { status = $bindable(), sortType, registrator } = $props()
+	let { status = $bindable(), sortType, registrator, options } = $props()
 
-	let list = $state(randomArray(config.slider.max))
+	function fewUnique(max) {
+		const numberOfRepat = 3
+		const numeberOfUnique = max / numberOfRepat
+		const uniqueNubers = randomArray(numeberOfUnique)
+
+		return shuffle(
+			uniqueNubers.reduce((acc, curr) => {
+				Array.from({ length: numberOfRepat }, () => curr)
+				return [...acc, ...Array.from({ length: numberOfRepat }, () => curr)]
+			}, []),
+		)
+	}
+
+	function createArray(type) {
+		if (type === 'random') return randomArray(config.slider.max)
+		if (type === 'reversed') return randomArray(config.slider.max).sort((a, b) => b - a)
+		if (type === 'few-unique') return fewUnique(config.slider.max)
+		return randomArray(config.slider.max)
+	}
+
+	let list = $derived(createArray(options.type))
 
 	/** @type {(value: number[]) => {id: number, value: number}[]} */
 	const createList = values =>
@@ -19,7 +40,11 @@
 			return { id: idx, value }
 		})
 
-	let alist = $state(createList(list))
+	let alist = $state([])
+
+	$effect(() => {
+		alist = createList(list)
+	})
 
 	async function sort() {
 		const animations = recordAnimation(sortType, list.slice())
