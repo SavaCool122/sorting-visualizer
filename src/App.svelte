@@ -1,11 +1,11 @@
 <script>
-	import { sortRegistrator } from './core/state/sort-registrator.js'
 	import Toolbar from './toolbar/Toolbar.svelte'
 	import Bars from './bars-mode/Bars.svelte'
-	import { SORT_TYPE } from './core/state/sort-type.js'
 	import Card from './cards/Card.svelte'
 	import Images from './image-mode/Images.svelte'
+	import { SORT_TYPE } from './core/state/sort-type.js'
 	import { createState } from './core/state/sort-state.svelte.js'
+	import { sortRegistrator } from './core/state/sort-registrator.js'
 
 	let mode = $state('bars')
 

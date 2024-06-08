@@ -6,6 +6,7 @@
 	import { flip } from 'svelte/animate'
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { recordAnimation } from '../core/sorting-algorithms-fabric'
+	import { STATUS } from '../core/state/status'
 
 	let { status = $bindable(), registrator, sortType } = $props()
 
@@ -31,7 +32,7 @@
 				alist = alist
 			},
 		})
-		status = 'done'
+		status = STATUS.DONE
 	}
 
 	$effect(() => {
