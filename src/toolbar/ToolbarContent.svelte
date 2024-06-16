@@ -15,7 +15,7 @@
 	{:else if mode === 'image'}
 		<ImageOptions bind:options />
 	{:else}
-		<CircleOptions bind:options />
+		<CircleOptions />
 	{/if}
 	<div class="grid grid-cols-2 gap-2">
 		<div class="col-span-2 grid">

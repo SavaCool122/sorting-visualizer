@@ -14,7 +14,6 @@
 
 	const cards = shuffle(generateCards())
 	const list = cards.map(c => c.id)
-
 	let alist = $state(cards)
 
 	async function sort() {
@@ -48,7 +47,7 @@
 			<div
 				animate:flip={{ duration: ANIMTAION_SPEED - 50, easing: sineInOut }}
 				class="card"
-				style={`border: 1px solid gray;background: url(/dog.jpg) ${card.x}px ${card.y}px`}
+				style={`border: 1px solid gray;background: url(/${options.image.type}.jpg) ${card.x}px ${card.y}px`}
 			></div>
 		{/each}
 	</div>

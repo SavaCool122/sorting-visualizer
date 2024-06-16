@@ -32,7 +32,7 @@
 		return randomArray(config.slider.max)
 	}
 
-	let list = $derived(createArray(options.type))
+	let list = $derived(createArray(options.bars.type))
 
 	/** @type {(value: number[]) => {id: number, value: number}[]} */
 	const createList = values =>

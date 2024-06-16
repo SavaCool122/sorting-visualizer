@@ -8,7 +8,10 @@
 	import { sortRegistrator } from './core/state/sort-registrator.js'
 
 	let mode = $state('bars')
-	let options = $state({ type: 'random' })
+	let options = $state({
+		bars: { type: 'random' },
+		image: { type: 'dog' },
+	})
 
 	const sortTypeList = new Set(Object.keys(SORT_TYPE))
 
