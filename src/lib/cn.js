@@ -1,7 +1,6 @@
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
 
 /** @param {...import('clsx').ClassValue} inputs */
 export const cn = (...inputs) => {
-	return twMerge(clsx(inputs))
+	return clsx(inputs)
 }

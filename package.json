@@ -13,15 +13,13 @@
 		"@melt-ui/pp": "^0.3.2",
 		"@melt-ui/svelte": "^0.76.3",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
-		"autoprefixer": "^10.4.19",
+		"@tailwindcss/vite": "4.0.0-alpha.16",
 		"clsx": "^2.1.1",
-		"postcss": "^8.4.38",
 		"prettier": "3.2.5",
 		"prettier-plugin-svelte": "^3.2.4",
 		"prettier-plugin-tailwindcss": "^0.5.14",
 		"svelte": "5.0.0-next.151",
-		"tailwind-merge": "^2.3.0",
-		"tailwindcss": "^3.4.4",
+		"tailwindcss": "4.0.0-alpha.16",
 		"vite": "^5.2.12"
 	}
 }
