@@ -2,37 +2,20 @@
 	import { SORT_TYPE } from '../core/state/sort-type.js'
 	import { STATUS } from '../core/state/status.js'
 	import { cn } from '../lib/cn.js'
+	import CardStatus from './card-status.svelte'
 
-	let { sortType, status = $bindable(), children } = $props()
-
-	const defaultClass =
-		'relative grid h-full w-full place-content-center rounded-3xl border-2 border-black p-4 min-h-[300px]'
+	let { id, status = $bindable(), children } = $props()
 </script>
 
-<div class={cn(defaultClass, status === STATUS.SELECTED && 'border-dashed')}>
-	{#if status === STATUS.INITIAL}
-		<button
-			onclick={() => (status = STATUS.SELECTED)}
-			class="absolute inset-0 rounded-3xl bg-primary opacity-90"
-		>
-			{sortType} sort
-		</button>
-	{:else if status === STATUS.SELECTED}
-		<button
-			onclick={() => (status = STATUS.INITIAL)}
-			class=" absolute inset-0 grid h-full w-full place-content-center rounded-3xl bg-secondary opacity-90"
-		>
-			{sortType} sort
-		</button>
-	{:else if status === STATUS.DONE}
-		<div class="absolute inset-0 grid h-full w-full place-content-center rounded-3xl bg-success">
-			DONE 🎉
-		</div>
-	{/if}
+<div
+	class="relative grid h-full w-full place-content-center rounded-3xl border-2 border-black p-4 min-h-[200px]"
+	class:border-dashed={status === STATUS.SELECTED}
+>
+	<CardStatus {id} {status} onchange={newStatus => (status = newStatus)} />
 
 	{@render children()}
 
 	<span class={cn('invisible mt-2 text-center', status === STATUS.SORTING && 'visible')}>
-		{sortType} sort
+		{id} sort
 	</span>
 </div>

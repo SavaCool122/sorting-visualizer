@@ -1,22 +1,12 @@
 <script>
 	import ModeSelect from './mode-select.svelte'
 	import Button from '../lib/ui/button/button.svelte'
-	import Icon from '../lib/ui/Icon.svelte'
-	import BarsOptions from './options/barsOptions.svelte'
-	import ImageOptions from './options/ImageOptions.svelte'
-	import CircleOptions from './options/CircleOptions.svelte'
+	import Icon from '../lib/ui/icon.svelte'
 
 	let { block, mode = $bindable(), show, sort, options = $bindable() } = $props()
 </script>
 
 <div class="grid h-full w-full grid-cols-3 gap-4 p-4">
-	{#if mode === 'bars'}
-		<BarsOptions bind:options />
-	{:else if mode === 'image'}
-		<ImageOptions bind:options />
-	{:else}
-		<CircleOptions />
-	{/if}
 	<div class="grid grid-cols-2 gap-2">
 		<div class="col-span-2 grid">
 			<ModeSelect bind:mode class="px-1 py-2 text-xs" />

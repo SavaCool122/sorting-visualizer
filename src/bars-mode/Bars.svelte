@@ -1,5 +1,5 @@
 <script>
-	import Bar from './Bar.svelte'
+	import Bar from './bar.svelte'
 	import { recordAnimation } from '../core/sorting-algorithms-fabric.js'
 	import { startAnimation } from '../core/animations/start-animation.js'
 	import { flip } from 'svelte/animate'
@@ -10,7 +10,7 @@
 	import { STATUS } from '../core/state/status'
 	import { shuffle } from '../core/shuffle'
 
-	let { status = $bindable(), sortType, registrator, options } = $props()
+	let { status = $bindable(), id, registrator, options } = $props()
 
 	function fewUnique(max) {
 		const numberOfRepat = 3
@@ -32,7 +32,7 @@
 		return randomArray(config.slider.max)
 	}
 
-	let list = $derived(createArray(options.bars.type))
+	let list = $derived(createArray(options.type))
 
 	/** @type {(value: number[]) => {id: number, value: number}[]} */
 	const createList = values =>
@@ -47,7 +47,7 @@
 	})
 
 	async function sort() {
-		const animations = recordAnimation(sortType, list.slice())
+		const animations = recordAnimation(id, list.slice())
 		await startBarAnimation(animations)
 	}
 
@@ -65,9 +65,9 @@
 	}
 
 	$effect(() => {
-		registrator.register(sortType, sort)
+		registrator.register(id, sort)
 
-		return () => registrator.unregister(sortType)
+		return () => registrator.unregister(id)
 	})
 </script>
 

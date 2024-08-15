@@ -3,5 +3,6 @@ export default {
 	semi: false,
 	singleQuote: true,
 	arrowParens: 'avoid',
-	plugins: ['prettier-plugin-svelte', 'prettier-plugin-tailwindcss'],
+	plugins: ['prettier-plugin-svelte'],
+	overrides: [{ files: '*.svelte', options: { parser: 'svelte' } }],
 }
