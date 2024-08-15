@@ -1,5 +1,5 @@
 <script>
-	import Toolbar from './toolbar/Toolbar.svelte'
+	import Toolbar from './toolbar/toolbar.svelte'
 	import Bars from './bars-mode/bars.svelte'
 	import Card from './cards/card.svelte'
 	import Images from './image-mode/images.svelte'

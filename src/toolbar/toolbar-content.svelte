@@ -1,8 +1,8 @@
 <script>
-	import ModeSelect from './ModeSelect.svelte'
-	import Button from '../lib/ui/button/Button.svelte'
+	import ModeSelect from './mode-select.svelte'
+	import Button from '../lib/ui/button/button.svelte'
 	import Icon from '../lib/ui/Icon.svelte'
-	import BarsOptions from './options/BarsOptions.svelte'
+	import BarsOptions from './options/barsOptions.svelte'
 	import ImageOptions from './options/ImageOptions.svelte'
 	import CircleOptions from './options/CircleOptions.svelte'
 
