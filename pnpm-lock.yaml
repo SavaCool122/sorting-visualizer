@@ -10,17 +10,11 @@ importers:
     dependencies:
       bits-ui:
         specifier: ^0.21.13
-        version: 0.21.13(svelte@5.0.0-next.221)
+        version: 0.21.13(svelte@5.0.0-next.222)
     devDependencies:
-      '@melt-ui/pp':
-        specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.76.3(svelte@5.0.0-next.221))(svelte@5.0.0-next.221)
-      '@melt-ui/svelte':
-        specifier: ^0.76.3
-        version: 0.76.3(svelte@5.0.0-next.221)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.1.1
-        version: 3.1.1(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0))
+        version: 3.1.1(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0))
       '@tailwindcss/vite':
         specifier: 4.0.0-alpha.19
         version: 4.0.0-alpha.19(postcss@8.4.38)(vite@5.2.12(lightningcss@1.26.0))
@@ -32,13 +26,13 @@ importers:
         version: 3.2.5
       prettier-plugin-svelte:
         specifier: ^3.2.4
-        version: 3.2.4(prettier@3.2.5)(svelte@5.0.0-next.221)
+        version: 3.2.4(prettier@3.2.5)(svelte@5.0.0-next.222)
       prettier-plugin-tailwindcss:
         specifier: ^0.5.14
-        version: 0.5.14(prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.221))(prettier@3.2.5)
+        version: 0.5.14(prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.222))(prettier@3.2.5)
       svelte:
-        specifier: 5.0.0-next.221
-        version: 5.0.0-next.221
+        specifier: 5.0.0-next.222
+        version: 5.0.0-next.222
       tailwindcss:
         specifier: 4.0.0-alpha.19
         version: 4.0.0-alpha.19
@@ -220,19 +214,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@melt-ui/pp@0.3.2':
-    resolution: {integrity: sha512-xKkPvaIAFinklLXcQOpwZ8YSpqAFxykjWf8Y/fSJQwsixV/0rcFs07hJ49hJjPy5vItvw5Qa0uOjzFUbXzBypQ==}
-    peerDependencies:
-      '@melt-ui/svelte': '>= 0.29.0'
-      svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
-
   '@melt-ui/svelte@0.76.2':
     resolution: {integrity: sha512-7SbOa11tXUS95T3fReL+dwDs5FyJtCEqrqG3inRziDws346SYLsxOQ6HmX+4BkIsQh1R8U3XNa+EMmdMt38lMA==}
-    peerDependencies:
-      svelte: '>=3 <5'
-
-  '@melt-ui/svelte@0.76.3':
-    resolution: {integrity: sha512-fEtwHnOVLH0eNwtr+7pX5JQVtOL2XWVFA0/xrNU0yL6NkEpv++4NUwaaulGZC4nVmVG/gIA1JK2fx5M0u01TlA==}
     peerDependencies:
       svelte: '>=3 <5'
 
@@ -464,9 +447,6 @@ packages:
   esrap@1.2.2:
     resolution: {integrity: sha512-F2pSJklxx1BlQIQgooczXCPHmcWpn6EsP5oo73LQfonG9fIlIENQ8vMmfGXeojP9MrkzUNAfyU5vdFlR9shHAw==}
 
-  estree-walker@3.0.3:
-    resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
-
   focus-trap@7.5.4:
     resolution: {integrity: sha512-N7kHdlgsO/v+iD/dMoJKtsSqs5Dz/dXZVebRgJw23LDk+jMi/974zyiOYDziY2JPp8xivq9BmUGwIJMiuSBi7w==}
 
@@ -672,8 +652,8 @@ packages:
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
 
-  svelte@5.0.0-next.221:
-    resolution: {integrity: sha512-Cen/f3FLWI9C2z6fwPZmopD609+eMGkdwsf010EyGQeB+vyuree7bgaGxSVUbN0yMGx+2ztYw2RfjIji+YiBgA==}
+  svelte@5.0.0-next.222:
+    resolution: {integrity: sha512-+dPkIIyoqDYVwBBJL/nu3at8oCfg5jsUx+/qLl6/l2QpLrXVN4zfe9VS4rc//qNJmA59i/TBzWGRl/KTplQVTw==}
     engines: {node: '>=18'}
 
   tabbable@6.2.0:
@@ -832,14 +812,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.76.3(svelte@5.0.0-next.221))(svelte@5.0.0-next.221)':
-    dependencies:
-      '@melt-ui/svelte': 0.76.3(svelte@5.0.0-next.221)
-      estree-walker: 3.0.3
-      magic-string: 0.30.10
-      svelte: 5.0.0-next.221
-
-  '@melt-ui/svelte@0.76.2(svelte@5.0.0-next.221)':
+  '@melt-ui/svelte@0.76.2(svelte@5.0.0-next.222)':
     dependencies:
       '@floating-ui/core': 1.6.2
       '@floating-ui/dom': 1.6.5
@@ -847,17 +820,7 @@ snapshots:
       dequal: 2.0.3
       focus-trap: 7.5.4
       nanoid: 5.0.7
-      svelte: 5.0.0-next.221
-
-  '@melt-ui/svelte@0.76.3(svelte@5.0.0-next.221)':
-    dependencies:
-      '@floating-ui/core': 1.6.2
-      '@floating-ui/dom': 1.6.5
-      '@internationalized/date': 3.5.4
-      dequal: 2.0.3
-      focus-trap: 7.5.4
-      nanoid: 5.0.7
-      svelte: 5.0.0-next.221
+      svelte: 5.0.0-next.222
 
   '@rollup/rollup-android-arm-eabi@4.18.0':
     optional: true
@@ -907,24 +870,24 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.18.0':
     optional: true
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0)))(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0)))(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0))
+      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0))
       debug: 4.3.5
-      svelte: 5.0.0-next.221
+      svelte: 5.0.0-next.222
       vite: 5.2.12(lightningcss@1.26.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0))':
+  '@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0)))(svelte@5.0.0-next.221)(vite@5.2.12(lightningcss@1.26.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0)))(svelte@5.0.0-next.222)(vite@5.2.12(lightningcss@1.26.0))
       debug: 4.3.5
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.10
-      svelte: 5.0.0-next.221
-      svelte-hmr: 0.16.0(svelte@5.0.0-next.221)
+      svelte: 5.0.0-next.222
+      svelte-hmr: 0.16.0(svelte@5.0.0-next.222)
       vite: 5.2.12(lightningcss@1.26.0)
       vitefu: 0.2.5(vite@5.2.12(lightningcss@1.26.0))
     transitivePeerDependencies:
@@ -1006,12 +969,12 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  bits-ui@0.21.13(svelte@5.0.0-next.221):
+  bits-ui@0.21.13(svelte@5.0.0-next.222):
     dependencies:
       '@internationalized/date': 3.5.4
-      '@melt-ui/svelte': 0.76.2(svelte@5.0.0-next.221)
+      '@melt-ui/svelte': 0.76.2(svelte@5.0.0-next.222)
       nanoid: 5.0.7
-      svelte: 5.0.0-next.221
+      svelte: 5.0.0-next.222
 
   clsx@2.1.1: {}
 
@@ -1056,10 +1019,6 @@ snapshots:
   esrap@1.2.2:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@types/estree': 1.0.5
-
-  estree-walker@3.0.3:
-    dependencies:
       '@types/estree': 1.0.5
 
   focus-trap@7.5.4:
@@ -1148,16 +1107,16 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
-  prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.221):
+  prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.222):
     dependencies:
       prettier: 3.2.5
-      svelte: 5.0.0-next.221
+      svelte: 5.0.0-next.222
 
-  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.221))(prettier@3.2.5):
+  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-svelte@3.2.4(prettier@3.2.5)(svelte@5.0.0-next.222))(prettier@3.2.5):
     dependencies:
       prettier: 3.2.5
     optionalDependencies:
-      prettier-plugin-svelte: 3.2.4(prettier@3.2.5)(svelte@5.0.0-next.221)
+      prettier-plugin-svelte: 3.2.4(prettier@3.2.5)(svelte@5.0.0-next.222)
 
   prettier@3.2.5: {}
 
@@ -1185,11 +1144,11 @@ snapshots:
 
   source-map-js@1.2.0: {}
 
-  svelte-hmr@0.16.0(svelte@5.0.0-next.221):
+  svelte-hmr@0.16.0(svelte@5.0.0-next.222):
     dependencies:
-      svelte: 5.0.0-next.221
+      svelte: 5.0.0-next.222
 
-  svelte@5.0.0-next.221:
+  svelte@5.0.0-next.222:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.4.15
