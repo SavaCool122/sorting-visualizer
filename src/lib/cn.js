@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import clsx from 'clsx/lite'
 
 /** @param {...import('clsx').ClassValue} inputs */
 export const cn = (...inputs) => {
