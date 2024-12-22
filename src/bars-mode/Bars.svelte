@@ -5,7 +5,7 @@
 	import { flip } from 'svelte/animate'
 	import { sineInOut } from 'svelte/easing'
 	import { randomArray } from '../core/random-array.js'
-	import config from '../config.js'
+	import config from '../lib/config.js'
 	import { delay } from '../core/animations/delay.js'
 	import { STATUS } from '../core/state/status'
 	import { shuffle } from '../core/shuffle'

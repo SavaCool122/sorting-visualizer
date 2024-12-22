@@ -1,5 +1,4 @@
-
-<script>
+<!-- <script>
 	import { Label, RadioGroup } from "bits-ui";
 
 	let { options = [], value = $bindable(), disabled = false, ...rest } = $props()
@@ -18,5 +17,4 @@
 	<Label.Root for="amazing" class="pl-3">Amazing</Label.Root>
 </div>
 	{/each}
-</RadioGroup.Root>
-
+</RadioGroup.Root> -->

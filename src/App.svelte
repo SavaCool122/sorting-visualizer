@@ -1,16 +1,16 @@
 <script>
-	// import Toolbar from './toolbar/toolbar.svelte'
+	import './lib/css/global.css'
 	import Bars from './bars-mode/bars.svelte'
 	// import Images from './image-mode/images.svelte'
 	import { createState } from './core/state/sort-state.svelte.js'
 	import { sortRegistrator } from './core/state/sort-registrator.js'
 	import { SORT_TYPE } from './core/state/sort-type.js'
 	import Card from './cards/card.svelte'
+	import Toolbar from './toolbar/toolbar.svelte'
 
-	// let mode = $state('bars')
-	let options = $state({
-		type: 'random',
-	})
+	let mode = $state('bars')
+
+	let options = $state({ type: 'random' })
 
 	const sortTypeList = new Set(Object.keys(SORT_TYPE))
 
@@ -24,18 +24,15 @@
 </script>
 
 <div
-	class="relative grid place-items-center gap-4 p-4 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
+	class="relative grid place-items-center gap-4 p-2 md:grid-cols-2 md:p-9 lg:h-screen lg:grid-cols-3"
 >
-	<!-- <Toolbar show={sortState.isShow} block={sortState.isBlock} {sort} bind:mode bind:options /> -->
-
-	{#each sortState.state as sort}
+	{#each sortState.value as sort}
 		<Card id={sort.id} bind:status={sort.status}>
-			<Bars id={sort.id} bind:status={sort.status} {registrator} {options} />
-			<!-- {#if mode === 'bars'}
-
+			{#if mode === 'bars'}
+				<Bars id={sort.id} bind:status={sort.status} {registrator} {options} />
 			{:else}
-				<Images bind:status={sort.status} {registrator} {options} sortType={sort.id} />
-			{/if} -->
+				<!-- <Images id={sort.id} bind:status={sort.status} {registrator} {options} /> -->
+			{/if}
 		</Card>
 	{/each}
 </div>

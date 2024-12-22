@@ -35,12 +35,13 @@ export function createState(sortTypeList, registrator) {
 	let selectedSorts = $derived(sortsState.filter(sort => sort.status === STATUS.SELECTED))
 
 	let isShow = $derived(sortsState.some(sort => sort.status === STATUS.SELECTED))
-	let isBlock = $derived(
+
+	let isDisabled = $derived(
 		sortsState.some(sort => [STATUS.SORTING, STATUS.DONE].includes(sort.status)),
 	)
 
 	return {
-		get state() {
+		get value() {
 			return sortsState
 		},
 		get selectedSorts() {
@@ -49,8 +50,8 @@ export function createState(sortTypeList, registrator) {
 		get isShow() {
 			return isShow
 		},
-		get isBlock() {
-			return isBlock
+		get isDisabled() {
+			return isDisabled
 		},
 		startSeletedSort,
 		startAllSorts,

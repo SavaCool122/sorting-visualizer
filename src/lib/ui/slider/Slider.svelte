@@ -1,6 +1,6 @@
 <script>
 	import './slider.css'
-	import config from '../../../config.js'
+	import config from '../../config.js'
 
 	export let label = config.slider.max
 	export let disabled = false
