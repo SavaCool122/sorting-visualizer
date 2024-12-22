@@ -1,11 +1,11 @@
 <script>
 	import Icon from '../lib/components/icon.svelte'
-	import RadioGroup from '../lib/components/radio-group.svelte'
-	import ToggleButton from '../lib/components/toggle-button.svelte'
+	import RadioGroup from './radio-group.svelte'
+	import ToggleButton from './toggle-button.svelte'
 
 	let { mode = $bindable(), type = $bindable() } = $props()
 
-	let opened = $state(false)
+	let opened = $state(true)
 
 	const modeOptions = ['bar', 'grid', 'image']
 	const typeOption = ['random', 'reversed', 'few-unique']
@@ -28,11 +28,15 @@
 	</div>
 
 	{#if opened}
-		<div class="grid grid-cols-3 gap-2 pt-3">
+		<div class="grid max-w-fit grid-cols-4 gap-2 pt-3">
 			<div>mode:</div>
-			<RadioGroup bind:value={mode} options={modeOptions} />
+			<div class="col-span-3">
+				<RadioGroup bind:value={mode} options={modeOptions} />
+			</div>
 			<div>type:</div>
-			<RadioGroup bind:value={type} options={typeOption} />
+			<div class="col-span-3">
+				<RadioGroup bind:value={type} options={typeOption} />
+			</div>
 		</div>
 	{/if}
 </div>

@@ -1,6 +1,6 @@
 <script>
-	import Card from '../lib/components/card.svelte'
-	import Status from '../lib/components/status-badge/status.svelte'
+	import Card from './card.svelte'
+	import Status from './status-badge/status.svelte'
 	import { SORT_LIST } from './constants.js'
 	import Bars from './modes/bars/bars.svelte'
 </script>

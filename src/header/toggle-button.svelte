@@ -1,6 +1,6 @@
 <script>
 	import { createSync, createToggle, melt } from '@melt-ui/svelte'
-	import { cn } from '../css/cn.js'
+	import { cn } from '../lib/css/cn.js'
 
 	let { class: className, children, value = $bindable(), icon, disabled } = $props()
 

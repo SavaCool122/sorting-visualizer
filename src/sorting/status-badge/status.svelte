@@ -1,5 +1,5 @@
 <script>
-	import { cn } from '../../css/cn.js'
+	import { cn } from '../../lib/css/cn.js'
 	import { STATUS } from './constants.js'
 
 	const { value = STATUS.READY } = $props()
