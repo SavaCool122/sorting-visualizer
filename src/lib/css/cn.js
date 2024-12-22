@@ -1,6 +1,4 @@
 import clsx from 'clsx/lite'
 
-/** @param {...import('clsx').ClassValue} inputs */
-export const cn = (...inputs) => {
-	return clsx(inputs)
-}
+/** @type {(...inputs: string[]) => string}  */
+export const cn = clsx

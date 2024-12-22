@@ -1,12 +1,12 @@
 <script>
 	import './card.css'
 	import { generateCards } from './image-cards-generator.js'
-	import { shuffle } from '../core/shuffle.js'
+	import { shuffle } from '../../core/shuffle.js'
 	import { sineInOut } from 'svelte/easing'
 	import { flip } from 'svelte/animate'
-	import { startAnimation } from '../core/animations/start-animation.js'
-	import { recordAnimation } from '../core/sorting-algorithms-fabric'
-	import { STATUS } from '../core/state/status'
+	import { startAnimation } from '../../core/animations/start-animation.js'
+	import { recordAnimation } from '../../core/sorting-algorithms-fabric'
+	import { STATUS } from '../../core/state/status'
 
 	let { status = $bindable(), registrator, sortType, options } = $props()
 

@@ -1,29 +1,37 @@
 @import 'tailwindcss';
 
 @font-face {
-	font-family: 'multicolore';
-	src: url('/multicolore.woff2');
+	font-family: 'space-grotesk';
+	src: url('/space-grotesk.ttf');
 }
 
 @theme {
+	--color-white: oklch(100% 0 0);
+	--color-black: oklch(17.43% 0.0048 196.72);
 	--color-primary: oklch(93% 0.121 97);
 	--color-secondary: oklch(83% 0.1 244);
-	--color-success: oklch(89.5% 0.1 146);
-	--color-chart: #eaf7fe;
+
+	--color-ready: oklch(92.24% 0.0526 222.37);
+	/* --color-in-progress: oklch(96.58% 0.15 113.23); */
+	/* --color-done: oklch(86.76% 0.28 143.54); */
+	--color-in-progress: oklch(80.45% 0.13 310.39);
+	--color-done: oklch(86.76% 0.28 143.54);
 }
 
+:focus,
 :focus-visible {
-	outline: 4px dotted var(--primary);
-	outline-offset: 2px;
-	/* border-radius: 2px; */
+	outline: 2px dotted var(--color-black);
+	outline-offset: 1px;
 }
 
 html {
-	font-family: 'multicolore', sans-serif;
-	font-weight: lighter;
+	font-family: 'space-grotesk', sans-serif;
+	font-weight: normal;
+	line-height: 1;
 	color: #333;
 }
 
 body {
-	background: var(--color-secondary);
+	background: var(--color-white);
+	font-size: 14px;
 }

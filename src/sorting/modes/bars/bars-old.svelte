@@ -1,14 +1,14 @@
 <script>
-	import Bar from './bar.svelte'
-	import { recordAnimation } from '../core/sorting-algorithms-fabric.js'
-	import { startAnimation } from '../core/animations/start-animation.js'
+	import Bar from './bar-old.svelte'
+	import { recordAnimation } from '../../core/sorting-algorithms-fabric.js'
+	import { startAnimation } from '../../core/animations/start-animation.js'
 	import { flip } from 'svelte/animate'
 	import { sineInOut } from 'svelte/easing'
-	import { randomArray } from '../core/random-array.js'
-	import config from '../lib/config.js'
-	import { delay } from '../core/animations/delay.js'
-	import { STATUS } from '../core/state/status'
-	import { shuffle } from '../core/shuffle'
+	import { randomArray } from '../../core/random-array.js'
+	import { delay } from '../../core/animations/delay.js'
+	import { STATUS } from '../../core/state/status'
+	import { shuffle } from '../../core/shuffle'
+	import { MAX_ARRAY_LENGTH } from '../../core/constants.js'
 
 	let { status = $bindable(), id, registrator, options } = $props()
 
@@ -26,10 +26,10 @@
 	}
 
 	function createArray(type) {
-		if (type === 'random') return randomArray(config.slider.max)
-		if (type === 'reversed') return randomArray(config.slider.max).sort((a, b) => b - a)
-		if (type === 'few-unique') return fewUnique(config.slider.max)
-		return randomArray(config.slider.max)
+		if (type === 'random') return randomArray(MAX_ARRAY_LENGTH)
+		if (type === 'reversed') return randomArray(MAX_ARRAY_LENGTH).sort((a, b) => b - a)
+		if (type === 'few-unique') return fewUnique(MAX_ARRAY_LENGTH)
+		return randomArray(MAX_ARRAY_LENGTH)
 	}
 
 	let list = $derived(createArray(options.type))
