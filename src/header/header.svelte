@@ -1,30 +1,38 @@
 <script>
-	// import ModeSelect from './mode-select/mode-select.svelte'
-	// import OpenToolbar from './open-toolbar.svelte'
+	import Icon from '../lib/components/icon.svelte'
+	import RadioGroup from '../lib/components/radio-group.svelte'
+	import ToggleButton from '../lib/components/toggle-button.svelte'
 
-	let { children, disabled } = $props()
+	let { mode = $bindable(), type = $bindable() } = $props()
 
-	let showToolbar = $state(false)
+	let opened = $state(false)
 
-	const modeOptions = [
-		{ value: 'bar', disabled },
-		{ value: 'image', disabled },
-		{ value: 'circle', disabled: true },
-	]
-
-	const typeOption = [
-		{ value: 'random', disabled },
-		{ value: 'reversed', disabled },
-		{ value: 'few-unique', disabled },
-	]
+	const modeOptions = ['bar', 'grid', 'image']
+	const typeOption = ['random', 'reversed', 'few-unique']
 </script>
 
-<div
-	class="sticky top-0 z-10 flex justify-between border-b border-black/10 bg-white py-4 font-medium"
->
-	<h1>Sorting Visualizer</h1>
-	<button>More</button>
-	<!-- <OpenToolbar onclick={() => (showToolbar = !showToolbar)} />
-	<ModeSelect bind:mode options={modeOptions} />
-	<ModeSelect bind:mode options={typeOption} /> -->
+<div class="sticky top-0 z-10 border-b border-black/10 bg-white py-4">
+	<div class="flex justify-between font-medium">
+		<h1>Sorting Visualizer</h1>
+
+		<div>
+			<ToggleButton class="mr-1">Start</ToggleButton>
+
+			<ToggleButton bind:value={opened}>
+				More
+				{#snippet icon()}
+					<Icon size="14" name="close" class="ml-1 shrink-0" />
+				{/snippet}
+			</ToggleButton>
+		</div>
+	</div>
+
+	{#if opened}
+		<div class="grid grid-cols-3 gap-2 pt-3">
+			<div>mode:</div>
+			<RadioGroup bind:value={mode} options={modeOptions} />
+			<div>type:</div>
+			<RadioGroup bind:value={type} options={typeOption} />
+		</div>
+	{/if}
 </div>
