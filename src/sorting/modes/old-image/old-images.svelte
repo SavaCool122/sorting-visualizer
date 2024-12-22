@@ -1,6 +1,6 @@
 <script>
 	import './card.css'
-	import { generateCards } from './image-cards-generator.js'
+	import { generateCards } from './old-image-cards-generator.jsr.js'
 	import { shuffle } from '../../core/shuffle.js'
 	import { sineInOut } from 'svelte/easing'
 	import { flip } from 'svelte/animate'
