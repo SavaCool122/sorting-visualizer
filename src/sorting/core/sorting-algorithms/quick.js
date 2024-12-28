@@ -1,41 +1,47 @@
-import { createRecordSwap, filterSameValues } from '../animations/record-swap.js'
+/**
+ * @param {number[]} inputArray
+ * @param {(arr, i, j) => void} onSwap
+ * @returns {number[]}
+ */
+function quickSort(inputArray, onSwap = () => {}) {
+	const arr = [...inputArray]
+	function partition(low, high) {
+		const pivot = arr[high]
+		let i = low - 1
 
-function quickSort(arr, left = 0, right = arr.length - 1) {
-	if (left < right) {
-		const pivotIndex = partition(arr, left, right)
-		quickSort(arr, left, pivotIndex - 1) // Sort left subarray
-		quickSort(arr, pivotIndex + 1, right) // Sort right subarray
+		for (let j = low; j < high; j++) {
+			if (arr[j] <= pivot) {
+				i++
+				if (i !== j) {
+					;[arr[i], arr[j]] = [arr[j], arr[i]]
+					onSwap(arr, i, j)
+				}
+			}
+		}
+
+		if (i + 1 !== high) {
+			;[arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]
+			onSwap(arr, i + 1, high)
+		}
+
+		return i + 1
 	}
-	return arr
-}
 
-function partition(arr, left, right) {
-	const pivot = arr[right] // Choose the rightmost element as pivot
-	let i = left - 1
+	function sort(low, high) {
+		if (low < high) {
+			const pivotIndex = partition(low, high)
 
-	for (let j = left; j < right; j++) {
-		if (arr[j] < pivot) {
-			i++
-			swap(arr, i, j)
+			sort(low, pivotIndex - 1)
+			sort(pivotIndex + 1, high)
 		}
 	}
 
-	swap(arr, i + 1, right) // Place the pivot element in its correct position
-	return i + 1 // Return the pivot index
+	sort(0, arr.length - 1)
+	return arr
 }
 
-const animations = []
-const recordSwap = createRecordSwap(animations)
-
-function swap(arr, i, j) {
-	recordSwap(i, j, (i, j) => {
-		const temp = arr[i]
-		arr[i] = arr[j]
-		arr[j] = temp
-	})
-}
-
-export function getQuickSortAnimations(items) {
-	quickSort(items)
-	return filterSameValues(animations)
+export function getQuickSortAnimations(arrayToSort) {
+	const animations = []
+	quickSort(arrayToSort, (_, i, j) => animations.push(i, j))
+	return animations
 }
