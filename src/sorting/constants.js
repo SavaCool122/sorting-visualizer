@@ -1,12 +1,12 @@
-export const SORT_TYPE = {
-	QUICK: 'QUICK',
-	MERGE: 'MERGE',
-	BUBBLE: 'BUBBLE',
-	SELECT: 'SELECT',
-	INSERT: 'INSERT',
-	HEAP: 'HEAP',
-	SHELL: 'SHELL',
-	SHAKER: 'SHAKER',
+export const SortTypes = {
+	quick: 'quick',
+	merge: 'merge',
+	bubble: 'bubble',
+	select: 'select',
+	insert: 'insert',
+	heap: 'heap',
+	shell: 'shell',
+	shaker: 'shaker',
 }
 
-export const SORT_LIST = Object.keys(SORT_TYPE)
+export const SortList = Object.keys(SortTypes)

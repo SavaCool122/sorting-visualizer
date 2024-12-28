@@ -1,14 +1,14 @@
 <script>
-	import Bar from './bar-old.svelte'
-	import { recordAnimation } from '../../core/sorting-algorithms-fabric.js'
-	import { startAnimation } from '../../core/animations/start-animation.js'
+	import Bar from './_legacy-bar.svelte'
+	import { recordAnimation } from '../../sorting-algorithms/sorting-algorithms.js'
+	import { animate } from '../../animations/start-animation.js'
 	import { flip } from 'svelte/animate'
 	import { sineInOut } from 'svelte/easing'
 	import { randomArray } from '../../core/random-array.js'
-	import { delay } from '../../core/animations/delay.js'
+	import { delay } from '../../animations/delay.js'
 	import { STATUS } from '../../core/state/status'
-	import { shuffle } from '../../core/shuffle'
-	import { MAX_ARRAY_LENGTH } from '../../core/constants.js'
+	import { shuffle } from '../../array-utils/shuffle'
+	import { MAX_ARRAY_LENGTH } from '../../array-utils/constants.js'
 
 	let { status = $bindable(), id, registrator, options } = $props()
 
@@ -52,7 +52,7 @@
 	}
 
 	async function startBarAnimation(animations) {
-		await startAnimation(animations, {
+		await animate(animations, {
 			onStep([first, second]) {
 				const temp = alist[first]
 				alist[first] = alist[second]

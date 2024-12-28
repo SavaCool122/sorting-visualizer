@@ -1,11 +1,11 @@
 <script>
 	import './card.css'
 	import { generateCards } from './old-image-cards-generator.jsr.js'
-	import { shuffle } from '../../core/shuffle.js'
+	import { shuffle } from '../../array-utils/shuffle.js'
 	import { sineInOut } from 'svelte/easing'
 	import { flip } from 'svelte/animate'
-	import { startAnimation } from '../../core/animations/start-animation.js'
-	import { recordAnimation } from '../../core/sorting-algorithms-fabric'
+	import { animate } from '../../animations/start-animation.js'
+	import { recordAnimation } from '../../sorting-algorithms/sorting-algorithms'
 	import { STATUS } from '../../core/state/status'
 
 	let { status = $bindable(), registrator, sortType, options } = $props()
@@ -22,7 +22,7 @@
 	}
 
 	async function startBarAnimation(animations) {
-		await startAnimation(animations, {
+		await animate(animations, {
 			speed: ANIMTAION_SPEED,
 			onStep([first, second]) {
 				const temp = alist[first]

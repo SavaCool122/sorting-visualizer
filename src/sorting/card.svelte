@@ -1,10 +1,10 @@
 <script>
-	const { sort, status, children } = $props()
+	const { title, status, children } = $props()
 </script>
 
 <div class="min-h-[275px] border-b border-black/10">
-	<div class=" border-b border-black/10 py-2 text-4xl">
-		{sort}
+	<div class=" border-b border-black/10 py-2 text-4xl uppercase">
+		{title}
 	</div>
 	<div class="border-b border-black/10 py-1">
 		{@render status()}

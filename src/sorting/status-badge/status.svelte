@@ -1,12 +1,13 @@
 <script>
 	import { cn } from '../../lib/css/cn.js'
-	import { STATUS } from './constants.js'
+	import { Statuses } from '../../lib/constants.js'
 
-	const { value = STATUS.READY } = $props()
+	const { value = Statuses.ready } = $props()
+
 	const variants = {
-		[STATUS.READY]: 'bg-ready',
-		[STATUS.IN_PROGRESS]: 'bg-in-progress',
-		[STATUS.DONE]: 'bg-done',
+		[Statuses.ready]: 'bg-ready',
+		[Statuses.in_progress]: 'bg-in-progress',
+		[Statuses.done]: 'bg-done',
 	}
 </script>
 

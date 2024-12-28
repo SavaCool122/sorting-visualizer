@@ -1,14 +1,20 @@
 <script>
 	import Icon from '../lib/components/icon.svelte'
+	import { ArrayTypes, Statuses } from '../lib/constants.js'
 	import RadioGroup from './radio-group.svelte'
 	import ToggleButton from './toggle-button.svelte'
 
-	let { mode = $bindable(), type = $bindable() } = $props()
+	let { mode = $bindable(), type = $bindable(), status = $bindable() } = $props()
 
-	let opened = $state(true)
+	let opened = $state(false)
+	let sortStarted = $state(false)
 
-	const modeOptions = ['bar', 'grid', 'image']
-	const typeOption = ['random', 'reversed', 'few-unique']
+	$effect(() => {
+		if (sortStarted) status = Statuses.in_progress
+	})
+
+	const modeOptions = ['bar', 'grid'] // 'bar', 'grid', 'image'
+	const typeOption = [...Object.keys(ArrayTypes)]
 </script>
 
 <div class="sticky top-0 z-10 border-b border-black/10 bg-white py-4">
@@ -16,7 +22,7 @@
 		<h1>Sorting Visualizer</h1>
 
 		<div>
-			<ToggleButton class="mr-1">Start</ToggleButton>
+			<ToggleButton class="mr-1" bind:value={sortStarted}>Start</ToggleButton>
 
 			<ToggleButton bind:value={opened}>
 				More

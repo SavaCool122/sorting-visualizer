@@ -1,18 +1,15 @@
 <script>
-	import Card from './card.svelte'
-	import Status from './status-badge/status.svelte'
-	import { SORT_LIST } from './constants.js'
-	import Bars from './modes/bars/bars.svelte'
+	import { makeArray } from './array-utils/make-array.js'
+	import { SortList } from './constants.js'
+	import SortingItem from './sorting-item.svelte'
+
+	let { status = $bindable(), arrayType } = $props()
+
+	let array = $state(makeArray(arrayType))
 </script>
 
 <div class="grid grid-cols-2 gap-x-5">
-	{#each SORT_LIST as sort}
-		<Card {sort}>
-			{#snippet status()}
-				<Status />
-			{/snippet}
-
-			<Bars />
-		</Card>
+	{#each SortList as sortType, i}
+		<SortingItem bind:sortStatus={status[i]} {sortType} {array} />
 	{/each}
 </div>
