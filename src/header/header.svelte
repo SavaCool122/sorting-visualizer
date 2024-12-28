@@ -4,14 +4,9 @@
 	import RadioGroup from './radio-group.svelte'
 	import ToggleButton from './toggle-button.svelte'
 
-	let { mode = $bindable(), type = $bindable(), status = $bindable() } = $props()
+	let { mode = $bindable(), type = $bindable() } = $props()
 
 	let opened = $state(false)
-	let sortStarted = $state(false)
-
-	$effect(() => {
-		if (sortStarted) status = Statuses.in_progress
-	})
 
 	const modeOptions = ['bar', 'grid'] // 'bar', 'grid', 'image'
 	const typeOption = [...Object.keys(ArrayTypes)]
@@ -22,7 +17,7 @@
 		<h1>Sorting Visualizer</h1>
 
 		<div>
-			<ToggleButton class="mr-1" bind:value={sortStarted}>Start</ToggleButton>
+			<ToggleButton class="mr-1">Start</ToggleButton>
 
 			<ToggleButton bind:value={opened}>
 				More

@@ -1,6 +1,6 @@
 <script>
 	import { flip } from 'svelte/animate'
-	import { ANIMATION_SPEED_MS } from '../../animations/constants.js'
+	import { ANIMATION_SPEED_MS } from '../animations/constants.js'
 
 	const { array } = $props()
 </script>

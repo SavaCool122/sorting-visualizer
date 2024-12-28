@@ -17,7 +17,7 @@
 </script>
 
 <Container>
-	<Header bind:mode={settings.mode} bind:type={settings.type} bind:status />
+	<Header bind:mode={settings.mode} bind:type={settings.type} />
 
 	<div class="mt-4 mb-2 font-medium text-black/60">Selected Sorting</div>
 

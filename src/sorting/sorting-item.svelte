@@ -2,9 +2,9 @@
 	import { Statuses } from '../lib/constants.js'
 	import Card from './card.svelte'
 	import Status from './status-badge/status.svelte'
-	import Bars from './modes/bars/bars.svelte'
+	import Bars from './modes/bars.svelte'
 	import { animate } from './animations/start-animation.js'
-	import { swap } from './animations/swap.js'
+	import { swap } from './array-utils/swap.js'
 	import { recordSwaps } from './record-swaps.js'
 
 	let { array: initialArray, sortStatus = $bindable(), sortType } = $props()
