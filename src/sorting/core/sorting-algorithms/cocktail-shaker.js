@@ -1,42 +1,51 @@
 import { createRecordSwap } from '../animations/record-swap.js'
 
-function cocktailShakerSort(arr) {
-	let isSorted = true
-	while (isSorted) {
-		isSorted = false
+/**
+ * @param {number[]} inputArray
+ * @param {(arr, i, j) => void} onSwap
+ * @returns {number[]}
+ */
+function cocktailShakerSort(inputArray, onSwap = () => {}) {
+	const arr = [...inputArray]
 
-		for (let i = 0; i < arr.length - 1; i++) {
+	let start = 0
+	let end = arr.length - 1
+	let swapped = true
+
+	while (swapped) {
+		swapped = false
+
+		for (let i = start; i < end; i++) {
 			if (arr[i] > arr[i + 1]) {
-				swap(arr, i, i + 1)
-				isSorted = true
+				;[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
+				onSwap(arr, i, i + 1)
+				swapped = true
 			}
 		}
 
-		if (!isSorted) break
+		if (!swapped) {
+			break
+		}
 
-		isSorted = false
+		swapped = false
+		end--
 
-		for (let j = arr.length - 1; j > 0; j--) {
-			if (arr[j - 1] > arr[j]) {
-				swap(arr, j - 1, j)
-				isSorted = true
+		for (let i = end; i > start; i--) {
+			if (arr[i - 1] > arr[i]) {
+				;[arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+				onSwap(arr, i - 1, i)
+				swapped = true
 			}
 		}
+
+		start++
 	}
+
+	return arr
 }
 
-let animations = []
-const recordSwap = createRecordSwap(animations)
-
-function swap(arr, index1, index2) {
-	recordSwap(index1, index2, (i, j) => {
-		const temp = arr[i]
-		arr[i] = arr[j]
-		arr[j] = temp
-	})
-}
-
-export function getCocktailShakerSortAnimations(items) {
-	cocktailShakerSort(items)
+export function getCocktailShakerSortAnimations(arrayToSort) {
+	const animations = []
+	cocktailShakerSort(arrayToSort, (_, i, j) => animations.push(i, j))
 	return animations
 }
