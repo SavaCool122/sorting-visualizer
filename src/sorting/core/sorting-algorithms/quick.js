@@ -39,9 +39,3 @@ function quickSort(inputArray, onSwap = () => {}) {
 	sort(0, arr.length - 1)
 	return arr
 }
-
-export function getQuickSortAnimations(arrayToSort) {
-	const animations = []
-	quickSort(arrayToSort, (_, i, j) => animations.push(i, j))
-	return animations
-}

@@ -1,54 +1,42 @@
-import { createRecordSwap } from '../animations/record-swap.js'
+/**
+ * @param {number[]} inputArray
+ * @param {(arr, i, j) => void} onSwap
+ * @returns {number[]}
+ */
+function heapSort(inputArray, onSwap = () => {}) {
+	const arr = [...inputArray]
+	const n = arr.length
 
-function heapify(arr, length, parentIdx) {
-	let largest = parentIdx
-	let left = parentIdx * 2 + 1
-	let right = left + 1
+	function heapify(size, rootIndex) {
+		let largest = rootIndex
+		const leftChild = 2 * rootIndex + 1
+		const rightChild = 2 * rootIndex + 2
 
-	if (left < length && arr[left] > arr[largest]) {
-		largest = left
+		if (leftChild < size && arr[leftChild] > arr[largest]) {
+			largest = leftChild
+		}
+
+		if (rightChild < size && arr[rightChild] > arr[largest]) {
+			largest = rightChild
+		}
+
+		if (largest !== rootIndex) {
+			;[arr[rootIndex], arr[largest]] = [arr[largest], arr[rootIndex]]
+			onSwap(arr, rootIndex, largest)
+			heapify(size, largest)
+		}
 	}
 
-	if (right < length && arr[right] > arr[largest]) {
-		largest = right
+	for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+		heapify(n, i)
 	}
 
-	if (largest !== parentIdx) {
-		swap(arr, parentIdx, largest) // Using swap function here
-		heapify(arr, length, largest)
+	for (let i = n - 1; i > 0; i--) {
+		;[arr[0], arr[i]] = [arr[i], arr[0]]
+		onSwap(arr, 0, i)
+
+		heapify(i, 0)
 	}
+
 	return arr
-}
-
-function heap(arr) {
-	let length = arr.length
-	let lastParentNode = Math.floor(length / 2 - 1)
-	let lastChild = length - 1
-
-	while (lastParentNode >= 0) {
-		heapify(arr, length, lastParentNode)
-		lastParentNode--
-	}
-
-	while (lastChild >= 0) {
-		swap(arr, 0, lastChild) // Using swap function here
-		heapify(arr, lastChild, 0)
-		lastChild--
-	}
-}
-
-let animations = []
-const recordSwap = createRecordSwap(animations)
-
-function swap(arr, index1, index2) {
-	recordSwap(index1, index2, (i, j) => {
-		const temp = arr[i]
-		arr[i] = arr[j]
-		arr[j] = temp
-	})
-}
-
-export function getHeapSortAnimations(list) {
-	heap(list)
-	return animations
 }

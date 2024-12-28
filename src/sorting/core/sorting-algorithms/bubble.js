@@ -18,9 +18,3 @@ function bubbleSort(inputArray, onSwap = () => {}) {
 
 	return arr
 }
-
-export function getBubbleSortAnimations(arrayToSort) {
-	const animations = []
-	bubbleSort(arrayToSort, (_, i, j) => animations.push(i, j))
-	return animations
-}

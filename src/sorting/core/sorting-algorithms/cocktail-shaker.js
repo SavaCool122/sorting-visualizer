@@ -1,5 +1,3 @@
-import { createRecordSwap } from '../animations/record-swap.js'
-
 /**
  * @param {number[]} inputArray
  * @param {(arr, i, j) => void} onSwap
@@ -42,10 +40,4 @@ function cocktailShakerSort(inputArray, onSwap = () => {}) {
 	}
 
 	return arr
-}
-
-export function getCocktailShakerSortAnimations(arrayToSort) {
-	const animations = []
-	cocktailShakerSort(arrayToSort, (_, i, j) => animations.push(i, j))
-	return animations
 }

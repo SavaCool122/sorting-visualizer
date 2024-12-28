@@ -1,59 +1,47 @@
-import { createRecordSwap } from '../animations/record-swap.js'
-
-function mergeSort(arr, start = 0, end = arr.length - 1) {
-	if (start < end) {
-		const middle = Math.floor((start + end) / 2)
-		mergeSort(arr, start, middle)
-		mergeSort(arr, middle + 1, end)
-		merge(arr, start, middle, end)
+/**
+ * @param {number[]} inputArray
+ * @param {(arr, i, j) => void} onSwap
+ * @returns {number[]}
+ */
+function mergeSort(inputArray, onSwap = () => {}) {
+	if (inputArray.length < 2) {
+		return [...inputArray]
 	}
+
+	const middle = Math.floor(inputArray.length / 2)
+	const leftPart = inputArray.slice(0, middle)
+	const rightPart = inputArray.slice(middle)
+
+	const sortedLeft = mergeSort(leftPart, onSwap)
+	const sortedRight = mergeSort(rightPart, onSwap)
+
+	return mergeArrays(sortedLeft, sortedRight, onSwap)
 }
 
-function merge(arr, start, middle, end) {
-	let start2 = middle + 1
+function mergeArrays(leftArr, rightArr, onSwap) {
+	const result = []
+	let i = 0
+	let j = 0
 
-	// If the direct merge is already sorted
-	if (arr[middle] <= arr[start2]) {
-		return
-	}
-
-	// Two pointers to maintain start of both parts to merge
-	while (start <= middle && start2 <= end) {
-		// If element 1 is in right place
-		if (arr[start] <= arr[start2]) {
-			start++
+	while (i < leftArr.length && j < rightArr.length) {
+		if (leftArr[i] <= rightArr[j]) {
+			result.push(leftArr[i])
+			i++
 		} else {
-			let value = arr[start2]
-			let index = start2
-
-			// Shift all the elements between element 1
-			// element 2, right by 1.
-			while (index !== start) {
-				swap(arr, index, index - 1)
-				index--
-			}
-			arr[start] = value
-
-			// Update all the pointers
-			start++
-			middle++
-			start2++
+			result.push(rightArr[j])
+			onSwap(result, j, i)
+			j++
 		}
 	}
-}
 
-let animations = []
-const recordSwap = createRecordSwap(animations)
+	while (i < leftArr.length) {
+		result.push(leftArr[i])
+		i++
+	}
+	while (j < rightArr.length) {
+		result.push(rightArr[j])
+		j++
+	}
 
-function swap(arr, index1, index2) {
-	recordSwap(index1, index2, (i, j) => {
-		const temp = arr[i]
-		arr[i] = arr[j]
-		arr[j] = temp
-	})
-}
-
-export function getMergeSortAnimations(array) {
-	mergeSort(array)
-	return animations
+	return result
 }

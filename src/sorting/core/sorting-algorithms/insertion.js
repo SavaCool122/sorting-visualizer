@@ -1,28 +1,23 @@
-import { createRecordSwap } from '../animations/record-swap.js'
+/**
+ * @param {number[]} inputArray
+ * @param {(arr, i, j) => void} onSwap
+ * @returns {number[]}
+ */
+function insertionSort(inputArray, onSwap = () => {}) {
+	const arr = [...inputArray]
 
-function insertion(arr) {
 	for (let i = 1; i < arr.length; i++) {
 		let j = i
-		while (j > 0 && arr[j] < arr[j - 1]) {
-			swap(arr, j, j - 1)
+		const current = arr[i]
+
+		while (j > 0 && arr[j - 1] > current) {
+			arr[j] = arr[j - 1]
+
+			onSwap(arr, j, j - 1)
 			j--
 		}
+		arr[j] = current
 	}
+
 	return arr
-}
-
-let animations = []
-const recordSwap = createRecordSwap(animations)
-
-function swap(arr, index1, index2) {
-	recordSwap(index1, index2, (i, j) => {
-		const temp = arr[i]
-		arr[i] = arr[j]
-		arr[j] = temp
-	})
-}
-
-export function getInsertionSortAnimations(arr) {
-	insertion(arr)
-	return animations
 }
