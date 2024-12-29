@@ -11,6 +11,6 @@
 	}
 </script>
 
-<span class={cn('py-1/2 px-1rounded-xs text-xs', variants[value])}>
+<span class={cn('py-1/2 font-p2 rounded-xs px-1', variants[value])}>
 	{value}
 </span>

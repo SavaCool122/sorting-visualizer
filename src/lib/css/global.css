@@ -6,6 +6,8 @@
 }
 
 @theme {
+	--ff: 'space-grotesk', sans-serif;
+
 	--color-white: oklch(100% 0 0);
 	--color-black: oklch(17.43% 0.0048 196.72);
 	--color-primary: oklch(93% 0.121 97);
@@ -18,6 +20,31 @@
 	--color-done: oklch(86.76% 0.28 143.54);
 }
 
+@utility font-h1 {
+	font: 35px/1em var(--ff);
+
+	/* lg */
+	@media (min-width: 1024px) {
+		font: 48px/1em var(--ff);
+	}
+	/* xl */
+	@media (min-width: 1280px) {
+		font: 50px/1em var(--ff);
+	}
+	/* 2xl */
+	@media (min-width: 1536px) {
+		font: 65px/1em var(--ff);
+	}
+}
+
+@utility font-p2 {
+	font: 10px/1em var(--ff);
+
+	@media (min-width: 1024px) {
+		font: 14px/1em var(--ff);
+	}
+}
+
 :focus,
 :focus-visible {
 	outline: 2px dotted var(--color-black);
@@ -25,9 +52,10 @@
 }
 
 html {
-	font-family: 'space-grotesk', sans-serif;
+	font-family: var(--ff);
 	font-weight: normal;
 	line-height: 1;
+	font-size: 14px;
 	color: #333;
 }
 

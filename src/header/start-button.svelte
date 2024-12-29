@@ -10,6 +10,10 @@
 	}
 </script>
 
-<button class="mr-1 disabled:line-through" disabled={inProgress()} onclick={clickHandler}>
+<button
+	class="mr-1 cursor-pointer disabled:line-through"
+	disabled={inProgress()}
+	onclick={clickHandler}
+>
 	{inProgress() ? 'In Progress' : 'Start'}
 </button>

@@ -14,7 +14,7 @@
 	$effect(() => sync.pressed(value, pressed => (value = pressed)))
 </script>
 
-<button use:melt={$root} class={cn('disabled:line-through', className)} {disabled}>
+<button use:melt={$root} class={cn('cursor-pointer disabled:line-through', className)} {disabled}>
 	<div class="flex items-center">
 		{@render children()}
 

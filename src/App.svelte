@@ -13,14 +13,12 @@
 			settings.status = Statuses.ready
 		}, 800)
 	}
-
-	$inspect(settings)
 </script>
 
 <Container>
 	<Header bind:mode={settings.mode} bind:type={settings.type} bind:status={settings.status} />
 
-	<div class="mt-4 mb-2 font-medium text-black/60">Selected Sorting</div>
+	<h1 class="font-h1 mt-4 mb-8">Selected Sorting</h1>
 
 	<Sorting status={settings.status} arrayType={settings.type} ondone={markDone} />
 </Container>

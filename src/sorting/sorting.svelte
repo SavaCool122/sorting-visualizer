@@ -31,7 +31,7 @@
 	})
 </script>
 
-<div class="grid grid-cols-2 gap-x-5">
+<div class="flex flex-wrap">
 	{#each sortingList as sort}
 		<SortingItem
 			{array}

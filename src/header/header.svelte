@@ -1,6 +1,8 @@
 <script>
 	import Icon from '../lib/components/icon.svelte'
 	import { ArrayTypes, Statuses } from '../lib/constants.js'
+	import DesktopControls from './desktop-controls.svelte'
+	import MobileControls from './mobile-controls.svelte'
 	import RadioGroup from './radio-group.svelte'
 	import StartButton from './start-button.svelte'
 	import ToggleButton from './toggle-button.svelte'
@@ -14,15 +16,19 @@
 	})
 
 	const modeOptions = ['bar'] // 'bar', 'grid', 'image'
-	const typeOption = [...Object.keys(ArrayTypes)]
+	const typeOptions = [...Object.keys(ArrayTypes)]
 </script>
 
 <div class="sticky top-0 z-10 border-b border-black/10 bg-white py-4">
-	<div class="flex justify-between font-medium">
-		<h1>Sorting Visualizer</h1>
+	<div class="flex justify-between">
+		<div>Sorting Visualizer</div>
 
 		<div>
 			<StartButton bind:status />
+
+			{#if opened}
+				<DesktopControls bind:mode bind:type {modeOptions} {typeOptions} />
+			{/if}
 
 			<ToggleButton bind:value={opened} disabled={status === Statuses.in_progress}>
 				More
@@ -34,15 +40,6 @@
 	</div>
 
 	{#if opened}
-		<div class="grid max-w-fit grid-cols-4 gap-2 pt-3">
-			<div>mode:</div>
-			<div class="col-span-3">
-				<RadioGroup bind:value={mode} options={modeOptions} />
-			</div>
-			<div>type:</div>
-			<div class="col-span-3">
-				<RadioGroup bind:value={type} options={typeOption} />
-			</div>
-		</div>
+		<MobileControls bind:mode bind:type {modeOptions} {typeOptions} />
 	{/if}
 </div>

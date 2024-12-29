@@ -17,13 +17,17 @@
 	$effect(() => sync.value(value, v => (value = v)))
 </script>
 
-<div use:melt={$root} class="flex gap-1">
+<span use:melt={$root} class="inline-flex gap-1">
 	{#each options as option}
-		<div class="flex items-center gap-3">
-			<button use:melt={$item(option)} id={option} class="data-[state=checked]:underline">
+		<span class="inline-flex items-center gap-3">
+			<button
+				use:melt={$item(option)}
+				id={option}
+				class="cursor-pointer data-[state=checked]:underline"
+			>
 				{option}
 			</button>
-		</div>
+		</span>
 	{/each}
 	<input use:melt={$hiddenInput} />
-</div>
+</span>
