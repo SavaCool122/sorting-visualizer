@@ -1,1 +1,1 @@
-export const ANIMATION_SPEED_MS = 350
+export const ANIMATION_SPEED_MS = 300

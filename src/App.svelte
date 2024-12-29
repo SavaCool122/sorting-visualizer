@@ -9,17 +9,12 @@
 
 	let settings = $state({ mode: 'bar', type: ArrayTypes.random })
 	let status = $state(Statuses.ready)
-	let sortStatuses = $state(Array.from({ length: SortList.length }, () => status))
-
-	$effect(() => {
-		sortStatuses = Array.from({ length: SortList.length }, () => status)
-	})
 </script>
 
 <Container>
-	<Header bind:mode={settings.mode} bind:type={settings.type} />
+	<Header bind:mode={settings.mode} bind:type={settings.type} bind:status />
 
 	<div class="mt-4 mb-2 font-medium text-black/60">Selected Sorting</div>
 
-	<Sorting bind:status={sortStatuses} arrayType={settings.type} />
+	<Sorting bind:status arrayType={settings.type} />
 </Container>

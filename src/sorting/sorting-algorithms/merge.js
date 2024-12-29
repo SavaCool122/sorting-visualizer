@@ -26,7 +26,7 @@ export function mergeSort(inputArray, onSwap = () => {}) {
 				let index = start2
 				while (index > start) {
 					;[arr[index], arr[index - 1]] = [arr[index - 1], arr[index]]
-					onSwap(arr, index, index - 1)
+					onSwap(arr.slice(), index, index - 1)
 					index--
 				}
 				arr[start] = value

@@ -2,7 +2,7 @@
 	import { flip } from 'svelte/animate'
 	import { ANIMATION_SPEED_MS } from '../animations/constants.js'
 
-	const { array } = $props()
+	const { array, sortType } = $props()
 </script>
 
 {#each array as bar (bar)}

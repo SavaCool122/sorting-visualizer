@@ -16,7 +16,7 @@ export function selectionSort(inputArray, onSwap = () => {}) {
 		}
 		if (minIndex !== i) {
 			;[arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
-			onSwap(arr, i, minIndex)
+			onSwap(arr.slice(), i, minIndex)
 		}
 	}
 

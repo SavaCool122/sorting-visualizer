@@ -14,14 +14,14 @@ export function quickSort(inputArray, onSwap = () => {}) {
 				i++
 				if (i !== j) {
 					;[arr[i], arr[j]] = [arr[j], arr[i]]
-					onSwap(arr, i, j)
+					onSwap(arr.slice(), i, j)
 				}
 			}
 		}
 
 		if (i + 1 !== high) {
 			;[arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]
-			onSwap(arr, i + 1, high)
+			onSwap(arr.slice(), i + 1, high)
 		}
 
 		return i + 1

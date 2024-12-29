@@ -16,7 +16,7 @@ export function cocktailShakerSort(inputArray, onSwap = () => {}) {
 		for (let i = start; i < end; i++) {
 			if (arr[i] > arr[i + 1]) {
 				;[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
-				onSwap(arr, i, i + 1)
+				onSwap(arr.slice(), i, i + 1)
 				swapped = true
 			}
 		}
@@ -31,7 +31,7 @@ export function cocktailShakerSort(inputArray, onSwap = () => {}) {
 		for (let i = end; i > start; i--) {
 			if (arr[i - 1] > arr[i]) {
 				;[arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
-				onSwap(arr, i - 1, i)
+				onSwap(arr.slice(), i - 1, i)
 				swapped = true
 			}
 		}

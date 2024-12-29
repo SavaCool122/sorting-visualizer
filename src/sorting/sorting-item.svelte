@@ -4,7 +4,6 @@
 	import Status from './status-badge/status.svelte'
 	import Bars from './modes/bars.svelte'
 	import { animate } from './animations/start-animation.js'
-	import { swap } from './array-utils/swap.js'
 	import { recordSwaps } from './record-swaps.js'
 
 	let { array: initialArray, sortStatus = $bindable(), sortType } = $props()
@@ -20,7 +19,7 @@
 		sortStarted = true
 
 		const animations = recordSwaps(sortType, initialArray)
-		await animate(animations, ([first, second]) => swap(array, first, second))
+		await animate(animations, newArray => (array = newArray))
 
 		sortStatus = Statuses.done
 		sortStarted = false
@@ -32,5 +31,5 @@
 		<Status value={sortStatus} />
 	{/snippet}
 
-	<Bars {array} />
+	<Bars {array} {sortType} />
 </Card>

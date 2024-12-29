@@ -7,16 +7,10 @@ export function insertionSort(inputArray, onSwap = () => {}) {
 	const arr = [...inputArray]
 
 	for (let i = 1; i < arr.length; i++) {
-		let j = i
-		const current = arr[i]
-
-		while (j > 0 && arr[j - 1] > current) {
-			arr[j] = arr[j - 1]
-
-			onSwap(arr, j, j - 1)
-			j--
+		for (let j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
+			;[arr[j], arr[j - 1]] = [arr[j - 1], arr[j]]
+			onSwap(arr.slice(), j, j - 1)
 		}
-		arr[j] = current
 	}
 
 	return arr

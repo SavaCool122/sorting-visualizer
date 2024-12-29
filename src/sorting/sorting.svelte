@@ -9,7 +9,7 @@
 </script>
 
 <div class="grid grid-cols-2 gap-x-5">
-	{#each SortList as sortType, i}
-		<SortingItem bind:sortStatus={status[i]} {sortType} {array} />
+	{#each SortList as sortType}
+		<SortingItem bind:sortStatus={status} {sortType} {array} />
 	{/each}
 </div>

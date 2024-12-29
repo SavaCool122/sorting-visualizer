@@ -6,9 +6,9 @@ import { delay } from './delay.js'
  * @param {{onStep: () => void, speed?: number}} handlers
  */
 export async function animate(animations = [], onStep) {
-	for (let i = 0; i < animations.length; i++) {
+	for await (const animation of animations) {
 		await delay(ANIMATION_SPEED_MS)
-		onStep(animations[i])
+		onStep(animation)
 	}
 	await delay(ANIMATION_SPEED_MS) // wait for the last animation
 }
