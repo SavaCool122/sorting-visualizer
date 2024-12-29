@@ -2,18 +2,18 @@
 	import Icon from '../lib/components/icon.svelte'
 	import { ArrayTypes, Statuses } from '../lib/constants.js'
 	import RadioGroup from './radio-group.svelte'
+	import StartButton from './start-button.svelte'
 	import ToggleButton from './toggle-button.svelte'
 
 	let { mode = $bindable(), type = $bindable(), status = $bindable() } = $props()
 
 	let opened = $state(false)
-	let started = $state(false)
 
 	$effect(() => {
-		if (started) status = Statuses.in_progress
+		if (opened && status === Statuses.in_progress) opened = false
 	})
 
-	const modeOptions = ['bar', 'grid'] // 'bar', 'grid', 'image'
+	const modeOptions = ['bar'] // 'bar', 'grid', 'image'
 	const typeOption = [...Object.keys(ArrayTypes)]
 </script>
 
@@ -22,11 +22,9 @@
 		<h1>Sorting Visualizer</h1>
 
 		<div>
-			<ToggleButton bind:value={started} class="mr-1" disabled={started}>
-				{started ? 'In Progress' : 'Start'}
-			</ToggleButton>
+			<StartButton bind:status />
 
-			<ToggleButton bind:value={opened}>
+			<ToggleButton bind:value={opened} disabled={status === Statuses.in_progress}>
 				More
 				{#snippet icon()}
 					<Icon size="14" name="close" class="ml-1 shrink-0" />

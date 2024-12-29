@@ -6,23 +6,23 @@
 	import { animate } from './animations/start-animation.js'
 	import { recordSwaps } from './record-swaps.js'
 
-	let { array: initialArray, sortStatus = $bindable(), sortType } = $props()
+	let { array: initialArray, globalSortStatus, sortStatus = $bindable(), sortType } = $props()
 
-	let array = $state([...initialArray])
-	let sortStarted = $state(false)
+	let array = $state([])
+
+	$effect(() => (array = [...initialArray]))
 
 	$effect(() => {
-		if (sortStatus === Statuses.in_progress && !sortStarted) runSorting()
+		if (globalSortStatus === Statuses.in_progress && sortStatus === Statuses.ready) runSorting()
 	})
 
 	async function runSorting() {
-		sortStarted = true
+		sortStatus = Statuses.in_progress
 
 		const animations = recordSwaps(sortType, initialArray)
 		await animate(animations, newArray => (array = newArray))
 
 		sortStatus = Statuses.done
-		sortStarted = false
 	}
 </script>
 
