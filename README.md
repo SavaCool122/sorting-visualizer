@@ -1,26 +1,25 @@
-# Visualization Of Sorting Algorithms
+# sorting-visualizer
 
-Illustration How Array Is Sorted With Animations
+Illustration of How an Array is Sorted Using Animations
 
-[See it in action](https://sortlab.pages.dev/)
+## Quick links
 
-[Or you can check old version](https://sava-sorting-visualizer.web.app/)
+- Main app: [prod](https://sortlab.pages.dev) | [old-prod](https://sava-sorting-visualizer.web.app)
 
-## Quick Start
+## Development
+
+Works in all modern browsers, fully keyboard accessible.
+
+### Architecture Overview
+
+This project is built using [Svelte](https://svelte.dev), [MeltUi](https://www.melt-ui.com), [Vite](https://vite.dev) and [TailwindCSS](https://tailwindcss.com)
+
+### Quick Start
 
 First of all you need install dependencies.
 
-	pnpm i
+    pnpm i
 
 Then you can start aplication.
 
-	pnpm dev
-
-1. Built on Svelte, Vite.js and TailwindCSS.
-2. Works in all modern browsers.
-3. Fully keyboard accessible.
-4. Themes in future releases.
-
-
-
-
+    pnpm dev
