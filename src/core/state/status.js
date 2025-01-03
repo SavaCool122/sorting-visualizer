@@ -1,6 +1,0 @@
-export const STATUS = {
-	INITIAL: 'INITIAL',
-	SELECTED: 'SELECTED',
-	SORTING: 'SORTING',
-	DONE: 'DONE',
-}
