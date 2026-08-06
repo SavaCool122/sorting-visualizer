@@ -1,0 +1,82 @@
+name: Dependabot auto-merge
+
+# Runs on pull_request_target so that GITHUB_TOKEN gets write permissions.
+# Dependabot PRs triggered with `pull_request` only get a read-only token.
+# No PR code is checked out or executed here, so this is safe.
+on: pull_request_target
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Fetch Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # `npm-security` is the group declared in .github/dependabot.yml with
+      # `applies-to: security-updates`, i.e. this PR fixes a known advisory (CVE/GHSA).
+      - name: Classify PR
+        id: cls
+        env:
+          GROUP: ${{ steps.meta.outputs.dependency-group }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
+        run: |
+          security=false
+          [ "$GROUP" = "npm-security" ] && security=true
+
+          routine=false
+          case "$UPDATE_TYPE" in
+            version-update:semver-patch|version-update:semver-minor) routine=true ;;
+          esac
+
+          echo "security=$security" >> "$GITHUB_OUTPUT"
+          echo "routine=$routine" >> "$GITHUB_OUTPUT"
+          echo "Security update: $security, routine (patch/minor): $routine"
+
+      - name: Label security PRs
+        if: steps.cls.outputs.security == 'true'
+        run: gh pr edit "$PR_URL" --add-label security
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      # Requires Settings -> Actions -> General ->
+      # "Allow GitHub Actions to create and approve pull requests".
+      # Only needed if the branch requires approving reviews.
+      - name: Approve
+        if: steps.cls.outputs.security == 'true' || steps.cls.outputs.routine == 'true'
+        continue-on-error: true
+        run: |
+          if [ "$(gh pr view "$PR_URL" --json reviewDecision -q .reviewDecision)" != "APPROVED" ]; then
+            gh pr review --approve "$PR_URL"
+          else
+            echo "Already approved, skipping."
+          fi
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # --auto queues the merge: GitHub waits for required status checks (CI)
+      # to pass before actually merging.
+      - name: Enable auto-merge
+        if: steps.cls.outputs.security == 'true' || steps.cls.outputs.routine == 'true'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Flag major updates for manual review
+        if: steps.cls.outputs.security != 'true' && steps.cls.outputs.routine != 'true'
+        run: gh pr edit "$PR_URL" --add-label needs-review
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
