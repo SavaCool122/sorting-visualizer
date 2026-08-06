@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Europe/Moscow
     open-pull-requests-limit: 10
     labels:
@@ -20,12 +20,12 @@ updates:
       npm-security:
         applies-to: security-updates
         patterns:
-          - "*"
+          - '*'
       # Routine version updates: one PR per week for all patch/minor bumps.
       npm-minor-patch:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
           - patch
@@ -35,7 +35,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Europe/Moscow
     labels:
       - dependencies
@@ -45,4 +45,4 @@ updates:
     groups:
       actions:
         patterns:
-          - "*"
+          - '*'
